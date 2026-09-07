@@ -38,6 +38,7 @@ export function buildStreamSongCatalog(recaps: readonly SongRecap[]): CatalogSon
           title: song.title,
           artist: song.artist,
           youtubeUrl: song.youtubeUrl,
+          ...(song.youtubeVersionNote ? { youtubeVersionNote: song.youtubeVersionNote } : {}),
           ...(song.karaoke ? { karaoke: { ...song.karaoke } } : {}),
           performances: [],
         };

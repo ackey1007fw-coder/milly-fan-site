@@ -24,7 +24,7 @@ export function StreamSongCatalog() {
           配信で出会った曲を、原曲でもう一度。掲載済みの配信メモから、歌唱を確認できた曲をまとめています。過去の全配信を網羅した一覧ではありません。
         </p>
         <p className="mt-2 text-xs leading-6 text-ink-muted">
-          原曲はアーティスト・レーベルの公式YouTube動画です。みりぃの歌唱映像ではありません。カラオケは練習用の参考伴奏で、配信での使用音源は未確認です。
+          リンク先は原曲の公式音源、または版を明記した公式歌唱動画です。みりぃの歌唱映像ではありません。カラオケは練習用の参考伴奏で、配信での使用音源は未確認です。
         </p>
         <div className="mt-5 grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2">
           <label className="block min-w-0 text-xs font-semibold text-ink sm:col-span-2">
@@ -59,8 +59,9 @@ export function StreamSongCatalog() {
                 <h3 className="break-words text-lg font-bold leading-relaxed text-ink">{song.title}</h3>
                 <p className="mt-1 break-words text-sm leading-6 text-ink-muted">{song.artist}</p>
                 <p className="mt-3">
-                  <a href={song.youtubeUrl} target="_blank" rel="noopener noreferrer" className={linkClass} aria-label={`${song.title} — 原曲の公式動画をYouTubeで聴く（新しいタブ）`}>YouTubeで原曲を聴く ↗</a>
+                  <a href={song.youtubeUrl} target="_blank" rel="noopener noreferrer" className={linkClass} aria-label={`${song.title} — ${song.youtubeVersionNote ? "公式歌唱動画" : "原曲の公式動画"}をYouTubeで聴く（新しいタブ）`}>{song.youtubeVersionNote ? "YouTubeで公式歌唱を聴く ↗" : "YouTubeで原曲を聴く ↗"}</a>
                 </p>
+                {song.youtubeVersionNote ? <p className="break-words text-xs leading-5 text-ink-muted">{song.youtubeVersionNote}</p> : null}
                 {song.karaoke ? (
                   <div className="mt-1">
                     <a href={song.karaoke.youtubeUrl} target="_blank" rel="noopener noreferrer" className={linkClass} aria-label={`${song.title} — カラオケの参考動画をYouTubeで開く（新しいタブ）`}>カラオケで歌う ↗</a>

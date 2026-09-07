@@ -11,6 +11,14 @@ const recap = (id, songs, overrides = {}) => ({ id, date: id.slice(0, 10), dateL
 it("catalog unit: ignores empty recaps and does not infer singing from summaries", () => {
   assert.deepEqual(buildStreamSongCatalog([recap("2026-09-05-day", undefined, { summary: "Mela!を振り返る" })]), []);
 });
+it("catalog unit: preserves the linked recording version without borrowing an older URL's note", () => {
+  const older = song({ youtubeVersionNote: "公式企画動画。原盤音源とは異なります。" });
+  const newer = song({ youtubeUrl: "https://www.youtube.com/watch?v=l8-RA3B0YRc" });
+  assert.equal(buildStreamSongCatalog([recap("2026-08-18-night", [older])])[0].youtubeVersionNote, older.youtubeVersionNote);
+  const merged = buildStreamSongCatalog([recap("2026-08-18-night", [older]), recap("2026-08-25-morning", [newer])])[0];
+  assert.equal(merged.youtubeUrl, newer.youtubeUrl);
+  assert.equal(merged.youtubeVersionNote, undefined);
+});
 it("catalog unit: merges the same song across broadcasts without mutating input", () => {
   const input = [recap("2026-09-05-asa", [song({ karaoke })]), recap("2026-09-06-asa", [song()])];
   const before = JSON.stringify(input);

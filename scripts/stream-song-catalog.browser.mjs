@@ -58,7 +58,7 @@ try {
     const page = await context.newPage();
     page.setDefaultTimeout(15000);
     const errors = [];
-    page.on("pageerror", (error) => errors.push(error.message));
+    page.on("pageerror", (error) => errors.push(error.stack ?? error.message));
     const result = { scenario: scenario.name, passed: [], status: "running" };
     report.results.push(result);
     const check = async (name, operation) => { await operation(); result.passed.push(name); console.log(`PASS ${scenario.name}: ${name}`); };
@@ -114,6 +114,18 @@ try {
         for (const link of links) {
           assert.ok(link.rel.split(/\s+/).includes("noopener") && link.rel.split(/\s+/).includes("noreferrer"));
           assert.ok(link.label?.includes("新しいタブ"));
+        }
+      });
+      await check("alternate official recordings disclose their version in both surfaces", async () => {
+        for (const song of catalog.filter((entry) => entry.youtubeVersionNote)) {
+          const card = section.locator("li").filter({ has: page.getByRole("heading", { name: song.title, exact: true }) }).first();
+          assert.ok((await card.innerText()).includes(song.youtubeVersionNote));
+          assert.equal(await card.getByRole("link", { name: `${song.title} — 公式歌唱動画をYouTubeで聴く（新しいタブ）`, exact: true }).getAttribute("href"), song.youtubeUrl);
+          const details = page.locator(`#recap-${song.performances[0].id}`);
+          await details.locator(":scope > summary").click();
+          assert.ok((await details.innerText()).includes(song.youtubeVersionNote));
+          assert.equal(await details.getByRole("link", { name: `${song.title} — 公式歌唱動画をYouTubeで聴く（新しいタブ）`, exact: true }).getAttribute("href"), song.youtubeUrl);
+          await details.locator(":scope > summary").click();
         }
       });
       await check("keyboard expansion, recap jump, repeat same-hash reopen", async () => {
