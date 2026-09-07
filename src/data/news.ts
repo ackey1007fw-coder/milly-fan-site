@@ -95,6 +95,9 @@ import {
 import { thirdRoundTimetableImage } from "./thirdRoundTimetableImage.ts";
 import { thirdRoundStoryAdditionalMedia } from "./thirdRoundStoryMedia.ts";
 import { webVoteDay2StoryVideo } from "./webVoteDay2StoryVideo.ts";
+import { voteDayFiveSoonStoryVideo } from "./voteDayFiveSoonStoryVideo.ts";
+import { morningThanksVoteStoryVideo } from "./morningThanksVoteStoryVideo.ts";
+import { streamThanksMorningSlotStoryVideo } from "./streamThanksMorningSlotStoryVideo.ts";
 import {
   PATON_VOTE_HOW_TO_CTA_LABEL,
   PATON_VOTE_HOW_TO_CTA_URL,
@@ -202,6 +205,35 @@ export function newsDisplayMedia(item: NewsItem): NewsMedia[] {
 
 export const news: NewsItem[] = [
   {
+    id: "2026-09-08-stream-thanks-morning-slot-story",
+    date: "2026-09-08",
+    sameDayOrder: 10,
+    activityIds: ["live-stream"],
+    title: "配信ありがとう、「明日の朝枠は7:30〜8:20」",
+    body:
+      "9月8日未明、みりぃがInstagram Storyで、配信へのお礼と「明日の朝枠は7:30〜8:20」を伝えました。配信中は「目がぁぁ乾くぅぅ見えないぃぃ」と言っていたけれど、配信を切った瞬間に平気になった、とも添えています。くま耳とキラキラのフィルターをつけて、白いふわふわの毛布のそばでカメラを見ている短い動画です。",
+    sourceLabel: streamThanksMorningSlotStoryVideo.sourceLabel,
+    relatedUrl: "https://www.instagram.com/mily_chan36",
+    ctaLabel: "Instagramプロフィールを見る",
+    additionalCtas: [
+      {
+        label: "SHOWROOM",
+        url: "https://www.showroom-live.com/r/circle2026_0734",
+      },
+    ],
+    media: streamThanksMorningSlotStoryVideo,
+    message: {
+      label: "みりぃのStory",
+      text:
+        "配信ありがとう\u{1F4AB}\n" +
+        "配信中あんなに\n" +
+        "「目がぁぁ乾くぅぅ見えないぃぃ」\n" +
+        "とか言ってたけど、\n" +
+        "配信切った瞬間平気になった、、、( \u02C8\u203F\u02C8 )\n" +
+        "明日の朝枠は7:30〜8:20\u203C\u{FE0F}",
+    },
+  },
+  {
     id: "2026-09-07-campus-girls-finals-ex-vol1",
     date: "2026-09-07",
     sameDayOrder: 10,
@@ -220,6 +252,63 @@ export const news: NewsItem[] = [
         "本選まで長いので、是非目を通しておいてくださると嬉しいです😳🙏🏻🩵✨\n" +
         "個人的解釈ですが、この期間は、『私を知ってもらって、本選でも応援してくださる方々に出逢うための期間』。\n" +
         "キャンガルでの配信は行いませんが、私らしく授賞式登壇するぞ〜✊🏻❤️‍🔥",
+    },
+  },
+  {
+    id: "2026-09-07-morning-thanks-vote-day5-story",
+    date: "2026-09-07",
+    sameDayOrder: 5,
+    activityIds: ["live-stream", "miss-circle"],
+    title: "朝配信ありがとう、次枠は22:00〜。「5日目ポチッはこちらから」",
+    body:
+      "9月7日の朝、みりぃがInstagram Storyで、朝配信へのお礼と、次枠が22:00からであることを伝えました。あわせて、リンクスタンプに「5日目ポチッはこちらから」と書いて投票を呼びかけています。リンク先はStoryの表示だけでは確認できないため、ここには書きません。黒いトップスで、片目をつぶってピースサインをしている短い動画です。",
+    sourceLabel: morningThanksVoteStoryVideo.sourceLabel,
+    relatedUrl: "https://www.instagram.com/mily_chan36",
+    ctaLabel: "Instagramプロフィールを見る",
+    additionalCtas: [
+      {
+        label: missCircleWebVoteLink.label,
+        url: missCircleWebVoteLink.url,
+      },
+      {
+        label: "SHOWROOM",
+        url: "https://www.showroom-live.com/r/circle2026_0734",
+      },
+    ],
+    media: morningThanksVoteStoryVideo,
+    message: {
+      label: "みりぃのStory",
+      text:
+        "朝配信来てくれたみんなありがとう〜\u{1F484}\u2728\n" +
+        "次枠は22:00〜\n" +
+        "5日目ポチッはこちらから\u{1FA75}\u2728",
+    },
+  },
+  {
+    id: "2026-09-06-third-round-vote-day5-soon-story",
+    date: "2026-09-06",
+    sameDayOrder: 50,
+    activityIds: ["miss-circle"],
+    title: "「30分後5日目の投票できるよ」4日目の投票も呼びかけ",
+    body:
+      "9月6日の夜、みりぃがInstagram Storyで、リンクスタンプに「30分後5日目の投票できるよ」と書いて投票を呼びかけました。あわせて「4日目まだの方はダッシュで上のリンクに飛んで投票お願いします〜」と添えています。リンク先はStoryの表示だけでは確認できないため、ここには書きません。くま耳とキラキラのフィルターをつけて、ピースサインをしている短い動画です。",
+    sourceLabel: voteDayFiveSoonStoryVideo.sourceLabel,
+    relatedUrl: "https://www.instagram.com/mily_chan36",
+    ctaLabel: "Instagramプロフィールを見る",
+    additionalCtas: [
+      {
+        label: missCircleWebVoteLink.label,
+        url: missCircleWebVoteLink.url,
+      },
+    ],
+    media: voteDayFiveSoonStoryVideo,
+    message: {
+      label: "みりぃのStory",
+      text:
+        "30分後5日目の投票できるよ\u{1F633}\u{1FA75}\n" +
+        "4日目まだの方は\n" +
+        "ダッシュで上のリンクに飛んで\n" +
+        "投票お願いします〜\u{1F3C3}\u200D\u2640\u{FE0F}\u{1F4A8}\u{1F4A8}\u{1F4A8}",
     },
   },
   {
