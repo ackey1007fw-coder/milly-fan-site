@@ -87,8 +87,10 @@ describe("2026-09-07 CAMPUS GIRLS 本選EX vol.1 案内 — Latest entry", () =>
     );
     assert.equal(news[0], entry);
     assert.equal(ordered[0], entry);
-    assert.equal(ordered[1]?.id, NEXT_SLOTS_ID);
-    assert.equal(ordered[2]?.id, RESULT_ID);
+    assert.equal(ordered[1]?.id, "2026-09-07-morning-thanks-vote-day5-story");
+    assert.equal(ordered[2]?.id, "2026-09-06-third-round-vote-day5-soon-story");
+    assert.equal(ordered[3]?.id, NEXT_SLOTS_ID);
+    assert.equal(ordered[4]?.id, RESULT_ID);
     assert.equal(entry.date, "2026-09-07");
     assert.equal(entry.sameDayOrder, 10);
     assert.deepEqual(entry.activityIds, ["campus-girls"]);

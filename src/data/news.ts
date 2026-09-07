@@ -95,6 +95,8 @@ import {
 import { thirdRoundTimetableImage } from "./thirdRoundTimetableImage.ts";
 import { thirdRoundStoryAdditionalMedia } from "./thirdRoundStoryMedia.ts";
 import { webVoteDay2StoryVideo } from "./webVoteDay2StoryVideo.ts";
+import { voteDayFiveSoonStoryVideo } from "./voteDayFiveSoonStoryVideo.ts";
+import { morningThanksVoteStoryVideo } from "./morningThanksVoteStoryVideo.ts";
 import {
   PATON_VOTE_HOW_TO_CTA_LABEL,
   PATON_VOTE_HOW_TO_CTA_URL,
@@ -220,6 +222,63 @@ export const news: NewsItem[] = [
         "本選まで長いので、是非目を通しておいてくださると嬉しいです😳🙏🏻🩵✨\n" +
         "個人的解釈ですが、この期間は、『私を知ってもらって、本選でも応援してくださる方々に出逢うための期間』。\n" +
         "キャンガルでの配信は行いませんが、私らしく授賞式登壇するぞ〜✊🏻❤️‍🔥",
+    },
+  },
+  {
+    id: "2026-09-07-morning-thanks-vote-day5-story",
+    date: "2026-09-07",
+    sameDayOrder: 5,
+    activityIds: ["live-stream", "miss-circle"],
+    title: "朝配信ありがとう、次枠は22:00〜。「5日目ポチッはこちらから」",
+    body:
+      "9月7日の朝、みりぃがInstagram Storyで、朝配信へのお礼と、次枠が22:00からであることを伝えました。あわせて、リンクスタンプに「5日目ポチッはこちらから」と書いて投票を呼びかけています。リンク先はStoryの表示だけでは確認できないため、ここには書きません。黒いトップスで、片目をつぶってピースサインをしている短い動画です。",
+    sourceLabel: morningThanksVoteStoryVideo.sourceLabel,
+    relatedUrl: "https://www.instagram.com/mily_chan36",
+    ctaLabel: "Instagramプロフィールを見る",
+    additionalCtas: [
+      {
+        label: missCircleWebVoteLink.label,
+        url: missCircleWebVoteLink.url,
+      },
+      {
+        label: "SHOWROOM",
+        url: "https://www.showroom-live.com/r/circle2026_0734",
+      },
+    ],
+    media: morningThanksVoteStoryVideo,
+    message: {
+      label: "みりぃのStory",
+      text:
+        "朝配信来てくれたみんなありがとう〜\u{1F484}\u2728\n" +
+        "次枠は22:00〜\n" +
+        "5日目ポチッはこちらから\u{1FA75}\u2728",
+    },
+  },
+  {
+    id: "2026-09-06-third-round-vote-day5-soon-story",
+    date: "2026-09-06",
+    sameDayOrder: 50,
+    activityIds: ["miss-circle"],
+    title: "「30分後5日目の投票できるよ」4日目の投票も呼びかけ",
+    body:
+      "9月6日の夜、みりぃがInstagram Storyで、リンクスタンプに「30分後5日目の投票できるよ」と書いて投票を呼びかけました。あわせて「4日目まだの方はダッシュで上のリンクに飛んで投票お願いします〜」と添えています。リンク先はStoryの表示だけでは確認できないため、ここには書きません。くま耳とキラキラのフィルターをつけて、ピースサインをしている短い動画です。",
+    sourceLabel: voteDayFiveSoonStoryVideo.sourceLabel,
+    relatedUrl: "https://www.instagram.com/mily_chan36",
+    ctaLabel: "Instagramプロフィールを見る",
+    additionalCtas: [
+      {
+        label: missCircleWebVoteLink.label,
+        url: missCircleWebVoteLink.url,
+      },
+    ],
+    media: voteDayFiveSoonStoryVideo,
+    message: {
+      label: "みりぃのStory",
+      text:
+        "30分後5日目の投票できるよ\u{1F633}\u{1FA75}\n" +
+        "4日目まだの方は\n" +
+        "ダッシュで上のリンクに飛んで\n" +
+        "投票お願いします〜\u{1F3C3}\u200D\u2640\u{FE0F}\u{1F4A8}\u{1F4A8}\u{1F4A8}",
     },
   },
   {

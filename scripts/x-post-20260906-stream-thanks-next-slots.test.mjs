@@ -38,7 +38,7 @@ function item() {
 }
 
 describe("2026-09-06 X 配信お礼と翌日枠 — Latest entry", () => {
-  it("adds exactly one source-backed text NEWS card at the 9/6 head", () => {
+  it("adds exactly one source-backed text NEWS card after the 9/6 night Story", () => {
     const entry = item();
     const ordered = sortNewsByDateDesc(news);
 
@@ -49,11 +49,13 @@ describe("2026-09-06 X 配信お礼と翌日枠 — Latest entry", () => {
       news.filter((candidate) => (candidate.source ?? "").includes(TWEET_ID)).length,
       1,
     );
-    assert.equal(news[1], entry);
+    assert.equal(news[3], entry);
     assert.equal(ordered[0]?.id, "2026-09-07-campus-girls-finals-ex-vol1");
-    assert.equal(ordered[1], entry);
-    assert.equal(ordered[2]?.id, RESULT_ID);
-    assert.equal(ordered[3]?.id, NIGHT_SLOT_ID);
+    assert.equal(ordered[1]?.id, "2026-09-07-morning-thanks-vote-day5-story");
+    assert.equal(ordered[2]?.id, "2026-09-06-third-round-vote-day5-soon-story");
+    assert.equal(ordered[3], entry);
+    assert.equal(ordered[4]?.id, RESULT_ID);
+    assert.equal(ordered[5]?.id, NIGHT_SLOT_ID);
     assert.equal(entry.date, "2026-09-06");
     assert.equal(entry.sameDayOrder, 40);
     assert.deepEqual(entry.activityIds, ["live-stream"]);
@@ -132,7 +134,8 @@ describe("2026-09-06 X 配信お礼と翌日枠 — schedule", () => {
 describe("2026-09-06 X 配信お礼と翌日枠 — scope", () => {
   it("surfaces on the live-stream Activity only", () => {
     const liveNews = selectActivityNews("live-stream", news, news.length);
-    assert.equal(liveNews[0]?.id, NEWS_ID);
+    assert.equal(liveNews[0]?.id, "2026-09-07-morning-thanks-vote-day5-story");
+    assert.equal(liveNews[1]?.id, NEWS_ID);
     for (const activityId of ["miss-circle", "campus-girls", "radio"]) {
       assert.equal(
         selectActivityNews(activityId, news, news.length).some(
