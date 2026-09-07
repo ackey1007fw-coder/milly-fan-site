@@ -234,14 +234,23 @@ describe("2026-09-08 Instagram Story 配信お礼・翌朝枠 — Latest / NEWS"
     assert.doesNotMatch(copy, /9月9日|9\/9|9月8日の朝|9\/8の朝/);
     assert.doesNotMatch(copy, /liff\.line\.me|misscircle\.jp|instagram\.com|showroom-live\.com/);
     assert.match(entry.body, /「明日の朝枠は7:30〜8:20」/);
-    // 9/8 の枠は本人配布タイムテーブル由来の既存データのまま。Story から転記しない。
+    // Story の「7:30〜8:20」は転記しない。9/8朝枠は SHOWROOM next_live
+    // 差し替え（epoch 1788879600）で手入力から外した。07:30 は足さない。
     assert.deepEqual(
       streamSchedule.filter((slot) => slot.date === "2026-09-08"),
-      [{ date: "2026-09-08", time: "07:00", endTime: "08:00" }],
+      [],
     );
     assert.equal(
       streamSchedule.some((slot) => slot.date >= "2026-09-08" && slot.time === "07:30"),
       false,
+    );
+    assert.ok(
+      streamSchedule.some(
+        (slot) =>
+          slot.date === "2026-09-09" &&
+          slot.time === "00:00" &&
+          slot.endTime === "01:00",
+      ),
     );
   });
 });
