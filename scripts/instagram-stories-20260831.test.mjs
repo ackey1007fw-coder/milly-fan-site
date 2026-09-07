@@ -366,14 +366,14 @@ describe("2026-08-30〜31 Instagram Story — Latest / NEWS", () => {
     assert.equal(liveNews[4]?.id, "2026-08-30-consecutive-stream-30");
     assert.equal(liveNews[5]?.id, "2026-08-30-morning-showroom-0600");
     assert.equal(liveNews[6]?.id, THIRTY_DAY_NEWS_ID);
-    assert.equal(selectActivityMedia("campus-girls")[0]?.id, "mily-b63-01-campus-girls-prelim-final-result");
-    assert.equal(selectActivityMedia("campus-girls")[1]?.id, "mily-b47-02-paton-second-story");
-    assert.equal(selectActivityMedia("campus-girls")[2]?.id, "mily-b46-01-paton-vote-final-day-story");
-    assert.equal(selectActivityMedia("campus-girls")[3]?.id, "mily-b45-01-paton-vote-voice-story");
-    assert.equal(selectActivityMedia("campus-girls")[4], patonVoteFirstPlaceStoryVideo);
-    assert.equal(selectActivityMedia("campus-girls")[5], patonVoteFifteenXStoryVideo);
-    assert.equal(selectActivityMedia("campus-girls")[6], campusGirlsPatonPortraitImage);
-    assert.equal(selectActivityMedia("campus-girls")[7], campusGirlsHoldSecondStoryVideo);
+    assert.equal(selectActivityMedia("campus-girls")[1]?.id, "mily-b63-01-campus-girls-prelim-final-result");
+    assert.equal(selectActivityMedia("campus-girls")[2]?.id, "mily-b47-02-paton-second-story");
+    assert.equal(selectActivityMedia("campus-girls")[3]?.id, "mily-b46-01-paton-vote-final-day-story");
+    assert.equal(selectActivityMedia("campus-girls")[4]?.id, "mily-b45-01-paton-vote-voice-story");
+    assert.equal(selectActivityMedia("campus-girls")[5], patonVoteFirstPlaceStoryVideo);
+    assert.equal(selectActivityMedia("campus-girls")[6], patonVoteFifteenXStoryVideo);
+    assert.equal(selectActivityMedia("campus-girls")[7], campusGirlsPatonPortraitImage);
+    assert.equal(selectActivityMedia("campus-girls")[8], campusGirlsHoldSecondStoryVideo);
     assert.notEqual(
       selectActivityMedia("live-stream")[0]?.id,
       "mily-b44-04-showroom-30-day-anniversary-story",

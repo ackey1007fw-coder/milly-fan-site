@@ -1,5 +1,6 @@
 import { isValidDateOnly, isValidDateTime } from "./events.ts";
 import { activities, type ActivityId } from "./activities.ts";
+import { CAMPUS_GIRLS_FINALS_EX_VOL1_X_URL } from "./campusGirlsFinalsExImages.ts";
 import {
   links,
   missCircleShowroomEventLink,
@@ -205,6 +206,108 @@ export const missCircleThirdRoundShowroomReview: SupportEvent = {
   priority: 80,
 };
 
+export const campusGirlsFinalsExSnsReview: SupportEvent = {
+  id: "campus-girls-finals-ex-sns-vol1-2026",
+  activityId: "campus-girls",
+  kind: "support-campaign",
+  title: "CAMPUS GIRLS 2027 本選EX vol.1 SNS審査",
+  note:
+    "本人Xで案内された本選EX vol.1のSNS審査期間です。みりぃはキャンガルでの配信は行わないと伝えています。",
+  shareText:
+    "CAMPUS GIRLS 2027 本選EX vol.1のSNS審査期間です。みりぃの投稿を応援してください",
+  shareHashtag: "#キャンガル",
+  schedule: {
+    state: "confirmed-period",
+    start: "2026-09-07T12:00:00+09:00",
+    end: "2026-09-20T12:00:00+09:00",
+    allDay: false,
+    timezone: "Asia/Tokyo",
+  },
+  source: CAMPUS_GIRLS_FINALS_EX_VOL1_X_URL,
+  verifiedAt: "2026-09-07",
+  priority: 70,
+};
+
+export const campusGirlsFinalsExPatonReview: SupportEvent = {
+  id: "campus-girls-finals-ex-paton-vol1-2026",
+  activityId: "campus-girls",
+  kind: "support-campaign",
+  title: "CAMPUS GIRLS 2027 本選EX vol.1 Paton投票審査",
+  note:
+    "本人Xの案内グラフィックに書かれた期間です。投票先URLは未確認のため、ここでは期間のみ載せています。",
+  schedule: {
+    state: "confirmed-period",
+    start: "2026-09-16T18:00:00+09:00",
+    end: "2026-09-22T23:59:00+09:00",
+    allDay: false,
+    timezone: "Asia/Tokyo",
+  },
+  source: CAMPUS_GIRLS_FINALS_EX_VOL1_X_URL,
+  verifiedAt: "2026-09-07",
+};
+
+const FINALS_EX_LATER_NOTE =
+  "本人Xの本選EX日程表で案内された期間です。この回のSNS審査・Paton投票の内訳は未確認です。";
+
+function campusGirlsFinalsExVolume(options: {
+  id: string;
+  title: string;
+  start: string;
+  end: string;
+}): SupportEvent {
+  return {
+    id: options.id,
+    activityId: "campus-girls",
+    kind: "support-campaign",
+    title: options.title,
+    note: FINALS_EX_LATER_NOTE,
+    schedule: {
+      state: "confirmed-period",
+      start: options.start,
+      end: options.end,
+      allDay: false,
+      timezone: "Asia/Tokyo",
+    },
+    source: CAMPUS_GIRLS_FINALS_EX_VOL1_X_URL,
+    verifiedAt: "2026-09-07",
+  };
+}
+
+export const campusGirlsFinalsExTwo = campusGirlsFinalsExVolume({
+  id: "campus-girls-finals-ex-vol-2-2026",
+  title: "CAMPUS GIRLS 2027 本選EX vol.2",
+  start: "2026-09-28T12:00:00+09:00",
+  end: "2026-10-11T12:00:00+09:00",
+});
+
+export const campusGirlsFinalsExThree = campusGirlsFinalsExVolume({
+  id: "campus-girls-finals-ex-vol-3-2026",
+  title: "CAMPUS GIRLS 2027 本選EX vol.3",
+  start: "2026-10-19T12:00:00+09:00",
+  end: "2026-11-01T12:00:00+09:00",
+});
+
+export const campusGirlsFinalsExFour = campusGirlsFinalsExVolume({
+  id: "campus-girls-finals-ex-vol-4-2026",
+  title: "CAMPUS GIRLS 2027 本選EX vol.4",
+  start: "2026-11-09T12:00:00+09:00",
+  end: "2026-11-22T12:00:00+09:00",
+});
+
+export const campusGirlsFinalsExFive = campusGirlsFinalsExVolume({
+  id: "campus-girls-finals-ex-vol-5-2026",
+  title: "CAMPUS GIRLS 2027 本選EX vol.5",
+  start: "2026-11-30T12:00:00+09:00",
+  end: "2026-12-13T12:00:00+09:00",
+});
+
+export const campusGirlsFinalsExSix = campusGirlsFinalsExVolume({
+  id: "campus-girls-finals-ex-vol-6-2026",
+  title: "CAMPUS GIRLS 2027 本選EX vol.6",
+  start: "2026-12-21T12:00:00+09:00",
+  end: "2027-01-03T12:00:00+09:00",
+});
+
 export const campusGirlsFinalStagePatonVote: SupportEvent = {
   id: "campus-girls-final-stage-paton-2026",
   activityId: "campus-girls",
@@ -231,4 +334,11 @@ export const supportEvents: SupportEvent[] = [
   campusGirlsFinalStagePatonVote,
   missCircleThirdRoundWebVote,
   missCircleThirdRoundShowroomReview,
+  campusGirlsFinalsExSnsReview,
+  campusGirlsFinalsExPatonReview,
+  campusGirlsFinalsExTwo,
+  campusGirlsFinalsExThree,
+  campusGirlsFinalsExFour,
+  campusGirlsFinalsExFive,
+  campusGirlsFinalsExSix,
 ];

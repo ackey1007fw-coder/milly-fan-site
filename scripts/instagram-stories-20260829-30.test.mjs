@@ -283,16 +283,16 @@ describe("2026-08-29〜30 Instagram Story動画 — Latest / NEWS", () => {
     assert.equal(campusNews[9]?.id, "2026-08-30-paton-rank-3");
     assert.equal(campusNews[10]?.id, fixtures[1].newsId);
     assert.equal(campusNews[11]?.id, "2026-08-29-paton-vote-day-4-story");
-    assert.equal(selectActivityMedia("campus-girls")[0]?.id, "mily-b63-01-campus-girls-prelim-final-result");
-    assert.equal(selectActivityMedia("campus-girls")[1]?.id, "mily-b47-02-paton-second-story");
-    assert.equal(selectActivityMedia("campus-girls")[2]?.id, "mily-b46-01-paton-vote-final-day-story");
-    assert.equal(selectActivityMedia("campus-girls")[3]?.id, "mily-b45-01-paton-vote-voice-story");
-    assert.equal(selectActivityMedia("campus-girls")[4]?.id, "mily-b44-02-paton-vote-first-place-story");
-    assert.equal(selectActivityMedia("campus-girls")[5]?.id, "mily-b44-01-paton-vote-15x-emergency-story");
-    assert.equal(selectActivityMedia("campus-girls")[6], campusGirlsPatonPortraitImage);
-    assert.equal(selectActivityMedia("campus-girls")[7], campusGirlsHoldSecondStoryVideo);
-    assert.equal(selectActivityMedia("campus-girls")[8], patonVoteDay5StoryVideo);
-    assert.equal(selectActivityMedia("campus-girls")[9], patonVoteDay4StoryVideo);
+    assert.equal(selectActivityMedia("campus-girls")[1]?.id, "mily-b63-01-campus-girls-prelim-final-result");
+    assert.equal(selectActivityMedia("campus-girls")[2]?.id, "mily-b47-02-paton-second-story");
+    assert.equal(selectActivityMedia("campus-girls")[3]?.id, "mily-b46-01-paton-vote-final-day-story");
+    assert.equal(selectActivityMedia("campus-girls")[4]?.id, "mily-b45-01-paton-vote-voice-story");
+    assert.equal(selectActivityMedia("campus-girls")[5]?.id, "mily-b44-02-paton-vote-first-place-story");
+    assert.equal(selectActivityMedia("campus-girls")[6]?.id, "mily-b44-01-paton-vote-15x-emergency-story");
+    assert.equal(selectActivityMedia("campus-girls")[7], campusGirlsPatonPortraitImage);
+    assert.equal(selectActivityMedia("campus-girls")[8], campusGirlsHoldSecondStoryVideo);
+    assert.equal(selectActivityMedia("campus-girls")[9], patonVoteDay5StoryVideo);
+    assert.equal(selectActivityMedia("campus-girls")[10], patonVoteDay4StoryVideo);
 
     for (const fixture of fixtures) {
       assert.equal(

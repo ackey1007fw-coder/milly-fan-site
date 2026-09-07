@@ -25,6 +25,7 @@ import {
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
 const NEWS_ID = "2026-09-05-morning-stream-thanks";
+const NEXT_SLOTS_ID = "2026-09-06-stream-thanks-next-slots";
 const NIGHT_SLOT_ID = "2026-09-06-night-slot-2230";
 const RESULT_ID = "2026-09-06-campus-girls-prelim-final-result";
 const TIKTOK_ID = "2026-09-05-tiktok-radio-portrait";
@@ -54,10 +55,12 @@ describe("2026-09-05 X 朝配信お礼 — Latest entry", () => {
       news.filter((candidate) => (candidate.source ?? "").includes(TWEET_ID)).length,
       1,
     );
-    assert.equal(ordered[0]?.id, RESULT_ID);
-    assert.equal(ordered[1]?.id, NIGHT_SLOT_ID);
-    assert.equal(ordered[2], entry);
-    assert.equal(ordered[3]?.id, TIKTOK_ID);
+    assert.equal(ordered[0]?.id, "2026-09-07-campus-girls-finals-ex-vol1");
+    assert.equal(ordered[1]?.id, NEXT_SLOTS_ID);
+    assert.equal(ordered[2]?.id, RESULT_ID);
+    assert.equal(ordered[3]?.id, NIGHT_SLOT_ID);
+    assert.equal(ordered[4], entry);
+    assert.equal(ordered[5]?.id, TIKTOK_ID);
     assert.equal(entry.date, "2026-09-05");
     assert.equal(entry.sameDayOrder, 20);
     assert.deepEqual(entry.activityIds, ["live-stream"]);
@@ -130,8 +133,9 @@ describe("2026-09-05 X 朝配信お礼 — Latest entry", () => {
 describe("2026-09-05 X 朝配信お礼 — scope", () => {
   it("surfaces on the live-stream Activity only", () => {
     const liveNews = selectActivityNews("live-stream", news, news.length);
-    assert.equal(liveNews[0]?.id, NIGHT_SLOT_ID);
-    assert.equal(liveNews[1]?.id, NEWS_ID);
+    assert.equal(liveNews[0]?.id, NEXT_SLOTS_ID);
+    assert.equal(liveNews[1]?.id, NIGHT_SLOT_ID);
+    assert.equal(liveNews[2]?.id, NEWS_ID);
     for (const activityId of ["miss-circle", "campus-girls", "radio"]) {
       assert.equal(
         selectActivityNews(activityId, news, news.length).some(

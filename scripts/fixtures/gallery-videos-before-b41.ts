@@ -6,6 +6,7 @@ import {
 
 const laterVideoIds = new Set([
   "mily-b58-01-tiktok-radio-portrait",
+  "mily-b59-01-third-round-vote-day2-story",
   "mily-b47-01-oyasumily-story",
   "mily-b47-02-paton-second-story",
   "mily-b46-01-paton-vote-final-day-story",

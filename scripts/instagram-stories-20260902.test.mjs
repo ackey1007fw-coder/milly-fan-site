@@ -255,8 +255,8 @@ describe("2026-09-02 Instagram Story — Latest / NEWS", () => {
     assert.equal(liveNews[0]?.id, OYASUMILY_NEWS_ID);
     assert.equal(campusNews[0]?.id, PATON_SECOND_NEWS_ID);
     assert.equal(selectActivityMedia("live-stream")[0], oyasumilyStoryVideo);
-    assert.equal(selectActivityMedia("campus-girls")[0]?.id, "mily-b63-01-campus-girls-prelim-final-result");
-    assert.equal(selectActivityMedia("campus-girls")[1], patonSecondStoryVideo);
+    assert.equal(selectActivityMedia("campus-girls")[1]?.id, "mily-b63-01-campus-girls-prelim-final-result");
+    assert.equal(selectActivityMedia("campus-girls")[2], patonSecondStoryVideo);
     assert.equal(campusNews.some((entry) => entry.id === OYASUMILY_NEWS_ID), false);
     assert.equal(liveNews.some((entry) => entry.id === PATON_SECOND_NEWS_ID), false);
     assert.equal(radioNews.some((entry) => entry.id === OYASUMILY_NEWS_ID), false);

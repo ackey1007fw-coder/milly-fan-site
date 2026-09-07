@@ -387,7 +387,7 @@ describe("P6 home Today semantics", () => {
   });
 
   it("keeps the confirmed vote schedule in SupportEvents instead of home UI", () => {
-    assert.equal(supportEvents.length, 3);
+    assert.equal(supportEvents.length, 10);
     assert.equal(supportEvents[0].activityId, "campus-girls");
     assert.equal(supportEvents[0].kind, "vote");
     const homeSources = [

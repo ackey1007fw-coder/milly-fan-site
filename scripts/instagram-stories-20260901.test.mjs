@@ -255,10 +255,10 @@ describe("2026-09-01 Instagram Story — Latest / NEWS", () => {
     assert.equal(campusNews[0]?.id, "2026-09-02-paton-second-story");
     assert.equal(campusNews[1]?.id, FINAL_DAY_NEWS_ID);
     assert.equal(campusNews[2]?.id, "2026-08-31-paton-vote-voice-story");
-    assert.equal(selectActivityMedia("campus-girls")[0]?.id, "mily-b63-01-campus-girls-prelim-final-result");
-    assert.equal(selectActivityMedia("campus-girls")[1], patonSecondStoryVideo);
-    assert.equal(selectActivityMedia("campus-girls")[2], patonVoteFinalDayStoryVideo);
-    assert.equal(selectActivityMedia("campus-girls")[3], patonVoteVoiceStoryVideo);
+    assert.equal(selectActivityMedia("campus-girls")[1]?.id, "mily-b63-01-campus-girls-prelim-final-result");
+    assert.equal(selectActivityMedia("campus-girls")[2], patonSecondStoryVideo);
+    assert.equal(selectActivityMedia("campus-girls")[3], patonVoteFinalDayStoryVideo);
+    assert.equal(selectActivityMedia("campus-girls")[4], patonVoteVoiceStoryVideo);
     assert.equal(campusNews.some((entry) => entry.id === SEPTEMBER_NEWS_ID), false);
     assert.equal(liveNews.some((entry) => entry.id === FINAL_DAY_NEWS_ID), false);
     assert.equal(liveNews.some((entry) => entry.id === SEPTEMBER_NEWS_ID), false);

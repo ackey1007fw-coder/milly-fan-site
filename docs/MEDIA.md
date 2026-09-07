@@ -3179,6 +3179,57 @@ LIVE STREAM の三次2日目朝配信メモ専用。NEWS / Gallery / `media.ts` 
 - 元動画は無改変で保持。公開派生のソースメタデータとチャプターを除去。撮影日・投稿日時・撮影者は推測しない。
 
 
+## 素材台帳（batch b59 / 受領日・source date 2026-09-04）
+
+オーナーが直接提供した本人Instagram Story動画1本。くま耳とキラキラの
+フェイスフィルターで、リンクスタンプ「2日目ポチッとな〜」とともに投票を
+呼びかけている縦型動画。owner-provided。SNSから再取得していない。
+mainでbatch b53〜b58が先に使用されているため、このStoryはb59として採番した。
+
+HOME Latest / `/news/` と Gallery が、公開MP4・poster・manifest objectを共有する。
+MISS CIRCLE Activityの関連NEWS・関連メディアにも出す。恒久的なStory permalinkはないため、
+表示は非リンクの `Instagram Story` labelとする。`/stories/`、highlights、events、
+streamSchedule、`media.ts`、PatonVoteGuideのランキング系列には追加しない。
+
+### 掲載承認
+
+- approval date: `2026-09-04`
+- オーナー本人が本タスクで添付したb59-01について、`https://mily-fan-site.vercel.app`
+  への掲載とギャラリーへの追加を明示依頼した。
+- **source date `2026-09-04` はオーナーが明示確認した投稿日**である。
+  オーナーは「9/4に投稿されたものを、その直後に受け取って渡した」と回答した。
+  受領日も同じ2026-09-04。画面の「2日目」表示、WEB投票期間からの逆算、元動画の
+  `creation_time`は日付の根拠にしない。投稿時刻は未確認のため書かない。
+- 承認対象面はHOME Latest / `/news/`、Galleryの動画アーカイブ、MISS CIRCLE Activity。
+  `/stories/`への複製は含まない。
+
+| ID | 公開ファイル | 内容 | 掲載・承認 |
+| --- | --- | --- | --- |
+| b59-01 | `gallery/mily-b59-01-third-round-vote-day2-story.mp4` | 白黒のくま耳とキラキラのフェイスフィルター、黒い水玉のトップスで手を振り、ピースをする縦型動画。720×1280 / 8.967秒 / 30fps / 269フレーム / video-only | ✅ 2026-09-04 明示承認。Latest / NEWS + Gallery + MISS CIRCLE Activity |
+| b59-01 poster | `gallery/mily-b59-01-third-round-vote-day2-story-poster.jpg` | 公開MP4の8.5秒地点の実フレーム。720×1280 | ✅ Latest / NEWS + Gallery |
+
+### 元素材と安全確認
+
+- provenance: `owner-provided`。Instagram Storyの恒久permalinkはなく、`sourceUrl`は持たない。
+- 元動画はgitignoredの `media/original/mily-b59-01-third-round-vote-day2-story.mp4` に
+  無改変で保持し、受け渡し名・URL・file IDはtracked / public filesへ残さない。
+- 元動画は720×1280 / 30fps / 269フレーム / 8.966667秒。元動画にはAAC音声があるが、
+  権利・再配信権を確認できないため、公開派生はvideo-only（無音）にした。
+- 公開派生はcrop・scale・短縮・テロップ変更・AI加工なし。顔補正・生成塗り足しもない。
+- 公開MP4はH.264 Constrained Baseline / 720×1280 / 8.967秒 / 30fps / 269フレーム /
+  video-only / `+faststart`。sha256 `e6666874750b57d43c1573964340773c78fc130c604a972107c815d3a11da49e`。
+- posterは公開MP4の8.5秒地点の実フレーム。EXIF / IPTC / XMP / ICCなし。sha256
+  `82a73892f10ac6e6ae562b1a46958747e2042290f0b05855787fd796c4640455`。
+
+### 共有範囲
+
+- `src/data/webVoteDay2StoryVideo.json`の1オブジェクトをLatest / NEWS / Gallery /
+  MISS CIRCLE Activityで共有し、公開MP4 1本・poster 1枚だけを参照する。
+- 追加CTAは確認済みの三次審査WEB投票リンクのみ。SupportEventの期間終了後は自動で非表示にする。
+- Storyのリンクスタンプの遷移先、連続投票者特典の内容・条件・付与方法は画面から確認できないため、
+  本文で断定しない。
+
+
 ## 素材台帳（batch b60 / 受領日・source date 2026-09-05）
 
 オーナー提供の9月5日SHOWROOM夜配信録画から選んだ実フレーム10枚。同素材への継続依頼に基づきLIVE STREAMへ掲載。代表はb60-10。b59は別の未マージPRで使用中のため避けた。
@@ -3272,3 +3323,33 @@ Gallery 960.jpg: 960×1707 / sha256
 `84368c3dd9488bb4a4828efe3864056d84f5f9b1e98c429f97788a8398aedff8`
 Gallery 1600.jpg: 1500×2667 / sha256
 `6dd7a652200342d591297b3f7983810bc21f45659f681d9fb2792eff9fe7da9b`
+
+## 素材台帳（batch b64 / 受領日・source date 2026-09-07）
+
+2026-09-07 09:15:31 JST の本人X投稿（created_at Mon Sep 07 00:15:31 GMT）。
+公開permalinkあり。キャンガル2027 本選EX vol.1の審査案内グラフィックと、本選EX期間のスケジュール表。実写ポートレートではない。`sns-post`。
+オーナーが本タスクで画像を直接提供し、https://mily-fan-site.vercel.app への掲載を明示依頼した。X CDNからは取得していない。
+
+新しい NEWS `2026-09-07-campus-girls-finals-ex-vol1`。Gallery には出さない。
+CAMPUS GIRLS Activity に関連付ける。`/stories/`・highlights・events・streamSchedule・contest.ts・profile・media.ts には足さない。
+本選EXのPaton投票先URLは未確認のため投票CTAなし。
+
+| ID | 公開ファイル | 内容 | 掲載 |
+| --- | --- | --- | --- |
+| b64-01 NEWS | `news/mily-b64-01-campus-girls-finals-ex-vol1.jpg` | 本選EX vol.1案内。1500×2250。sns-post | ✅ 新NEWS の代表 |
+| b64-02 NEWS | `news/mily-b64-02-campus-girls-finals-ex-schedule.jpg` | メッセージ＋本選EX vol.1〜6日程表。1500×1700。sns-post | ✅ 同じNEWS の additionalMedia |
+
+出典: `https://x.com/mily_chan36/status/2096754197362622971`
+
+元素材（gitignore）:
+- b64-01: 751,087 bytes / JPEG / 1500×2250 / sha256 `4f35c4d98528eeca597b23b795acd35cdca225499ccf348e74a429de154c774f`
+- b64-02: 329,602 bytes / JPEG / 1500×2667 / sha256 `f59f5d64323f484c8254943f4e9a2e77baa965c84524b25c4133db9f211b58d0`
+
+元素材にはEXIFとIPTCあり。公開前にsharpでJPEG再エンコードし、metadataを除去した。
+b64-02の公開派生は、下部のInstagram再投稿バーと空の余白だけを除く（top 0 / height 1700）。crop以外のscale・rotate・アップスケール・縦横比変更なし。AI生成・顔補正・生成塗り足しなし。
+
+NEWS JPEG:
+- b64-01: 1,097,825 bytes / 1500×2250 / sha256 `91c7020bad59effa9109f33be94df6c36eede56fdf9fea378a352657847251ad`
+- b64-02: 420,322 bytes / 1500×1700 / sha256 `94eb650e396717064978e981efad60c6b8d7b5642cc6c94c8e2ff534ab283443`
+
+公開ファイルはEXIF / IPTC / XMP / ICCなし。再エンコードはsharpのJPEG quality 95 / progressive / 4:4:4。

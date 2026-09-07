@@ -96,11 +96,22 @@ describe("date-aware site share copy", () => {
   it("returns the stable site description with the person tag when no timely topic is active", () => {
     assert.equal(
       siteShareText({
-        now: at("2026-09-14T12:00:00+09:00"),
+        now: at("2026-09-20T12:00:01+09:00"),
         radioPhase: "idle",
       }),
       `${site.description}\n#三橋莉子`,
     );
+  });
+
+  it("keeps CAMPUS GIRLS 本選EX SNS審査 in the share text after WEB投票 ends", () => {
+    const afterWebVote = siteShareText({
+      now: at("2026-09-14T12:00:00+09:00"),
+      radioPhase: "idle",
+    });
+    assert.match(afterWebVote, /本選EX vol\.1のSNS審査期間/);
+    assert.match(afterWebVote, /9\/20 12:00まで/);
+    assert.match(afterWebVote, /#三橋莉子 #キャンガル$/);
+    assert.doesNotMatch(afterWebVote, /WEB投票をお願いします/);
   });
 
   it("switches the campaign hashtag immediately after the Paton deadline", () => {

@@ -217,11 +217,11 @@ describe("2026-08-31 Instagram Story voice vote call — Latest / NEWS", () => {
     assert.equal(campusNews[1]?.id, "2026-09-01-paton-vote-final-day-story");
     assert.equal(campusNews[2]?.id, NEWS_ID);
     assert.equal(campusNews[3]?.id, "2026-08-31-paton-first-place-story");
-    assert.equal(selectActivityMedia("campus-girls")[0]?.id, "mily-b63-01-campus-girls-prelim-final-result");
-    assert.equal(selectActivityMedia("campus-girls")[1]?.id, "mily-b47-02-paton-second-story");
-    assert.equal(selectActivityMedia("campus-girls")[2]?.id, "mily-b46-01-paton-vote-final-day-story");
-    assert.equal(selectActivityMedia("campus-girls")[3], patonVoteVoiceStoryVideo);
-    assert.equal(selectActivityMedia("campus-girls")[4], patonVoteFirstPlaceStoryVideo);
+    assert.equal(selectActivityMedia("campus-girls")[1]?.id, "mily-b63-01-campus-girls-prelim-final-result");
+    assert.equal(selectActivityMedia("campus-girls")[2]?.id, "mily-b47-02-paton-second-story");
+    assert.equal(selectActivityMedia("campus-girls")[3]?.id, "mily-b46-01-paton-vote-final-day-story");
+    assert.equal(selectActivityMedia("campus-girls")[4], patonVoteVoiceStoryVideo);
+    assert.equal(selectActivityMedia("campus-girls")[5], patonVoteFirstPlaceStoryVideo);
     assert.equal(liveNews.some((entry) => entry.id === NEWS_ID), false);
     assert.equal(radioNews.some((entry) => entry.id === NEWS_ID), false);
     assert.equal(missNews.some((entry) => entry.id === NEWS_ID), false);
