@@ -5,6 +5,8 @@ export declare const RADIO_TIMEZONE: "Asia/Tokyo";
 
 export declare const radioProgram: {
   programName: string;
+  /** サイト共有文で番組が最優先のときに使う、確認済みの番組タグ。 */
+  shareHashtags: string[];
   /** JS weekday: 0 = Sunday */
   weekday: number;
   scheduledStart: string;

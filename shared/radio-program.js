@@ -22,6 +22,8 @@ export const RADIO_TIMEZONE = "Asia/Tokyo";
 
 export const radioProgram = {
   programName: "湘南シーサイドサークル",
+  /** サイト共有文で番組が最優先のときに使う、確認済みの番組タグ。 */
+  shareHashtags: ["#湘南シーサイドサークル", "#ssc"],
   /** JS weekday: 0 = Sunday */
   weekday: 0,
   scheduledStart: "10:00",
