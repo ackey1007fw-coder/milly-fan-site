@@ -248,7 +248,7 @@ describe("2026-09-01 first SHOWROOM おやすみりー — scope", () => {
   it("surfaces on LIVE STREAM only and stays out of Gallery", () => {
     const liveNews = selectActivityNews("live-stream", news, news.length);
     assert.equal(liveNews[1]?.id, NEWS_ID);
-    assert.equal(selectActivityMedia("live-stream")[1], firstSeptemberTomatoBoardImage);
+    assert.equal(selectActivityMedia("live-stream")[2], firstSeptemberTomatoBoardImage);
     for (const activityId of ["miss-circle", "campus-girls", "radio"]) {
       assert.equal(
         selectActivityNews(activityId, news, news.length).some(

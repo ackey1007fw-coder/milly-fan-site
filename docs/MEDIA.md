@@ -3353,3 +3353,93 @@ NEWS JPEG:
 - b64-02: 420,322 bytes / 1500×1700 / sha256 `94eb650e396717064978e981efad60c6b8d7b5642cc6c94c8e2ff534ab283443`
 
 公開ファイルはEXIF / IPTC / XMP / ICCなし。再エンコードはsharpのJPEG quality 95 / progressive / 4:4:4。
+
+## 素材台帳（batch b65 / 受領日 2026-09-07 / source date 2026-09-06・2026-09-07）
+
+オーナーがチャットで直接提供した本人Instagram Story動画2本。owner-provided。
+SNSから再取得していない。1本ずつ独立したNEWS・Gallery項目にする。
+mainでbatch b60〜b64が先に使用されているため、このStory 2本はb65として採番した。
+
+HOME Latest / `/news/` と Gallery が、Storyごとに公開MP4・poster・manifest objectを共有する。
+b65-01・b65-02ともMISS CIRCLE Activity、b65-02はLIVE STREAM Activityの関連NEWS・関連メディアにも出す。
+恒久的なStory permalinkはないため、表示は非リンクの `Instagram Story` labelとする。
+`/stories/`、highlights、events、streamSchedule、`media.ts`、PatonVoteGuideのランキング系列には追加しない。
+
+### 掲載承認
+
+- approval date: `2026-09-07`
+- オーナー本人が本タスクで添付したb65-01 / b65-02について、サイトへ「それぞれ別の投稿として」
+  掲載することを明示依頼した。
+- **source date はオーナーの明示確認ではなく、画面表示と元動画のcontainer creation_time
+  からの判断**である。b65-01 の画面「30分後5日目の投票できるよ」は三次審査WEB投票5日目
+  （9/7）の開始前を指し、creation_time は 2026-09-06 23:41 JST。b65-02 の画面
+  「朝配信来てくれたみんなありがとう〜／次枠は22:00〜」は 9/7 06:30 枠の後で、
+  creation_time は 2026-09-07 07:50 JST。creation_time はファイルメタデータであり
+  投稿時刻の確定値ではないため、NEWS本文には時刻を書かない。
+  依頼文では「9/7の投稿として扱うのが妥当か確認」とあり、b65-01 は 9/6 と判断したため、
+  PRでオーナーの明示確認を依頼する。
+- 承認対象面はHOME Latest / `/news/`、Galleryの動画アーカイブ、MISS CIRCLE / LIVE STREAM Activity。
+  `/stories/`への複製は含まない。
+
+| ID | 公開ファイル | 内容 | 掲載・承認 |
+| --- | --- | --- | --- |
+| b65-01 | `gallery/mily-b65-01-web-vote-day5-soon-story.mp4` | くま耳とキラキラのフェイスフィルター、黒地に小花柄のトップスでピースサインをする縦型動画。画面にリンクスタンプ「30分後5日目の投票できるよ😳🩵」と「4日目まだの方は ダッシュで上のリンクに飛んで 投票お願いします〜🏃‍♀️💨💨💨」。720×1280 / 20.000秒 / 1fps / 20フレーム / video-only | ✅ 2026-09-07 明示依頼。Latest / NEWS + Gallery + MISS CIRCLE Activity |
+| b65-01 poster | `gallery/mily-b65-01-web-vote-day5-soon-story-poster.jpg` | 公開MP4の4.0秒地点の実フレーム。720×1280 | ✅ Latest / NEWS + Gallery |
+| b65-02 | `gallery/mily-b65-02-morning-thanks-vote-day5-story.mp4` | 黒いトップスで、片目をつぶって顔の横でピースサインをする縦型動画。画面に「朝配信来てくれたみんなありがとう〜💄✨／次枠は22:00〜」と、リンクスタンプ「5日目ポチッはこちらから🩵✨」。720×1280 / 20.000秒 / 1fps / 20フレーム / video-only | ✅ 2026-09-07 明示依頼。Latest / NEWS + Gallery + MISS CIRCLE / LIVE STREAM Activity |
+| b65-02 poster | `gallery/mily-b65-02-morning-thanks-vote-day5-story-poster.jpg` | 公開MP4の4.0秒地点の実フレーム。720×1280 | ✅ Latest / NEWS + Gallery |
+
+### 元素材と安全確認
+
+- provenance: `owner-provided`。Instagram Storyの恒久permalinkはなく、`sourceUrl`は持たない。
+- 元動画はgitignoredの `media/original/mily-b65-01-web-vote-day5-soon-story.mp4` と
+  `media/original/mily-b65-02-morning-thanks-vote-day5-story.mp4` に無改変で保持し、
+  受け渡し時のファイル名・URL・IDはtracked / public filesへ残さない。
+- 元動画はどちらも H.264 High / level 3.1 / 720×1280 / 1fps / 20フレーム / 20.000000秒 /
+  yuv420p / `has_b_frames` 2、音声は HE-AAC / 44.1kHz / stereo。
+  - b65-01: 724,823 bytes / sha256 `597fac7a662d7227592c6340397f58c4e21cb234c84bf046222ef710343e399f`
+  - b65-02: 605,959 bytes / sha256 `013611928e4c624f26dee6a2cede382e697a93e23c14c557f3b8888b83a44362`
+- 画面には本人と室内の壁・照明だけが写り、第三者・住所・連絡先の写り込みはない。
+  部屋の特定につながる要素は確認していない。
+- 公開派生はcrop・scale・短縮・テロップ変更・AI加工なし。顔補正・生成塗り足しもない。
+
+### 音声の扱い — 削除した
+
+元素材にはHE-AAC音声が20秒間連続して入っている（実測 mean_volume 約 −15〜−16 dB）。
+再配信権と内容・由来・権利者を確認できないため、公開派生は video-only（無音）にした。
+既存 b23 / b59 と同じ判断。元素材そのものから音声は削除していない。
+
+### 公開MP4
+
+- 既存の公開映像ストリームを `-c:v copy` で remux し、`-an` で音声だけを外した（b23と同じ方式）。
+  画素数・fps・フレーム数を変える再エンコードはしていない。
+- どちらも H.264 High / 720×1280 / 1fps / 20フレーム / 20.000000秒 / yuv420p / 音声ストリームなし /
+  `+faststart`（`moov` offset 36 < `mdat` offset 1101）/ metadata除去（`creation_time`・
+  `Core Media` handler なし）/ chapterなし。
+  - b65-01: 556,992 bytes / sha256 `0704aa7e49426a5e676c408a544759349ef1e36472a22cd7427c1df8e9d5462d`
+  - b65-02: 438,189 bytes / sha256 `f7b1147ea4dbfc9fd0599879d0bee22a123eb8ad050c23e8249dc03c7c34c211`
+- posterは公開MP4の4.0秒地点の実フレーム（`-q:v 4`）。EXIF / IPTC / XMP / ICCなし。
+  - b65-01 poster: 73,165 bytes / sha256 `87c45d3bcf3cd087a87985ad7deb93c2b51009a00bb81edbb880ea2cb5f1c07c`
+  - b65-02 poster: 50,299 bytes / sha256 `96bc0b56a3362d1b0e84d5a5b708de8bebab713bcec0d03dea015e4dba08ab44`
+
+エンコードコマンド（再現用。ffmpeg は `ffmpeg-static` 7.0.2）:
+
+```
+ffmpeg -i media/original/mily-b65-01-web-vote-day5-soon-story.mp4 \
+  -map 0:v:0 -c:v copy -an \
+  -map_metadata -1 -map_metadata:s:v -1 -map_chapters -1 \
+  -movflags +faststart \
+  public/media/gallery/mily-b65-01-web-vote-day5-soon-story.mp4
+ffmpeg -i public/media/gallery/mily-b65-01-web-vote-day5-soon-story.mp4 -ss 4.0 -frames:v 1 -q:v 4 \
+  -map_metadata -1 public/media/gallery/mily-b65-01-web-vote-day5-soon-story-poster.jpg
+```
+
+b65-02 も同じコマンドでファイル名だけを変える。
+
+### 共有範囲
+
+- `src/data/voteDayFiveSoonStoryVideo.json`（b65-01）と
+  `src/data/morningThanksVoteStoryVideo.json`（b65-02）の各1オブジェクトを
+  Latest / NEWS / Gallery / Activityで共有し、公開MP4 1本・poster 1枚だけを参照する。
+- 追加CTAは確認済みの三次審査WEB投票リンクのみ（b65-02 は既存のSHOWROOMルームCTAも）。
+  SupportEvent の期間（2026-09-13 23:59 JST）終了後は自動で非表示になる。
+  リンクスタンプの遷移先は未確認のため、新しいURLは作らない。
