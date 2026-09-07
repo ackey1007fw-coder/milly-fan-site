@@ -52,10 +52,12 @@ describe("2026-09-06 X 夜枠22:30変更 — Latest entry", () => {
       1,
     );
     assert.equal(ordered[0]?.id, "2026-09-07-campus-girls-finals-ex-vol1");
-    assert.equal(ordered[1]?.id, NEXT_SLOTS_ID);
-    assert.equal(ordered[2]?.id, RESULT_ID);
-    assert.equal(ordered[3], entry);
-    assert.equal(ordered[4]?.id, THANKS_ID);
+    assert.equal(ordered[1]?.id, "2026-09-07-morning-thanks-vote-day5-story");
+    assert.equal(ordered[2]?.id, "2026-09-06-third-round-vote-day5-soon-story");
+    assert.equal(ordered[3]?.id, NEXT_SLOTS_ID);
+    assert.equal(ordered[4]?.id, RESULT_ID);
+    assert.equal(ordered[5], entry);
+    assert.equal(ordered[6]?.id, THANKS_ID);
     assert.equal(entry.date, "2026-09-06");
     assert.equal(entry.sameDayOrder, 20);
     assert.deepEqual(entry.activityIds, ["live-stream"]);
@@ -106,8 +108,9 @@ describe("2026-09-06 X 夜枠22:30変更 — Latest entry", () => {
 describe("2026-09-06 X 夜枠22:30変更 — scope", () => {
   it("surfaces on the live-stream Activity only", () => {
     const liveNews = selectActivityNews("live-stream", news, news.length);
-    assert.equal(liveNews[0]?.id, NEXT_SLOTS_ID);
-    assert.equal(liveNews[1]?.id, NEWS_ID);
+    assert.equal(liveNews[0]?.id, "2026-09-07-morning-thanks-vote-day5-story");
+    assert.equal(liveNews[1]?.id, NEXT_SLOTS_ID);
+    assert.equal(liveNews[2]?.id, NEWS_ID);
     for (const activityId of ["miss-circle", "campus-girls", "radio"]) {
       assert.equal(
         selectActivityNews(activityId, news, news.length).some(

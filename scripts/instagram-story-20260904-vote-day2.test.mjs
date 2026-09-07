@@ -124,13 +124,15 @@ describe("2026-09-04 Instagram Story 投票2日目 — Latest / NEWS", () => {
     assert.ok(entry);
     assert.equal(news.filter(({ id }) => id === NEWS_ID).length, 1);
     assert.equal(ordered[0]?.id, "2026-09-07-campus-girls-finals-ex-vol1");
-    assert.equal(ordered[1]?.id, "2026-09-06-stream-thanks-next-slots");
-    assert.equal(ordered[2]?.id, "2026-09-06-campus-girls-prelim-final-result");
-    assert.equal(ordered[3]?.id, "2026-09-06-night-slot-2230");
-    assert.equal(ordered[4]?.id, "2026-09-05-morning-stream-thanks");
-    assert.equal(ordered[5]?.id, "2026-09-05-tiktok-radio-portrait");
-    assert.equal(ordered[6], entry);
-    assert.equal(ordered[7]?.id, "2026-09-03-miss-circle-goals-support");
+    assert.equal(ordered[1]?.id, "2026-09-07-morning-thanks-vote-day5-story");
+    assert.equal(ordered[2]?.id, "2026-09-06-third-round-vote-day5-soon-story");
+    assert.equal(ordered[3]?.id, "2026-09-06-stream-thanks-next-slots");
+    assert.equal(ordered[4]?.id, "2026-09-06-campus-girls-prelim-final-result");
+    assert.equal(ordered[5]?.id, "2026-09-06-night-slot-2230");
+    assert.equal(ordered[6]?.id, "2026-09-05-morning-stream-thanks");
+    assert.equal(ordered[7]?.id, "2026-09-05-tiktok-radio-portrait");
+    assert.equal(ordered[8], entry);
+    assert.equal(ordered[9]?.id, "2026-09-03-miss-circle-goals-support");
     assert.equal(entry.date, "2026-09-04");
     assert.equal(entry.sameDayOrder, 10);
     assert.deepEqual(entry.activityIds, ["miss-circle"]);
@@ -194,8 +196,9 @@ describe("2026-09-04 Instagram Story 投票2日目 — Latest / NEWS", () => {
     assert.equal(webVoteDay2StoryVideo.src, `/media/gallery/${PUBLIC_VIDEO}`);
     assert.equal(webVoteDay2StoryVideo.poster, `/media/gallery/${PUBLIC_POSTER}`);
 
-    assert.equal(selectActivityNews("miss-circle", news, news.length)[0]?.id, NEWS_ID);
-    assert.equal(selectActivityMedia("miss-circle")[0], webVoteDay2StoryVideo);
+    // 9/6〜9/7 の b65 Story 2本（batch b65）が先に並ぶ。
+    assert.equal(selectActivityNews("miss-circle", news, news.length)[2]?.id, NEWS_ID);
+    assert.equal(selectActivityMedia("miss-circle")[2], webVoteDay2StoryVideo);
     for (const activityId of ["live-stream", "campus-girls", "radio"]) {
       assert.equal(
         selectActivityNews(activityId, news, news.length).some(
@@ -341,8 +344,8 @@ describe("2026-09-04 Instagram Story 投票2日目 — privacy and scope", () =>
     // source date はオーナーの明示確認による投稿日。画面の「2日目」からの逆算ではない。
     assert.match(docs, /オーナーが明示確認した投稿日/);
     assert.match(section, /オーナーが「9\/4の投稿を直後に受け取った」と/);
-    assert.match(ops, /81件/);
-    assert.match(ops, /独立動画30本/);
+    assert.match(ops, /83件/);
+    assert.match(ops, /独立動画32本/);
     assert.match(section, /video-only/);
     assert.match(section, /特典の内容・条件・付与方法は補わない/);
     assert.match(section, /sameDayOrder: 10/);
