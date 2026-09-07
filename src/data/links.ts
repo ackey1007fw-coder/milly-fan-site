@@ -19,16 +19,16 @@ export const campusGirlsPatonVoteLink: SiteLink = {
 
 export const missCircleWebVoteLink: SiteLink = {
   id: "miss-circle-2026-web-vote-734",
-  label: "WEB投票する",
+  label: "WEB投票する（1日1回）",
   url: "https://liff.line.me/1656040756-GwmBkdPY/vote/misscircle2026/N/734",
   note: "MISS CIRCLE CONTEST 2026 三次審査。ENTRY 734 三橋莉子。",
 };
 
 export const missCircleShowroomEventLink: SiteLink = {
   id: "miss-circle-2026-3rd-showroom-event",
-  label: "SHOWROOMイベント",
+  label: "CanCamモデル発掘オーディション",
   url: "https://www.showroom-live.com/event/circle2026_3rd",
-  note: "MISS CIRCLE CONTEST 2026 三次審査のSHOWROOM審査。",
+  note: "MISS CIRCLE CONTEST 2026 三次審査のCanCamモデル発掘オーディション。",
 };
 
 export const seasideCircleMessageFormLink: SiteLink = {
