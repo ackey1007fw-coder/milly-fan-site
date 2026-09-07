@@ -177,15 +177,16 @@ describe("2026-09-06〜07 Instagram Story 投票5日目 — Latest / NEWS", () =
     const ordered = sortNewsByDateDesc(news);
     const [night, morning] = fixtures;
 
-    assert.equal(ordered[0]?.id, "2026-09-07-campus-girls-finals-ex-vol1");
-    assert.equal(ordered[1]?.id, morning.newsId);
-    assert.equal(ordered[2]?.id, night.newsId);
-    assert.equal(ordered[3]?.id, "2026-09-06-stream-thanks-next-slots");
-    assert.equal(ordered[4]?.id, "2026-09-06-campus-girls-prelim-final-result");
-    assert.equal(ordered[5]?.id, "2026-09-06-night-slot-2230");
+    assert.equal(ordered[0]?.id, "2026-09-08-stream-thanks-morning-slot-story");
+    assert.equal(ordered[1]?.id, "2026-09-07-campus-girls-finals-ex-vol1");
+    assert.equal(ordered[2]?.id, morning.newsId);
+    assert.equal(ordered[3]?.id, night.newsId);
+    assert.equal(ordered[4]?.id, "2026-09-06-stream-thanks-next-slots");
+    assert.equal(ordered[5]?.id, "2026-09-06-campus-girls-prelim-final-result");
+    assert.equal(ordered[6]?.id, "2026-09-06-night-slot-2230");
     // 本人X 本選EX案内（9/7 09:15 JST）より後、9/6の本人X配信お礼（23:22 JST）より後。
-    assert.equal(news[1]?.id, morning.newsId);
-    assert.equal(news[2]?.id, night.newsId);
+    assert.equal(news[2]?.id, morning.newsId);
+    assert.equal(news[3]?.id, night.newsId);
 
     for (const fixture of fixtures) {
       const entry = newsItem(fixture.newsId);
@@ -238,8 +239,9 @@ describe("2026-09-06〜07 Instagram Story 投票5日目 — Latest / NEWS", () =
   it("shares one manifest object per Story with Gallery, Activities, and Portal Feed", () => {
     const [night, morning] = fixtures;
 
-    assert.equal(galleryVideos[0], morning.item);
-    assert.equal(galleryVideos[1], night.item);
+    // 9/8 の b66 Story が先頭。b65 は 2〜3番目。
+    assert.equal(galleryVideos[1], morning.item);
+    assert.equal(galleryVideos[2], night.item);
 
     for (const fixture of fixtures) {
       const entry = newsItem(fixture.newsId);
@@ -279,13 +281,14 @@ describe("2026-09-06〜07 Instagram Story 投票5日目 — Latest / NEWS", () =
     assert.equal(missNews[0]?.id, morning.newsId);
     assert.equal(missNews[1]?.id, night.newsId);
     assert.equal(missNews[2]?.id, "2026-09-04-third-round-vote-day2-story");
-    assert.equal(liveNews[0]?.id, morning.newsId);
-    assert.equal(liveNews[1]?.id, "2026-09-06-stream-thanks-next-slots");
+    assert.equal(liveNews[0]?.id, "2026-09-08-stream-thanks-morning-slot-story");
+    assert.equal(liveNews[1]?.id, morning.newsId);
+    assert.equal(liveNews[2]?.id, "2026-09-06-stream-thanks-next-slots");
     assert.equal(liveNews.some((entry) => entry.id === night.newsId), false);
     assert.equal(selectActivityMedia("miss-circle")[0], morning.item);
     assert.equal(selectActivityMedia("miss-circle")[1], night.item);
     assert.equal(selectActivityMedia("miss-circle")[2], webVoteDay2StoryVideo);
-    assert.equal(selectActivityMedia("live-stream")[0], morning.item);
+    assert.equal(selectActivityMedia("live-stream")[1], morning.item);
     assert.equal(
       selectActivityMedia("live-stream").some((candidate) => candidate.id === night.mediaId),
       false,
@@ -463,8 +466,8 @@ describe("2026-09-06〜07 Instagram Story 投票5日目 — privacy and scope", 
     // source date は画面表示と元動画の container creation_time からの判断。オーナー確認待ちを明記する。
     assert.match(docs, /オーナーの明示確認/);
     assert.match(section, /オーナーの明示確認/);
-    assert.match(ops, /83件/);
-    assert.match(ops, /独立動画32本/);
+    assert.match(ops, /84件/);
+    assert.match(ops, /独立動画33本/);
     assert.match(section, /video-only/);
     assert.match(section, /sameDayOrder: 50/);
     assert.match(section, /sameDayOrder: 5/);

@@ -97,6 +97,7 @@ import { thirdRoundStoryAdditionalMedia } from "./thirdRoundStoryMedia.ts";
 import { webVoteDay2StoryVideo } from "./webVoteDay2StoryVideo.ts";
 import { voteDayFiveSoonStoryVideo } from "./voteDayFiveSoonStoryVideo.ts";
 import { morningThanksVoteStoryVideo } from "./morningThanksVoteStoryVideo.ts";
+import { streamThanksMorningSlotStoryVideo } from "./streamThanksMorningSlotStoryVideo.ts";
 import {
   PATON_VOTE_HOW_TO_CTA_LABEL,
   PATON_VOTE_HOW_TO_CTA_URL,
@@ -203,6 +204,35 @@ export function newsDisplayMedia(item: NewsItem): NewsMedia[] {
 }
 
 export const news: NewsItem[] = [
+  {
+    id: "2026-09-08-stream-thanks-morning-slot-story",
+    date: "2026-09-08",
+    sameDayOrder: 10,
+    activityIds: ["live-stream"],
+    title: "配信ありがとう、「明日の朝枠は7:30〜8:20」",
+    body:
+      "9月8日未明、みりぃがInstagram Storyで、配信へのお礼と「明日の朝枠は7:30〜8:20」を伝えました。配信中は「目がぁぁ乾くぅぅ見えないぃぃ」と言っていたけれど、配信を切った瞬間に平気になった、とも添えています。くま耳とキラキラのフィルターをつけて、白いふわふわの毛布のそばでカメラを見ている短い動画です。",
+    sourceLabel: streamThanksMorningSlotStoryVideo.sourceLabel,
+    relatedUrl: "https://www.instagram.com/mily_chan36",
+    ctaLabel: "Instagramプロフィールを見る",
+    additionalCtas: [
+      {
+        label: "SHOWROOM",
+        url: "https://www.showroom-live.com/r/circle2026_0734",
+      },
+    ],
+    media: streamThanksMorningSlotStoryVideo,
+    message: {
+      label: "みりぃのStory",
+      text:
+        "配信ありがとう\u{1F4AB}\n" +
+        "配信中あんなに\n" +
+        "「目がぁぁ乾くぅぅ見えないぃぃ」\n" +
+        "とか言ってたけど、\n" +
+        "配信切った瞬間平気になった、、、( \u02C8\u203F\u02C8 )\n" +
+        "明日の朝枠は7:30〜8:20\u203C\u{FE0F}",
+    },
+  },
   {
     id: "2026-09-07-campus-girls-finals-ex-vol1",
     date: "2026-09-07",
