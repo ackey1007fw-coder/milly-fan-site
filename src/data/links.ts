@@ -19,7 +19,7 @@ export const campusGirlsPatonVoteLink: SiteLink = {
 
 export const missCircleWebVoteLink: SiteLink = {
   id: "miss-circle-2026-web-vote-734",
-  label: "WEB投票する（1日1回）",
+  label: "WEB投票する",
   url: "https://liff.line.me/1656040756-GwmBkdPY/vote/misscircle2026/N/734",
   note: "MISS CIRCLE CONTEST 2026 三次審査。ENTRY 734 三橋莉子。",
 };
