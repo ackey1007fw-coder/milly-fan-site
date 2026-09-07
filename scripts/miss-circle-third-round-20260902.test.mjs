@@ -117,7 +117,6 @@ const EXPECTED_SLOTS = [
   { date: "2026-09-06", time: "21:30" },
   { date: "2026-09-07", time: "06:30", endTime: "07:30" },
   { date: "2026-09-07", time: "22:00", endTime: "23:00" },
-  { date: "2026-09-08", time: "07:00", endTime: "08:00" },
   {
     date: "2026-09-09",
     time: "00:00",
@@ -552,11 +551,8 @@ describe("2026-09-02 MISS CIRCLE 三次審査 NEWS + calendar", () => {
       false,
     );
     assert.equal(
-      streamSchedule.some((slot) => slot.date === "2026-09-08" && slot.time.startsWith("14")),
+      streamSchedule.some((slot) => slot.date === "2026-09-08"),
       false,
-    );
-    assert.ok(
-      streamSchedule.some((slot) => slot.date === "2026-09-08" && slot.time === "07:00"),
     );
     assert.ok(
       streamSchedule.some(

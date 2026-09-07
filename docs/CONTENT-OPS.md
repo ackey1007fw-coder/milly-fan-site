@@ -1134,3 +1134,17 @@ PR 本文に、一次ソース URL と「推測していないこと」を書く
 - 歌唱は自動文字起こしと公開歌詞を照合し、HY「366日」を確認。原曲リンクはHY／レーベルのYouTube動画、参考カラオケはガイドメロディなしの伴奏。配信で使用した音源とは断定しない。歌詞は掲載しない。短い引用とみられる箇所は曲名未確定のため歌リストに含めない。
 - 翌朝7時半の案内はその配信当時の発言。現在の予定データへ転記しない。既存の9/8 07:00–08:00枠は変えない。
 - 本人の写りを気遣う方針と、今回新たに承認された静止画がないことから記事のみ追加。NEWS / Gallery / media.ts / galleryVideos / `/stories/` / highlights / events / streamSchedule / contest.ts / profile は変更しない。歌検索の別PRには触れていない。録画・音声・全文文字起こし・視聴者名・非公開素材の受け渡し情報は公開しない。
+
+### 2026-09-07 9/8朝枠を手入力から外す（SHOWROOM next_live差し替え）
+
+- 手入力 fallback `src/data/streamSchedule.ts` から `{ date: "2026-09-08", time: "07:00", endTime: "08:00" }` を外す。
+  未実施／SHOWROOM next_live差し替え。9/8朝に配信があったとは書いていない。
+- 出典: SHOWROOM room `https://www.showroom-live.com/r/circle2026_0734`。
+  `next_live` は epoch 1788879600（2026-09-09 00:00 JST）。
+  以前の next_live は epoch 1788820200（2026-09-08 07:30 JST）だったが、
+  07:30 の Draft #198 は未マージのため main の手入力は 07:00–08:00 のままだった。
+  ルームは監視時点でオフライン。新しい live_id は確認していない。
+- 既存の 2026-09-09 00:00–01:00（本人表記 24:00-25:00）はそのまま。
+  next_live は開始 00:00 を確認。終了 01:00 は既存値。9/9 10:00 以降は触らない。
+- NEWS / 画像 / events / media.ts / galleryVideos / `/stories/` / highlights /
+  contest.ts / profile は変更しない。
