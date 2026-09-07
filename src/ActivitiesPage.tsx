@@ -4,7 +4,7 @@ import { ExternalLink } from "./components/ExternalLink";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { NewsImage } from "./components/NewsImage";
-import { StreamSongCatalog } from "./components/StreamSongCatalog";
+import { StreamSongCatalog, StreamSongCatalogEntry } from "./components/StreamSongCatalog";
 import {
   activities,
   type Activity,
@@ -185,6 +185,11 @@ function ActivityHubCard({ activity }: { activity: Activity }) {
           詳細を見る
         </a>
       </p>
+      {activity.id === "live-stream" ? (
+        <a href={`${activity.route}#song-catalog`} className={`${secondaryCta} mt-3`}>
+          ♪ みりぃの歌リストを見る
+        </a>
+      ) : null}
     </article>
   );
 }
@@ -258,6 +263,7 @@ function ActivityHero({ activity }: { activity: Activity }) {
         <p className="mt-5 max-w-2xl text-base leading-8 text-ink-muted sm:text-lg">
           {activity.summary}
         </p>
+        {activity.id === "live-stream" ? <StreamSongCatalogEntry /> : null}
       </div>
     </header>
   );

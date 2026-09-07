@@ -7,6 +7,20 @@ const artists = catalogArtists(catalog);
 const inputClass = "min-h-11 w-full min-w-0 rounded-xl border border-sage/30 bg-paper px-3 py-2 text-sm text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-sage";
 const linkClass = "inline-flex min-h-11 items-center text-sm font-semibold text-sage-deep underline underline-offset-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage";
 
+export function StreamSongCatalogEntry() {
+  if (catalog.length === 0) return null;
+  return (
+    <a href="#song-catalog" className="mt-6 flex min-w-0 items-center gap-4 rounded-3xl border-2 border-sage/40 bg-sage-soft p-5 shadow-card transition-colors hover:bg-sage-soft/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sage sm:p-6">
+      <span aria-hidden="true" className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-sage text-3xl text-white">♪</span>
+      <span className="min-w-0 flex-1">
+        <span className="block text-xl font-bold text-ink sm:text-2xl">みりぃの歌リスト</span>
+        <span className="mt-1 block text-sm leading-6 text-ink-muted">配信で歌った{catalog.length}曲。原曲を聴く・歌った回を探す</span>
+        <span className="mt-3 inline-flex min-h-11 items-center rounded-full bg-sage px-5 py-2 text-sm font-bold text-white">歌リストを見る ↓</span>
+      </span>
+    </a>
+  );
+}
+
 export function StreamSongCatalog() {
   const [query, setQuery] = useState("");
   const [artist, setArtist] = useState("");

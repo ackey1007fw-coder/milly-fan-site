@@ -75,6 +75,23 @@ try {
     try {
       await page.goto(live, { waitUntil: "networkidle" });
       await section.waitFor({ state: "visible" });
+      await check("prominent live-page entry and activities hub link reach the catalog", async () => {
+        const entry = page.locator('header a[href="#song-catalog"]');
+        await entry.waitFor({ state: "visible" });
+        assert.match(await entry.innerText(), /みりぃの歌リスト/);
+        await entry.screenshot({ path: join(output, `${scenario.name}-entry.png`) });
+        await entry.click();
+        assert.equal(new URL(page.url()).hash, "#song-catalog");
+        await page.waitForFunction(() => {
+          const rect = document.getElementById("song-catalog").getBoundingClientRect();
+          return rect.top >= 0 && rect.top < 150;
+        });
+        await overflow();
+        await page.goto(`${base}/activities/`, { waitUntil: "networkidle" });
+        await page.getByRole("link", { name: "♪ みりぃの歌リストを見る", exact: true }).click();
+        await section.waitFor({ state: "visible" });
+        assert.equal(new URL(page.url()).hash, "#song-catalog");
+      });
       await check("initial count, latest order, responsive layout", async () => {
         await expectTitles(selectCatalogSongs(catalog).map((song) => song.title));
         assert.match(await section.getByRole("status").innerText(), new RegExp(`${catalog.length}曲中 ${catalog.length}曲`));
