@@ -1,7 +1,93 @@
-import type { StreamRecap } from "./streamRecaps.ts";
+import type { StreamRecap, StreamRecapImage } from "./streamRecaps.ts";
 import { AUTO_TRANSCRIPT_MATERIAL_NOTE, buildTranscriptionNote, RANKING_NOTE } from "./streamRecapRules.ts";
 
+const approvedStills: StreamRecapImage[] = [
+  {
+    "src": "/media/live/mily-b68-01-morning-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年9月7日朝配信のみりぃ。ダブルピース",
+    "caption": "38:15 ダブルピース",
+    "downloadName": "みりぃ_20260907朝_01.jpg"
+  },
+  {
+    "src": "/media/live/mily-b68-02-morning-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年9月7日朝配信のみりぃ。ハートのポーズ",
+    "caption": "38:24 ハートのポーズ",
+    "downloadName": "みりぃ_20260907朝_02.jpg"
+  },
+  {
+    "src": "/media/live/mily-b68-03-morning-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年9月7日朝配信のみりぃ。顔のそばでピース",
+    "caption": "38:34 顔のそばでピース",
+    "downloadName": "みりぃ_20260907朝_03.jpg"
+  },
+  {
+    "src": "/media/live/mily-b68-04-morning-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年9月7日朝配信のみりぃ。メイク後の笑顔",
+    "caption": "40:55 メイク後の笑顔",
+    "downloadName": "みりぃ_20260907朝_04.jpg"
+  },
+  {
+    "src": "/media/live/mily-b68-05-morning-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年9月7日朝配信のみりぃ。指を添えたポーズ",
+    "caption": "41:16 指を添えたポーズ",
+    "downloadName": "みりぃ_20260907朝_05.jpg"
+  },
+  {
+    "src": "/media/live/mily-b68-06-morning-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年9月7日朝配信のみりぃ。笑顔で手を上げて",
+    "caption": "41:26 笑顔で手を上げて",
+    "downloadName": "みりぃ_20260907朝_06.jpg"
+  },
+  {
+    "src": "/media/live/mily-b68-07-morning-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年9月7日朝配信のみりぃ。目線を上げたポーズ",
+    "caption": "41:54 目線を上げたポーズ",
+    "downloadName": "みりぃ_20260907朝_07.jpg"
+  },
+  {
+    "src": "/media/live/mily-b68-08-morning-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年9月7日朝配信のみりぃ。あごの下で手を組んで",
+    "caption": "43:26 あごの下で手を組んで",
+    "downloadName": "みりぃ_20260907朝_08.jpg"
+  },
+  {
+    "src": "/media/live/mily-b68-09-morning-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年9月7日朝配信のみりぃ。腕を伸ばしてにっこり",
+    "caption": "44:34 腕を伸ばしてにっこり",
+    "downloadName": "みりぃ_20260907朝_09.jpg"
+  },
+  {
+    "src": "/media/live/mily-b68-10-morning-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年9月7日朝配信のみりぃ。笑顔でバイバイ",
+    "caption": "44:35 笑顔でバイバイ",
+    "downloadName": "みりぃ_20260907朝_10.jpg"
+  }
+];
+
 export const streamRecap20260907Asa: StreamRecap = {
+  image: approvedStills[1],
+  gallery: approvedStills,
+  galleryZip: {"src": "/media/live/mily-b68-morning-stills.zip", "filename": "みりぃ_20260907朝_厳選10枚.zip", "label": "10枚まとめて保存"},
   "id": "2026-09-07-morning-showroom",
   "date": "2026-09-07",
   "dateLabel": "2026.09.07（月）",
@@ -109,7 +195,7 @@ export const streamRecap20260907Asa: StreamRecap = {
   "verifiedAt": "2026-09-08",
   transcriptionNote: buildTranscriptionNote({
     material: AUTO_TRANSCRIPT_MATERIAL_NOTE,
-    stills: "静止画は掲載していません。",
+    stills: "静止画は録画の実フレーム10枚を掲載しています。全画像を目視確認し、オーナーの掲載承認を得ています。",
     extra: "開始時刻は素材名の記録時刻に基づく概数で、時刻は録画先頭からの目安です。短い口ずさみとみられる箇所は曲名を確定できず、歌リストには含めていません。"
   }),
 };
