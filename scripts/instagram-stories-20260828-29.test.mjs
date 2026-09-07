@@ -296,8 +296,9 @@ describe("2026-08-28〜29 Instagram Story動画 — Latest / NEWS", () => {
     assert.equal(selectActivityMedia("campus-girls")[8]?.id, "mily-b43-02-campus-girls-hold-second-story");
     assert.equal(selectActivityMedia("campus-girls")[9]?.id, "mily-b43-01-paton-vote-day5-story");
     assert.equal(selectActivityMedia("campus-girls")[10], patonVoteDay4StoryVideo);
-    assert.equal(selectActivityMedia("live-stream")[0]?.id, "mily-b65-02-morning-thanks-vote-day5-story");
-    assert.equal(selectActivityMedia("live-stream")[1]?.id, "mily-b47-01-oyasumily-story");
+    assert.equal(selectActivityMedia("live-stream")[0]?.id, "mily-b66-01-stream-thanks-morning-slot-story");
+    assert.equal(selectActivityMedia("live-stream")[1]?.id, "mily-b65-02-morning-thanks-vote-day5-story");
+    assert.equal(selectActivityMedia("live-stream")[2]?.id, "mily-b47-01-oyasumily-story");
     assert.equal(
       selectActivityMedia("live-stream").some(
         (item) => item.id === "mily-b41-01-night-showroom-story",

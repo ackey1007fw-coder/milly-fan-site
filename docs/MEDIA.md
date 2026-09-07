@@ -3443,3 +3443,72 @@ b65-02 も同じコマンドでファイル名だけを変える。
 - 追加CTAは確認済みの三次審査WEB投票リンクのみ（b65-02 は既存のSHOWROOMルームCTAも）。
   SupportEvent の期間（2026-09-13 23:59 JST）終了後は自動で非表示になる。
   リンクスタンプの遷移先は未確認のため、新しいURLは作らない。
+
+## 素材台帳（batch b66 / 受領日・source date 2026-09-08）
+
+オーナーがチャットで直接提供した本人Instagram Story動画1本。owner-provided。
+SNSから再取得していない。mainでbatch b65が先に使用されているため、b66として採番した。
+
+HOME Latest / `/news/` と Gallery が、公開MP4・poster・manifest objectを共有する。
+LIVE STREAM Activityの関連NEWS・関連メディアにも出す。恒久的なStory permalinkはないため、
+表示は非リンクの `Instagram Story` labelとする。`/stories/`、highlights、events、
+streamSchedule、`media.ts` には追加しない。
+
+### 掲載承認
+
+- approval date: `2026-09-08`（JST）
+- オーナー本人が本タスクで添付したb66-01について、`https://mily-fan-site.vercel.app`
+  への掲載を明示依頼した。
+- source date `2026-09-08` は、画面「配信ありがとう」（9/7 22:00〜23:00 枠後）と元動画の
+  container creation_time（2026-09-08 00:15 JST。ファイルメタデータ）が一致し、オーナーが
+  その直後（約1分後）に提供したことによる。投稿時刻はNEWS本文に書かない。
+- 承認対象面はHOME Latest / `/news/`、Galleryの動画アーカイブ、LIVE STREAM Activity。
+  `/stories/`への複製は含まない。
+
+| ID | 公開ファイル | 内容 | 掲載・承認 |
+| --- | --- | --- | --- |
+| b66-01 | `gallery/mily-b66-01-stream-thanks-morning-slot-story.mp4` | くま耳とキラキラのフェイスフィルター、白いふわふわの毛布のそばでカメラを見る縦型動画。画面に「配信ありがとう💫」「配信中あんなに「目がぁぁ乾くぅぅ見えないぃぃ」とか言ってたけど、配信切った瞬間平気になった、、、( ˈ‿ˈ )」「明日の朝枠は7:30〜8:20‼️」。下部にInstagramの再投稿表示（mily_chan36）。720×1280 / 20.000秒 / 1fps / 20フレーム / video-only | ✅ 2026-09-08 明示依頼。Latest / NEWS + Gallery + LIVE STREAM Activity |
+| b66-01 poster | `gallery/mily-b66-01-stream-thanks-morning-slot-story-poster.jpg` | 公開MP4の4.0秒地点の実フレーム。720×1280 | ✅ Latest / NEWS + Gallery |
+
+### 元素材と安全確認
+
+- provenance: `owner-provided`。Instagram Storyの恒久permalinkはなく、`sourceUrl`は持たない。
+- 元動画はgitignoredの `media/original/mily-b66-01-stream-thanks-morning-slot-story.mp4` に
+  無改変で保持し、受け渡し時のファイル名・URL・IDはtracked / public filesへ残さない。
+- 元動画は H.264 High / level 3.1 / 720×1280 / 1fps / 20フレーム / 20.000000秒 / yuv420p /
+  `has_b_frames` 2 / 音声ストリームなし（映像のみ1ストリーム）。
+  698,466 bytes / sha256 `9e68a242b6b0fcfe92566a4f41bfca6033e7451e1d54e414b94db42ec0e3d912`
+- 画面には本人と室内の壁・カーテン・白い毛布だけが写り、第三者・住所・連絡先の写り込みはない。
+- 画面下部にInstagramの再投稿表示（mily_chan36）が残る。動画はcropしない方針のため、
+  そのまま公開する。
+- 公開派生はcrop・scale・短縮・テロップ変更・AI加工なし。顔補正・生成塗り足しもない。
+
+### 公開MP4
+
+- 既存の公開映像ストリームを `-c:v copy` で remux した（b23 / b65 と同じ方式）。元素材に音声は
+  ないため `-an` は no-op。画素数・fps・フレーム数を変える再エンコードはしていない。
+- H.264 High / 720×1280 / 1fps / 20フレーム / 20.000000秒 / yuv420p / 音声ストリームなし /
+  `+faststart`（`moov` offset 36 < `mdat` offset 1101）/ metadata除去（`creation_time`・
+  `Core Media` handler なし）/ chapterなし。
+  698,475 bytes / sha256 `dc922357bb1eca90447dca156a3dbc8cc730efc889fe17c846adda961078a486`
+- posterは公開MP4の4.0秒地点の実フレーム（`-q:v 4`）。EXIF / IPTC / XMP / ICCなし。
+  95,887 bytes / sha256 `5ba627ce46eba9a0b204ff90742dbf724af2604034b0a1c14a3f06f1e11827f0`
+
+エンコードコマンド（再現用。ffmpeg は `ffmpeg-static` 7.0.2）:
+
+```
+ffmpeg -i media/original/mily-b66-01-stream-thanks-morning-slot-story.mp4 \
+  -map 0:v:0 -c:v copy -an \
+  -map_metadata -1 -map_metadata:s:v -1 -map_chapters -1 \
+  -movflags +faststart \
+  public/media/gallery/mily-b66-01-stream-thanks-morning-slot-story.mp4
+ffmpeg -i public/media/gallery/mily-b66-01-stream-thanks-morning-slot-story.mp4 -ss 4.0 -frames:v 1 -q:v 4 \
+  -map_metadata -1 public/media/gallery/mily-b66-01-stream-thanks-morning-slot-story-poster.jpg
+```
+
+### 共有範囲
+
+- `src/data/streamThanksMorningSlotStoryVideo.json` の1オブジェクトを
+  Latest / NEWS / Gallery / LIVE STREAM Activityで共有し、公開MP4 1本・poster 1枚だけを参照する。
+- 追加CTAは既存のSHOWROOMルームのみ。「明日の朝枠は7:30〜8:20」は本文引用に留め、
+  streamSchedule へ転記しない。
