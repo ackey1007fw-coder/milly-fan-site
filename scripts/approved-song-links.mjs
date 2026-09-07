@@ -18,6 +18,8 @@ const approved = new Set([
   "https://www.youtube.com/watch?v=dD5Djc_HoGU",
   "https://www.youtube.com/watch?v=O3xpEoW_uao",
   "https://www.youtube.com/watch?v=_8TmGHhPjAw",
+  "https://www.youtube.com/watch?v=glsH4Mgxz-g",
+  "https://www.youtube.com/watch?v=OwV-IccMBZs",
 ]);
 
 export function withoutApprovedSongLinks(source) {

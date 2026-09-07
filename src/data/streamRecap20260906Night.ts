@@ -1,7 +1,93 @@
-import type { StreamRecap } from "./streamRecaps.ts";
+import type { StreamRecap, StreamRecapImage } from "./streamRecaps.ts";
 import { AUTO_TRANSCRIPT_MATERIAL_NOTE, buildTranscriptionNote } from "./streamRecapRules.ts";
 
+const approvedStills: StreamRecapImage[] = [
+  {
+    "src": "/media/live/mily-b67-01-night-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年9月6日夜配信のみりぃ。正面の笑顔",
+    "caption": "01:51 正面の笑顔",
+    "downloadName": "みりぃ_20260906夜_01.jpg"
+  },
+  {
+    "src": "/media/live/mily-b67-02-night-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年9月6日夜配信のみりぃ。ほっぺに指を添えて",
+    "caption": "01:52 ほっぺに指を添えて",
+    "downloadName": "みりぃ_20260906夜_02.jpg"
+  },
+  {
+    "src": "/media/live/mily-b67-03-night-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年9月6日夜配信のみりぃ。首をかしげた笑顔",
+    "caption": "04:07 首をかしげた笑顔",
+    "downloadName": "みりぃ_20260906夜_03.jpg"
+  },
+  {
+    "src": "/media/live/mily-b67-04-night-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年9月6日夜配信のみりぃ。手を組んでにっこり",
+    "caption": "12:22 手を組んでにっこり",
+    "downloadName": "みりぃ_20260906夜_04.jpg"
+  },
+  {
+    "src": "/media/live/mily-b67-05-night-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年9月6日夜配信のみりぃ。明るい笑顔",
+    "caption": "14:36 明るい笑顔",
+    "downloadName": "みりぃ_20260906夜_05.jpg"
+  },
+  {
+    "src": "/media/live/mily-b67-06-night-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年9月6日夜配信のみりぃ。カメラに寄ってにっこり",
+    "caption": "15:21 カメラに寄ってにっこり",
+    "downloadName": "みりぃ_20260906夜_06.jpg"
+  },
+  {
+    "src": "/media/live/mily-b67-07-night-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年9月6日夜配信のみりぃ。拍手のポーズ",
+    "caption": "15:24 拍手のポーズ",
+    "downloadName": "みりぃ_20260906夜_07.jpg"
+  },
+  {
+    "src": "/media/live/mily-b67-08-night-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年9月6日夜配信のみりぃ。おしゃべり中の笑顔",
+    "caption": "19:53 おしゃべり中の笑顔",
+    "downloadName": "みりぃ_20260906夜_08.jpg"
+  },
+  {
+    "src": "/media/live/mily-b67-09-night-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年9月6日夜配信のみりぃ。やわらかな笑顔",
+    "caption": "27:23 やわらかな笑顔",
+    "downloadName": "みりぃ_20260906夜_09.jpg"
+  },
+  {
+    "src": "/media/live/mily-b67-10-night-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年9月6日夜配信のみりぃ。手を振ってご挨拶",
+    "caption": "28:52 手を振ってご挨拶",
+    "downloadName": "みりぃ_20260906夜_10.jpg"
+  }
+];
+
 export const streamRecap20260906Night: StreamRecap = {
+  image: approvedStills[1],
+  gallery: approvedStills,
+  galleryZip: {"src": "/media/live/mily-b67-night-stills.zip", "filename": "みりぃ_20260906夜_厳選10枚.zip", "label": "10枚まとめて保存"},
   "id": "2026-09-06-night-showroom",
   "date": "2026-09-06",
   "dateLabel": "2026.09.06（日）",
@@ -94,7 +180,7 @@ export const streamRecap20260906Night: StreamRecap = {
   "verifiedAt": "2026-09-08",
   transcriptionNote: buildTranscriptionNote({
     material: AUTO_TRANSCRIPT_MATERIAL_NOTE,
-    stills: "静止画は掲載していません。",
+    stills: "静止画は録画の実フレーム10枚を掲載しています。全画像を目視確認し、オーナーの掲載承認を得ています。",
     extra: "開始時刻は素材名の記録時刻に基づく概数で、時刻は録画先頭からの目安です。防災アナウンスに伴うミュート区間があります。録画内で歌唱は確認されず、ランキングはファンルームに載せると案内しています。"
   }),
 };
