@@ -29,6 +29,22 @@ export function isMixchMovie(item: { kind: string }): item is MixchMovie {
   return item.kind === "mixch";
 }
 
+/** 2026-09-07 Mixch「キャンガル2027Aブロック本選進出決定」 https://mixch.tv/m/Tfb8i9dy */
+export const mixchABlockFinalsMovie: MixchMovie = {
+  id: "mixch-m-Tfb8i9dy",
+  kind: "mixch",
+  mixchUrl: "https://mixch.tv/m/Tfb8i9dy",
+  poster:
+    "https://d2jtsb989t238a.cloudfront.net/m/lyh4d7mdxf6d6oprm8xif7hdq2bs7967hmshi0szbwruvgu1ko65si61wvk73khzy06dsrtd6c1vv10yn8ynlewjl90ky4yzdxxl98qkqhfmqkmla6kvg3js8uz1xzyl/thumb_normal",
+  width: 480,
+  height: 853,
+  alt: "Mixch動画「キャンガル2027Aブロック本選進出決定」のサムネイル。再生するとMixchで開きます",
+  title: "キャンガル2027Aブロック本選進出決定",
+  published: true,
+  sourceDate: "2026-09-07",
+  accountUrl: CONFIRMED_MIXCH_ACCOUNT_URL,
+};
+
 /** 2026-08-30 Mixch「配信＆ムービーは今日が最終日」 https://mixch.tv/m/UBHJplv4 */
 export const mixchFinalDayMovie: MixchMovie = {
   id: "mixch-m-UBHJplv4",
@@ -95,6 +111,7 @@ export const mixchConfidenceMessageMovie: MixchMovie = {
 
 /** Newest first. NEWS and Gallery import these objects; do not copy Mixch files. */
 export const mixchMovies: MixchMovie[] = [
+  mixchABlockFinalsMovie,
   mixchFinalDayMovie,
   mixchExpressiveMovie,
   mixch15xDayMovie,
