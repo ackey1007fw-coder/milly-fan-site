@@ -1,9 +1,10 @@
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { radioProgram } from "../shared/radio-program.js";
 import { ExternalLink } from "./components/ExternalLink";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { NewsImage } from "./components/NewsImage";
+import { StreamSongCatalog, StreamSongCatalogEntry } from "./components/StreamSongCatalog";
 import {
   activities,
   type Activity,
@@ -184,6 +185,11 @@ function ActivityHubCard({ activity }: { activity: Activity }) {
           詳細を見る
         </a>
       </p>
+      {activity.id === "live-stream" ? (
+        <a href={`${activity.route}#song-catalog`} className={`${secondaryCta} mt-3`}>
+          ♪ みりぃの歌リストを見る
+        </a>
+      ) : null}
     </article>
   );
 }
@@ -257,6 +263,7 @@ function ActivityHero({ activity }: { activity: Activity }) {
         <p className="mt-5 max-w-2xl text-base leading-8 text-ink-muted sm:text-lg">
           {activity.summary}
         </p>
+        {activity.id === "live-stream" ? <StreamSongCatalogEntry /> : null}
       </div>
     </header>
   );
@@ -542,9 +549,19 @@ function StreamRecapArticle({
 }) {
   const [open, setOpen] = useState(defaultOpen);
 
+  useEffect(() => {
+    const openLinkedRecap = () => {
+      if (window.location.hash === `#recap-${recap.id}`) setOpen(true);
+    };
+    openLinkedRecap();
+    window.addEventListener("hashchange", openLinkedRecap);
+    return () => window.removeEventListener("hashchange", openLinkedRecap);
+  }, [recap.id]);
+
   return (
     <details
-      className="group rounded-3xl border border-sage/20 bg-paper-card p-5 shadow-card open:shadow-card sm:p-6"
+      id={`recap-${recap.id}`}
+      className="group scroll-mt-24 rounded-3xl border border-sage/20 bg-paper-card p-5 shadow-card open:shadow-card sm:p-6"
       open={open}
       onToggle={(event) => {
         const next = event.currentTarget.open;
@@ -589,7 +606,7 @@ function StreamRecapArticle({
         <StreamRecapSection
           title="この回に歌った曲"
           id={`${recap.id}-songs`}
-          note="「原曲を聴く」は原曲の公式動画、「カラオケで歌う」は参考伴奏です。みりぃの歌唱映像ではありません。時刻は録画内の目安です。"
+          note="「原曲を聴く」は原曲の公式動画、「公式歌唱を聴く」は版を明記した公式動画、「カラオケで歌う」は参考伴奏です。みりぃの歌唱映像ではありません。時刻は録画内の目安です。"
         >
           <ol className="mt-3 space-y-3">
             {recap.songs.map((song, index) => (
@@ -618,10 +635,11 @@ function StreamRecapArticle({
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-sage-deep underline underline-offset-4"
-                    aria-label={`${song.title} — 原曲の公式動画をYouTubeで聴く（新しいタブ）`}
+                    aria-label={`${song.title} — ${song.youtubeVersionNote ? "公式歌唱動画" : "原曲の公式動画"}をYouTubeで聴く（新しいタブ）`}
                   >
-                    YouTubeで原曲を聴く ↗
+                    {song.youtubeVersionNote ? "YouTubeで公式歌唱を聴く ↗" : "YouTubeで原曲を聴く ↗"}
                   </a>
+                  {song.youtubeVersionNote ? <p className="break-words text-xs leading-5 text-ink-muted">{song.youtubeVersionNote}</p> : null}
                   {song.karaoke ? (
                     <div className="mt-1">
                       <a
@@ -1074,6 +1092,7 @@ function ActivityDetail({ activity }: { activity: Activity }) {
       <main id="activity-main">
         <ActivityHero activity={content.activity} />
         <ActivityCurrent activityId={content.activity.id} />
+        {content.activity.id === "live-stream" ? <StreamSongCatalog /> : null}
         <RadioEpisodeRecap activityId={content.activity.id} />
         <StreamRecap activityId={content.activity.id} />
         <RadioStorySpotlight activityId={content.activity.id} />

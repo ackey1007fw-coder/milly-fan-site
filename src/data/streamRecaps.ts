@@ -2,6 +2,16 @@ import { streamRecap20260907Night } from "./streamRecap20260907Night.ts";
 import { streamRecap20260907Asa } from "./streamRecap20260907Asa.ts";
 import { streamRecap20260906Night } from "./streamRecap20260906Night.ts";
 import { streamRecap20260906Asa } from "./streamRecap20260906Asa.ts";
+import { streamRecap20260825Asa } from "./streamRecap20260825Asa.ts";
+import { streamRecap20260818Night } from "./streamRecap20260818Night.ts";
+import { streamRecap20260819Day } from "./streamRecap20260819Day.ts";
+import { streamRecap20260826Night } from "./streamRecap20260826Night.ts";
+import { streamRecap20260807Day } from "./streamRecap20260807Day.ts";
+import { streamRecap20260821Day } from "./streamRecap20260821Day.ts";
+import { streamRecap20260815Day } from "./streamRecap20260815Day.ts";
+import { streamRecap20260821Asa } from "./streamRecap20260821Asa.ts";
+import { streamRecap20260806Asa } from "./streamRecap20260806Asa.ts";
+import { streamRecap20260814Day } from "./streamRecap20260814Day.ts";
 import { streamRecap20260905Night } from "./streamRecap20260905Night.ts";
 import { streamRecap20260905Day } from "./streamRecap20260905Day.ts";
 import { streamRecap20260905Asa } from "./streamRecap20260905Asa.ts";
@@ -71,6 +81,8 @@ export type StreamRecapSong = {
   timestamp: string;
   /** 原曲へのリンク。みりぃの歌唱映像ではない。 */
   youtubeUrl: string;
+  /** 原盤以外の歌唱動画を案内する場合、その版を明示する。 */
+  youtubeVersionNote?: string;
   /** 練習用の参考伴奏。配信での使用音源とは限らない。 */
   karaoke?: { youtubeUrl: string; channel: string };
 };
@@ -132,4 +144,14 @@ export const streamRecaps: StreamRecap[] = [
   streamRecap20260903,
   streamRecap20260902Night,
   streamRecap20260902,
+  streamRecap20260826Night,
+  streamRecap20260825Asa,
+  streamRecap20260821Day,
+  streamRecap20260821Asa,
+  streamRecap20260819Day,
+  streamRecap20260818Night,
+  streamRecap20260815Day,
+  streamRecap20260814Day,
+  streamRecap20260807Day,
+  streamRecap20260806Asa,
 ];

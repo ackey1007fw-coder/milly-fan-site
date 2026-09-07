@@ -43,3 +43,26 @@ jobs:
 
       - name: Site identity guard
         run: pnpm guard
+
+      - name: Install isolated browser test tooling
+        timeout-minutes: 8
+        run: |
+          npm install --prefix "$RUNNER_TEMP/mily-browser-tools" --no-package-lock --ignore-scripts --no-audit --no-fund playwright@1.61.1
+          node "$RUNNER_TEMP/mily-browser-tools/node_modules/playwright/cli.js" install --with-deps chromium webkit
+
+      - name: Song catalog browser checks
+        timeout-minutes: 5
+        env:
+          PLAYWRIGHT_MODULE_ROOT: ${{ runner.temp }}/mily-browser-tools/node_modules
+          SONG_CATALOG_ARTIFACT_DIR: ${{ runner.temp }}/song-catalog-browser
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: node --disable-warning=ExperimentalWarning --experimental-strip-types scripts/stream-song-catalog.browser.mjs
+
+      - name: Upload song catalog browser evidence
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: song-catalog-browser-${{ github.run_id }}
+          path: ${{ runner.temp }}/song-catalog-browser/
+          if-no-files-found: ignore
+          retention-days: 7

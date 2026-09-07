@@ -14,7 +14,8 @@ describe("September 5 morning public archive", () => {
     assert.equal(new Set(streamRecaps.map(r => r.id)).size, streamRecaps.length);
     const dates = streamRecaps.map(r => r.date);
     assert.deepEqual(dates, [...dates].sort().reverse());
-    for (const r of streamRecaps) assert.match(r.nextNote, /配信時点/);
+    // 統一ルールでは未確認の次回案内は空欄。案内がある回だけ過去時制を検査する。
+    for (const r of streamRecaps) if (r.nextNote !== "") assert.match(r.nextNote, /配信時点/);
   });
   it("publishes ten real-size downloadable stills without metadata or missing assets", async () => {
     assert.equal(recap.gallery.length, 10);
@@ -41,7 +42,7 @@ describe("September 5 morning public archive", () => {
     assert.ok(recap.highlights.every(h => !h.quote));
     const source = await readFile(new URL("../src/data/streamRecap20260905Asa.ts", import.meta.url), "utf8");
     // 共通ルール（streamRecapRules.ts）のimportだけは除いてから、素材の出所が漏れていないかを見る。
-    const body = source.replace(/^import[\s\S]*?from\s+"[^"]+";\n/gm, "");
+    const body = source.replace(/^import[\s\S]*?from\s+"[^"]+";\r?\n/gm, "");
     assert.doesNotMatch(withoutApprovedSongLinks(body), /https?:\/\/|data:|\.mp4|\.ts["']|\.mp3|stt_raw|ScreenRecording/);
     for (const items of [recap.highlights, recap.timeline]) {
       const times = items.map(({timestamp}) => timestamp.split(":").reduce((n,v) => n * 60 + Number(v), 0));
