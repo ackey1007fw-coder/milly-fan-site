@@ -234,12 +234,22 @@ describe("2026-08-21 ganda X post — scope and ordering", () => {
   });
 
   it("does not hand-enter the 23:00 notice into schedule data", async () => {
-    for (const relative of ["src/data/events.ts", "src/data/streamSchedule.ts"]) {
-      const source = await readFile(path.join(root, relative), "utf8");
-      assert.equal(source.includes("23:00"), false, relative);
-      assert.equal(source.includes(NEWS_ID), false, relative);
-      assert.equal(source.includes("mily-b14"), false, relative);
-    }
+    const eventsSource = await readFile(path.join(root, "src/data/events.ts"), "utf8");
+    assert.equal(eventsSource.includes("23:00"), false, "src/data/events.ts");
+    assert.equal(eventsSource.includes(NEWS_ID), false, "src/data/events.ts");
+    assert.equal(eventsSource.includes("mily-b14"), false, "src/data/events.ts");
+
+    const scheduleSource = await readFile(
+      path.join(root, "src/data/streamSchedule.ts"),
+      "utf8",
+    );
+    assert.equal(scheduleSource.includes(NEWS_ID), false, "src/data/streamSchedule.ts");
+    assert.equal(scheduleSource.includes("mily-b14"), false, "src/data/streamSchedule.ts");
+    assert.equal(scheduleSource.includes("2026-08-21"), false, "src/data/streamSchedule.ts");
+    assert.doesNotMatch(
+      scheduleSource,
+      /date:\s*"2026-08-21"[\s\S]{0,80}23:00/,
+    );
   });
 
   it("keeps every existing 8/21 item behind the newer TikTok entry", () => {

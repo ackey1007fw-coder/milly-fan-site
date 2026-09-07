@@ -253,7 +253,7 @@ export function liveExpiresAt(
   staleMs: number = LIVE_STALE_MS,
 ): number | null {
   const state = payload?.live?.state;
-  if (state !== "live" && state !== "offline") return null;
+  if (state !== "live" && state !== "offline" && payload?.next?.state !== "scheduled") return null;
   const observedAt = payload?.live?.observedAt;
   if (typeof observedAt !== "string") return now;
   const parsed = Date.parse(observedAt);
@@ -263,13 +263,14 @@ export function liveExpiresAt(
 
 /**
  * 失効した LIVE 情報を UNKNOWN へ畳む。
- * roomUrl / next（予定）は事実として残せるので保持する。
+ * roomUrlは保持し、次回予定も古い時刻を優先させないようUNKNOWNへ戻す。
  * **新しい参照を返す**ので、購読側は変化を検知できる。
  */
 export function expireLivePayload(payload: LivePayload): LivePayload {
   return {
     ...payload,
     live: { ...payload.live, state: "unknown", liveId: null, startedAt: null },
+    next: { state: "unknown", at: null },
   };
 }
 
@@ -349,8 +350,8 @@ export function toLiveView(
     observedAt,
     roomUrl: payload?.roomUrl ?? null,
     next: {
-      state: payload?.next?.state ?? "unknown",
-      at: payload?.next?.at ?? null,
+      state: stale ? "unknown" : payload?.next?.state ?? "unknown",
+      at: stale ? null : payload?.next?.at ?? null,
     },
   };
 }

@@ -9,6 +9,7 @@
 ## 第一の仕事
 
 確認できた公開情報だけを、データファイルへ追加する。手順とテンプレートは `docs/CONTENT-OPS.md`。
+配信メモ（`src/data/streamRecaps.ts` / `/activities/live/`）は `docs/LIVE-STREAM-RECAP.md` に従う。
 
 - お知らせ → `src/data/news.ts`（配列の先頭）
 - 出演・配信・イベント → `src/data/events.ts`（年をまたいで同じ配列）

@@ -2991,3 +2991,365 @@ LIVE STREAM の三次初日朝配信メモ専用。NEWS / Gallery / `media.ts` /
 - b52-01 sha256 `4d5e1e779c243d11fca7dd72e7c0647bb098260ab3340a14dfe2269562e229f4`
 - LIVE STREAM 専用のため、480 / 960 / 1600 の Gallery 派生は作らない
 
+## 素材台帳（batch b53 / 受領日・source date 2026-09-03）
+
+オーナー提供の 2026-09-03 SHOWROOM 三次初日夜配信録画から切り出した、
+実フレーム2枚。顔出し枠。コメント・視聴者アイコン・表示名・
+他出場者は写らないようカメラ付近だけを切り出している。
+LIVE STREAM の三次初日夜配信メモ専用。NEWS / Gallery / `media.ts` /
+`galleryVideos.ts` / `/stories/` には出さない。
+代表1枚（b53-01）をサムネにし、2枚を保存できるZIPも同じディレクトリに置く。
+以前は data URI として TypeScript に埋め込んでいたが、Drive ID 形状の誤検知を
+避けるため JPEG ファイルへ移した。写っている内容は同じ。
+
+### 掲載承認
+
+- approval date: `2026-09-04`
+- オーナーが当該夜配信の実フレームを配信コーナーへ載せることを承認済み。
+  承認対象面は LIVE STREAM Activity の配信メモ。Gallery / NEWS へは流用しない。
+
+| ID | 公開ファイル | 内容 | 掲載・承認 |
+| --- | --- | --- | --- |
+| b53-01 | `live/mily-b53-01-surprise-choker.jpg` | ベストショット。びっくり。400×228。サムネ | ✅ 2026-09-04 承認。LIVE STREAM。Gallery / NEWS 非掲載 |
+| b53-02 | `live/mily-b53-02-whiteboard.jpg` | ホワイトボード | ✅ 同上 |
+| b53-zip | `live/mily-b53-gachi-night-stills.zip` | 上記2枚の保存用ZIP | ✅ 同上 |
+
+### 元素材と安全確認
+
+- provenance: `owner-provided`。SNSから再取得していない
+- source date: `2026-09-03`。再生permalinkなし。`sourceUrl` は null
+- 視聴者コメント・アイコン・表示名・他出場者名・端末情報・DMは見当たらない
+- 元素材は gitignored の `media/original/` へ保存。受け渡しURL / file ID /
+  録画ファイル名は tracked text へ残さない
+- 顔補正・AI生成・生成塗り足しなし
+- 録音音声・画面録画・全文文字起こしは公開しない
+
+### 公開派生
+
+- 各JPEG: 400×228 / EXIF・IPTC・XMP・ICCなし
+- b53-01 sha256 `8edf5d2564baff208dd1fae790952675d64abf4bb28f88dd4d4c8342f63992c0`
+- LIVE STREAM 専用のため、480 / 960 / 1600 の Gallery 派生は作らない
+
+## 素材台帳（batch b54 / 受領日・source date 2026-09-04）
+
+オーナー提供の 2026-09-04 SHOWROOM 三次2日目昼配信録画から切り出した、
+実フレーム5枚。顔出し枠。コメント・視聴者アイコン・表示名・
+他出場者は写らないようカメラ付近だけを切り出している。
+LIVE STREAM の三次2日目昼配信メモ専用。NEWS / Gallery / `media.ts` /
+`galleryVideos.ts` / `/stories/` には出さない。
+代表1枚（b54-01）をサムネにし、5枚を保存できるZIPも同じディレクトリに置く。
+
+### 掲載承認
+
+- approval date: `2026-09-04`
+- オーナーが当該昼配信を配信コーナーへ載せることを明示依頼した。
+  承認対象面は LIVE STREAM Activity の配信メモ。Gallery / NEWS へは流用しない。
+
+| ID | 公開ファイル | 内容 | 掲載・承認 |
+| --- | --- | --- | --- |
+| b54-01 | `live/mily-b54-01-hoodie-look.jpg` | ベストショット。灰色パーカー。400×228。サムネ | ✅ 2026-09-04 明示承認。LIVE STREAM。Gallery / NEWS 非掲載 |
+| b54-02 | `live/mily-b54-02-talk.jpg` | 話す | ✅ 同上 |
+| b54-03 | `live/mily-b54-03-cover-face.jpg` | 目元を両手で覆う | ✅ 同上 |
+| b54-04 | `live/mily-b54-04-wipe-tears.jpg` | 涙を拭く | ✅ 同上 |
+| b54-05 | `live/mily-b54-05-wave.jpg` | バイバイ | ✅ 同上 |
+| b54-zip | `live/mily-b54-gachi-day-stills.zip` | 上記5枚の保存用ZIP | ✅ 同上 |
+
+### 元素材と安全確認
+
+- provenance: `owner-provided`。SNSから再取得していない
+- source date: `2026-09-04`。再生permalinkなし。`sourceUrl` は null
+- 視聴者コメント・アイコン・表示名・他出場者名・端末情報・DMは見当たらない
+- 元素材は gitignored の `media/original/` へ保存。受け渡しURL / file ID /
+  録画ファイル名は tracked text へ残さない
+- 顔補正・AI生成・生成塗り足しなし。収録 640×360 からカメラ付近を切り出しただけで拡大していない
+- 録音音声・画面録画・全文文字起こしは公開しない
+
+### 公開派生
+
+- 各JPEG: 400×228 / EXIF・IPTC・XMP・ICCなし
+- b54-01 sha256 `f0056137f6757feab1de6147520ecca5cb418a48116642549b8d610dafdb22b9`
+- LIVE STREAM 専用のため、480 / 960 / 1600 の Gallery 派生は作らない
+
+## 素材台帳（batch b55 / 受領日・source date 2026-09-04）
+
+オーナー提供の 2026-09-04 SHOWROOM 三次2日目朝配信録画から切り出した、
+実フレーム5枚。顔出し枠。コメント・視聴者アイコン・表示名・
+他出場者は写らないようカメラ付近だけを切り出している。
+LIVE STREAM の三次2日目朝配信メモ専用。NEWS / Gallery / `media.ts` /
+`galleryVideos.ts` / `/stories/` には出さない。
+代表1枚（b55-01）をサムネにし、5枚を保存できるZIPも同じディレクトリに置く。
+
+### 掲載承認
+
+- approval date: `2026-09-05`
+- オーナーが当該朝配信を配信コーナーへ載せることを明示依頼した。
+  承認対象面は LIVE STREAM Activity の配信メモ。Gallery / NEWS へは流用しない。
+
+| ID | 公開ファイル | 内容 | 掲載・承認 |
+| --- | --- | --- | --- |
+| b55-01 | `live/mily-b55-01-smile.jpg` | ベストショット。笑顔。400×228。サムネ | ✅ 2026-09-05 明示承認。LIVE STREAM。Gallery / NEWS 非掲載 |
+| b55-02 | `live/mily-b55-02-talk.jpg` | 話す | ✅ 同上 |
+| b55-03 | `live/mily-b55-03-look.jpg` | 見つめて | ✅ 同上 |
+| b55-04 | `live/mily-b55-04-board.jpg` | ボードに書く | ✅ 同上 |
+| b55-05 | `live/mily-b55-05-hoodie.jpg` | 灰色パーカー | ✅ 同上 |
+| b55-zip | `live/mily-b55-gachi-morning-stills.zip` | 上記5枚の保存用ZIP | ✅ 同上 |
+
+### 元素材と安全確認
+
+- provenance: `owner-provided`。SNSから再取得していない
+- source date: `2026-09-04`。再生permalinkなし。`sourceUrl` は null
+- 視聴者コメント・アイコン・表示名・他出場者名・端末情報・DMは見当たらない
+- 元素材は gitignored の `media/original/` へ保存。受け渡しURL / file ID /
+  録画ファイル名は tracked text へ残さない
+- 顔補正・AI生成・生成塗り足しなし。収録 640×360 からカメラ付近を切り出しただけで拡大していない
+- 録音音声・画面録画・全文文字起こしは公開しない
+
+### 公開派生
+
+- 各JPEG: 400×228 / EXIF・IPTC・XMP・ICCなし
+- b55-01 sha256 `501f2178cd3ccec5dc6423a5694e50898ba4d7b9835db2fb19ca15d25baa1e16`
+- LIVE STREAM 専用のため、480 / 960 / 1600 の Gallery 派生は作らない
+
+
+
+## 素材台帳（batch b56 / 受領日・source date 2026-09-05）
+
+オーナー提供の9月5日SHOWROOM朝配信録画から厳選した実フレーム10枚。
+2026-09-05にオーナーがレポート・画像のLIVE STREAM掲載を明示依頼。
+代表画像はb56-03。各画像の保存リンクと10枚のZIPを配信カードに掲載する。
+
+| ID | 公開ファイル | 場面（録画内の目安） |
+| --- | --- | --- |
+| b56-01 | `live/mily-b56-01-chin-pose.jpg` | 00:30 あごの下に手 |
+| b56-02 | `live/mily-b56-02-soft-smile.jpg` | 04:05 微笑み |
+| b56-03 | `live/mily-b56-03-bright-smile.jpg` | 06:53 笑顔 |
+| b56-04 | `live/mily-b56-04-cheek-pose.jpg` | 07:53 頬に指 |
+| b56-05 | `live/mily-b56-05-singing-point.jpg` | 09:30 歌唱・指さし |
+| b56-06 | `live/mily-b56-06-calling-pose.jpg` | 13:30 呼びかけ |
+| b56-07 | `live/mily-b56-07-big-laugh.jpg` | 15:18 笑顔 |
+| b56-08 | `live/mily-b56-08-playful-glasses.jpg` | 20:17 指めがね |
+| b56-09 | `live/mily-b56-09-double-peace.jpg` | 21:05 ダブルピース |
+| b56-10 | `live/mily-b56-10-goodbye-smile.jpg` | 23:18 手を振る |
+| b56-zip | `live/mily-b56-morning-stills.zip` | 上記JPEG10枚 |
+
+- provenance: `owner-provided`。公開再生permalinkはなく、sourceUrlはnull。
+- 10枚を目視確認。視聴者コメント・表示名・他の人物・端末情報は写っていない。
+- 元素材はgitignoredの `media/original/b56/` に保持。受け渡しURL・IDは公開しない。
+- 各JPEGは元の640×360構図を保持。通常のJPEG圧縮のみ。EXIF / GPS / IPTC / XMPなし。
+- 顔のAI生成・補正・置換、生成塗り足しは行っていない。
+- 先に作成した生成コラージュは顔の同一性を保証できないため公開対象から除外し、実フレームを掲載。
+- LIVE STREAM専用の公開派生。全文文字起こし・録音・録画は公開しない。
+
+
+## 素材台帳（batch b57 / 受領日・source date 2026-09-05）
+
+オーナー提供の9月5日SHOWROOM昼配信録画から選んだ実フレーム10枚。
+同日の「今度はこれをお願いします」という配信アーカイブ制作の継続依頼に基づき、LIVE STREAMへ掲載。代表はb57-05。
+
+| ID | 公開ファイル | 場面（録画内の目安） |
+| --- | --- | --- |
+| b57-01 | `live/mily-b57-01-wave-smile.jpg` | 01:11 笑顔で手を振って |
+| b57-02 | `live/mily-b57-02-yogurt-ice.jpg` | 02:09 ヨーグルトアイスを紹介 |
+| b57-03 | `live/mily-b57-03-spoon.jpg` | 05:30 スプーンでひとくち |
+| b57-04 | `live/mily-b57-04-cheek.jpg` | 11:49 頬に指を添えて |
+| b57-05 | `live/mily-b57-05-bright-smile.jpg` | 21:49 ぱっと明るい笑顔 |
+| b57-06 | `live/mily-b57-06-soft-tilt.jpg` | 28:49 そっと首を傾けて |
+| b57-07 | `live/mily-b57-07-finger.jpg` | 31:09 人差し指を立てて |
+| b57-08 | `live/mily-b57-08-hair-smile.jpg` | 37:29 髪に手を添えてにっこり |
+| b57-09 | `live/mily-b57-09-flower-pose.jpg` | 44:09 手のひらを広げて |
+| b57-10 | `live/mily-b57-10-sleep-pose.jpg` | 44:29 おやすみのポーズ |
+| b57-zip | `live/mily-b57-day-stills.zip` | 上記JPEG10枚 |
+
+- provenance: `owner-provided`。公開再生permalinkはなく、sourceUrlはnull。
+- 全10枚を実寸で目視確認。視聴者コメント・表示名・他の人物・端末情報は写っていない。
+- 元フレームはgitignoredの `media/original/b57/` に保持。受け渡しURL・IDは公開しない。
+- 元の640×360構図と縦横比を保持。通常のJPEG圧縮のみ。EXIF / IPTC / XMPなし。
+- 顔のAI生成・補正・置換・生成塗り足しなし。
+- LIVE STREAM専用。全文文字起こし・録音・録画は公開しない。ZIP内容は単体JPEGと一致を確認。
+
+
+## 素材台帳（batch b58 / 受領日 2026-09-05）
+
+- オーナーが直接提供し、サイト掲載を明示依頼したTikTok動画。出典として指定されたURL: https://vt.tiktok.com/ZSqNgRAvx/
+- 初回掲載では投稿日未確認のためGalleryのみ掲載。その後、オーナーがこの動画の投稿日を2026-09-05（土）と確認。sourceDateを更新し、同日NEWSへ共有メディアとして追加。投稿ページの再取得は未完了。本文はオーナー提供の投稿スクリーンショットの公開キャプションと実動画に基づく。
+- 紹介文は添付スクリーンショットの公開キャプションと動画の実フレームを参考にした。スクリーンショットは参考専用で、公開・コミットしない。
+- 公開MP4: `gallery/mily-b58-01-tiktok-radio-portrait.mp4`。512×910 / 約11.833秒 / H.264 Baseline / AAC / yuv420p / faststart。元の構図・尺を維持し、クロップ・拡大・AI加工なし。音声はAACへ変換して保持。
+- poster: `gallery/mily-b58-01-tiktok-radio-portrait-poster.jpg`。公開動画の0.5秒実フレーム。
+- 動画全体から0.5秒間隔で抽出した実フレームを目視確認。端末UI、通知、コメント、識別可能な第三者の写り込みを確認した範囲では認めない。全編の手動聴取は未実施。
+- 元動画は無改変で保持。公開派生のソースメタデータとチャプターを除去。撮影日・投稿日時・撮影者は推測しない。
+
+
+## 素材台帳（batch b59 / 受領日・source date 2026-09-04）
+
+オーナーが直接提供した本人Instagram Story動画1本。くま耳とキラキラの
+フェイスフィルターで、リンクスタンプ「2日目ポチッとな〜」とともに投票を
+呼びかけている縦型動画。owner-provided。SNSから再取得していない。
+mainでbatch b53〜b58が先に使用されているため、このStoryはb59として採番した。
+
+HOME Latest / `/news/` と Gallery が、公開MP4・poster・manifest objectを共有する。
+MISS CIRCLE Activityの関連NEWS・関連メディアにも出す。恒久的なStory permalinkはないため、
+表示は非リンクの `Instagram Story` labelとする。`/stories/`、highlights、events、
+streamSchedule、`media.ts`、PatonVoteGuideのランキング系列には追加しない。
+
+### 掲載承認
+
+- approval date: `2026-09-04`
+- オーナー本人が本タスクで添付したb59-01について、`https://mily-fan-site.vercel.app`
+  への掲載とギャラリーへの追加を明示依頼した。
+- **source date `2026-09-04` はオーナーが明示確認した投稿日**である。
+  オーナーは「9/4に投稿されたものを、その直後に受け取って渡した」と回答した。
+  受領日も同じ2026-09-04。画面の「2日目」表示、WEB投票期間からの逆算、元動画の
+  `creation_time`は日付の根拠にしない。投稿時刻は未確認のため書かない。
+- 承認対象面はHOME Latest / `/news/`、Galleryの動画アーカイブ、MISS CIRCLE Activity。
+  `/stories/`への複製は含まない。
+
+| ID | 公開ファイル | 内容 | 掲載・承認 |
+| --- | --- | --- | --- |
+| b59-01 | `gallery/mily-b59-01-third-round-vote-day2-story.mp4` | 白黒のくま耳とキラキラのフェイスフィルター、黒い水玉のトップスで手を振り、ピースをする縦型動画。720×1280 / 8.967秒 / 30fps / 269フレーム / video-only | ✅ 2026-09-04 明示承認。Latest / NEWS + Gallery + MISS CIRCLE Activity |
+| b59-01 poster | `gallery/mily-b59-01-third-round-vote-day2-story-poster.jpg` | 公開MP4の8.5秒地点の実フレーム。720×1280 | ✅ Latest / NEWS + Gallery |
+
+### 元素材と安全確認
+
+- provenance: `owner-provided`。Instagram Storyの恒久permalinkはなく、`sourceUrl`は持たない。
+- 元動画はgitignoredの `media/original/mily-b59-01-third-round-vote-day2-story.mp4` に
+  無改変で保持し、受け渡し名・URL・file IDはtracked / public filesへ残さない。
+- 元動画は720×1280 / 30fps / 269フレーム / 8.966667秒。元動画にはAAC音声があるが、
+  権利・再配信権を確認できないため、公開派生はvideo-only（無音）にした。
+- 公開派生はcrop・scale・短縮・テロップ変更・AI加工なし。顔補正・生成塗り足しもない。
+- 公開MP4はH.264 Constrained Baseline / 720×1280 / 8.967秒 / 30fps / 269フレーム /
+  video-only / `+faststart`。sha256 `e6666874750b57d43c1573964340773c78fc130c604a972107c815d3a11da49e`。
+- posterは公開MP4の8.5秒地点の実フレーム。EXIF / IPTC / XMP / ICCなし。sha256
+  `82a73892f10ac6e6ae562b1a46958747e2042290f0b05855787fd796c4640455`。
+
+### 共有範囲
+
+- `src/data/webVoteDay2StoryVideo.json`の1オブジェクトをLatest / NEWS / Gallery /
+  MISS CIRCLE Activityで共有し、公開MP4 1本・poster 1枚だけを参照する。
+- 追加CTAは確認済みの三次審査WEB投票リンクのみ。SupportEventの期間終了後は自動で非表示にする。
+- Storyのリンクスタンプの遷移先、連続投票者特典の内容・条件・付与方法は画面から確認できないため、
+  本文で断定しない。
+
+
+## 素材台帳（batch b60 / 受領日・source date 2026-09-05）
+
+オーナー提供の9月5日SHOWROOM夜配信録画から選んだ実フレーム10枚。同素材への継続依頼に基づきLIVE STREAMへ掲載。代表はb60-10。b59は別の未マージPRで使用中のため避けた。
+
+| ID | 公開ファイル | 場面（録画内の目安） |
+| --- | --- | --- |
+| b60-01 | `live/mily-b60-01-bright-smile.jpg` | 01:50 頬に手を添えてにっこり |
+| b60-02 | `live/mily-b60-02-sunglasses.jpg` | 02:37 サングラスでポーズ |
+| b60-03 | `live/mily-b60-03-flute-smile.jpg` | 14:29 篠笛を手に笑顔 |
+| b60-04 | `live/mily-b60-04-flute-wave.jpg` | 22:49 篠笛を持って手を振って |
+| b60-05 | `live/mily-b60-05-flute-playing.jpg` | 24:40 篠笛を演奏中 |
+| b60-06 | `live/mily-b60-06-after-playing.jpg` | 25:51 演奏後の明るい笑顔 |
+| b60-07 | `live/mily-b60-07-hand-cheek.jpg` | 36:51 口元に手を添えて |
+| b60-08 | `live/mily-b60-08-hair-smile.jpg` | 41:00 サングラスに手を添えて |
+| b60-09 | `live/mily-b60-09-finger-pose.jpg` | 42:20 両手の指でポーズ |
+| b60-10 | `live/mily-b60-10-close-smile.jpg` | 45:10 カメラに向かってにっこり |
+| b60-zip | `live/mily-b60-night-stills.zip` | 上記JPEG10枚 |
+
+- provenance: `owner-provided`。公開再生permalinkはなく、sourceUrlはnull。
+- 全10枚を実寸で目視確認。視聴者コメント・表示名・他の人物・端末情報は写っていない。
+- 元フレームはgitignoredの `media/original/b60/` に保持。受け渡しURL・IDは公開しない。
+- 640×360の元の構図と縦横比を保持。通常のJPEG圧縮のみ。EXIF / IPTC / XMPなし。顔のAI生成・補正・置換・生成塗り足しなし。
+- 別途作成した生成コラージュは顔の同一性を保証できないためサイト掲載対象外。
+- LIVE STREAM専用。全文文字起こし・歌詞・録音・録画は公開しない。
+
+
+### b61 — 2026-09-06 朝配信の実フレーム
+
+| 素材 | 公開ファイル | 場面 |
+| --- | --- | --- |
+| b61 | `/media/live/mily-b61-01-hello.jpg` | 00:59 笑顔でおはよう |
+| b61 | `/media/live/mily-b61-02-cheek.jpg` | 11:00 頬に手を添えて |
+| b61 | `/media/live/mily-b61-03-tilt.jpg` | 17:00 首をかしげてにっこり |
+| b61 | `/media/live/mily-b61-04-double-pose.jpg` | 36:31 両手でポーズ |
+| b61 | `/media/live/mily-b61-05-peace.jpg` | 46:02 カメラに向かってピース |
+| b61 | `/media/live/mily-b61-06-ribbon.jpg` | 52:01 リボンが映る横顔 |
+| b61 | `/media/live/mily-b61-07-relaxed.jpg` | 61:01 目を細めて笑顔 |
+| b61 | `/media/live/mily-b61-08-smile.jpg` | 70:03 カメラに向かって笑顔 |
+| b61 | `/media/live/mily-b61-09-playful.jpg` | 81:02 頬をふくらませてポーズ |
+| b61 | `/media/live/mily-b61-10-bye.jpg` | 87:03 両手を振ってまたね |
+| b61-zip | `live/mily-b61-asa-stills.zip` | 上記JPEG10枚 |
+
+- owner-provided。公開再生permalinkなし。受け渡しURL・IDは非公開。
+- 全10枚を実寸で目視確認。第三者・コメント・端末情報の写り込みなし。640×360の元の構図を保持し、通常のJPEG圧縮のみ。メタデータなし。
+- 元フレームはgitignoredの `media/original/b61/`。LIVE STREAM専用。顔のAI生成・補正・置換・生成塗り足しなし。
+- 別途作成した生成コラージュは顔の同一性を保証できないためサイト掲載対象外。全文文字起こし・録音・録画・歌詞は公開しない。
+
+
+### 2026-09-06 朝配信スクリーンショットの掲載撤回
+
+- オーナーの再評価によりb61の10枚・代表画像・保存ZIPを公開対象から除外。公開ファイルも削除し、レポート本文は維持。
+- 上記b61の掲載記録は過去の履歴。現在は非掲載。新しい候補は再選定し、掲載する素材を確認するまで追加しない。
+
+
+### 2026-09-06 朝配信の承認済み3枚を掲載（b62）
+
+- オーナーが再選定候補の3枚すべてを確認し、掲載を明示承認。08:59 正面の笑顔、48:01 首をかしげた笑顔、68:02 やわらかい笑顔。代表は2枚目。
+- b62の実画像JPEG3枚と保存ZIPを既存の共通カードで掲載。元の640×360・全構図を保持し、JPEG圧縮とメタデータ除去のみ。顔加工なし。
+- 元PNGはgitignoredのmedia/original/b62。owner-providedで公開再生permalinkなし。受け渡し情報は非公開。
+- 取り下げ済みb61の10枚とZIPは復元しない。レポート本文は維持。
+
+
+## 素材台帳（batch b63 / 受領日・source date 2026-09-06）
+
+2026-09-06 11:16:04 JST の本人X投稿（created_at Sun Sep 06 02:16:04 UTC 2026）。
+公開permalinkあり。キャンガル2027 予選finalの結果報告グラフィック。
+白い壁の前で腕を組んだみりぃの写真に、総合審査員賞・面接審査1位・Paton投票審査2位・本戦進出決定の文言が重ねられている。`sns-post`。
+オーナーが本タスクで画像を直接提供し、https://mily-fan-site.vercel.app への掲載を明示依頼した。X CDNからは取得していない。
+
+新しい NEWS `2026-09-06-campus-girls-prelim-final-result`。Gallery にも出す。
+CAMPUS GIRLS Activity と highlights に関連付ける。`/stories/`・events・streamSchedule・contest.ts・profile には足さない。Paton投票は 2026-09-01 23:59 JST 終了済みのため投票CTAなし。
+
+| ID | 公開ファイル | 内容 | 掲載 |
+| --- | --- | --- | --- |
+| b63-01 NEWS | `news/mily-b63-01-campus-girls-prelim-final-result.jpg` | 予選final結果報告。1500×2667。sns-post | ✅ 新NEWS の fallback `src` |
+| b63-01 Gallery | `gallery/mily-b63-01-campus-girls-prelim-final-result-{480,960,1600}.{jpg,webp}` | 同じ写真の `pnpm media:build` 派生。1600幅は拡大せず 1500×2667 | ✅ Gallery photo |
+
+出典: `https://x.com/mily_chan36/status/2096422147476627841`
+
+元素材（gitignore）: 293,774 bytes / JPEG / 1500×2667 / sha256
+`e8c612341631ce5ad969e326526c421423dde14520d0d78caa062a8afe48de5e`
+元素材にはEXIFとIPTCあり。公開前にsharpでJPEG再エンコードし、metadataを除去した。
+
+NEWS JPEG: 353,094 bytes / 1500×2667 / sha256
+`59679e7a880fbdf8659d10fcb5f88fe7928c232e1dfb418490ba8104e9ccb10f`
+公開ファイルはEXIF / IPTC / XMP / ICCなし。再エンコードはsharpのJPEG quality 95 / progressive / 4:4:4のみ。crop・scale・rotate・アップスケール・縦横比変更なし。AI生成・顔補正・生成塗り足しなし。
+
+Gallery 480.jpg: 480×853 / sha256
+`ba88c3806920965806a9c4297cb4589a9209281ba8c00f2883da038a2b0555ae`
+Gallery 960.jpg: 960×1707 / sha256
+`84368c3dd9488bb4a4828efe3864056d84f5f9b1e98c429f97788a8398aedff8`
+Gallery 1600.jpg: 1500×2667 / sha256
+`6dd7a652200342d591297b3f7983810bc21f45659f681d9fb2792eff9fe7da9b`
+
+## 素材台帳（batch b64 / 受領日・source date 2026-09-07）
+
+2026-09-07 09:15:31 JST の本人X投稿（created_at Mon Sep 07 00:15:31 GMT）。
+公開permalinkあり。キャンガル2027 本選EX vol.1の審査案内グラフィックと、本選EX期間のスケジュール表。実写ポートレートではない。`sns-post`。
+オーナーが本タスクで画像を直接提供し、https://mily-fan-site.vercel.app への掲載を明示依頼した。X CDNからは取得していない。
+
+新しい NEWS `2026-09-07-campus-girls-finals-ex-vol1`。Gallery には出さない。
+CAMPUS GIRLS Activity に関連付ける。`/stories/`・highlights・events・streamSchedule・contest.ts・profile・media.ts には足さない。
+本選EXのPaton投票先URLは未確認のため投票CTAなし。
+
+| ID | 公開ファイル | 内容 | 掲載 |
+| --- | --- | --- | --- |
+| b64-01 NEWS | `news/mily-b64-01-campus-girls-finals-ex-vol1.jpg` | 本選EX vol.1案内。1500×2250。sns-post | ✅ 新NEWS の代表 |
+| b64-02 NEWS | `news/mily-b64-02-campus-girls-finals-ex-schedule.jpg` | メッセージ＋本選EX vol.1〜6日程表。1500×1700。sns-post | ✅ 同じNEWS の additionalMedia |
+
+出典: `https://x.com/mily_chan36/status/2096754197362622971`
+
+元素材（gitignore）:
+- b64-01: 751,087 bytes / JPEG / 1500×2250 / sha256 `4f35c4d98528eeca597b23b795acd35cdca225499ccf348e74a429de154c774f`
+- b64-02: 329,602 bytes / JPEG / 1500×2667 / sha256 `f59f5d64323f484c8254943f4e9a2e77baa965c84524b25c4133db9f211b58d0`
+
+元素材にはEXIFとIPTCあり。公開前にsharpでJPEG再エンコードし、metadataを除去した。
+b64-02の公開派生は、下部のInstagram再投稿バーと空の余白だけを除く（top 0 / height 1700）。crop以外のscale・rotate・アップスケール・縦横比変更なし。AI生成・顔補正・生成塗り足しなし。
+
+NEWS JPEG:
+- b64-01: 1,097,825 bytes / 1500×2250 / sha256 `91c7020bad59effa9109f33be94df6c36eede56fdf9fea378a352657847251ad`
+- b64-02: 420,322 bytes / 1500×1700 / sha256 `94eb650e396717064978e981efad60c6b8d7b5642cc6c94c8e2ff534ab283443`
+
+公開ファイルはEXIF / IPTC / XMP / ICCなし。再エンコードはsharpのJPEG quality 95 / progressive / 4:4:4。

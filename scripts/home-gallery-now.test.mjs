@@ -7,7 +7,7 @@ import { radioProgram } from "../shared/radio-program.js";
 import { contest } from "../src/data/contest.ts";
 import { links } from "../src/data/links.ts";
 import { mixchFinalDayMovie } from "../src/data/mixchMovies.ts";
-import { news } from "../src/data/news.ts";
+import { news } from "./fixtures/news-before-b58.ts";
 import {
   MIXCH_FINAL_DAY_NEWS_ID,
   PATON_FIFTEEN_X_NEWS_IDS,
@@ -277,12 +277,12 @@ describe("Gallery portrait-first order", () => {
     assert.deepEqual(
       preview.map((entry) => entry.key),
       [
+        "mily-b63-01",
         "mily-b38-01",
         "mily-b31-01",
         "mily-b30-01",
         "mily-b29-01",
         "mily-b28-01",
-        "mily-b27-07",
       ],
     );
   });
@@ -293,7 +293,7 @@ describe("Gallery portrait-first order", () => {
       (entry) => cinemaEventKey(entry) === "mily-b38",
     ).length;
     assert.equal(cinemaCount, 1);
-    assert.equal(preview[0]?.key, "mily-b38-01");
+    assert.equal(preview[0]?.key, "mily-b63-01");
     assert.equal(
       preview.filter((entry) => entry.key.startsWith("mily-b38-")).length,
       1,

@@ -232,9 +232,9 @@ describe("2026-08-23 seaside circle official X posts — Gallery photos", () => 
     assert.equal(items.length, 2);
     assert.equal(items[0]?.id, BEFORE_ID);
     assert.equal(items[1]?.id, AFTER_ID);
-    assert.equal(visible.indexOf(items[0]), 13);
-    assert.equal(visible.indexOf(items[1]), 14);
-    assert.equal(visible.filter((item) => item.kind === "photo").length, 32);
+    assert.equal(visible.indexOf(items[0]), 14);
+    assert.equal(visible.indexOf(items[1]), 15);
+    assert.equal(visible.filter((item) => item.kind === "photo").length, 33);
     assert.deepEqual(verifyMedia(media), []);
 
     for (const item of items) {

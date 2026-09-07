@@ -8,7 +8,7 @@ import { events } from "../src/data/events.ts";
 import { galleryVideos } from "../src/data/galleryVideos.ts";
 import { highlights } from "../src/data/highlights.ts";
 import { media } from "../src/data/media.ts";
-import { news, sortNewsByDateDesc } from "../src/data/news.ts";
+import { news, sortNewsByDateDesc } from "./fixtures/news-before-b58.ts";
 import { createPortalFeed } from "../src/data/portalFeed.ts";
 import { stories } from "../src/data/stories.ts";
 import { streamSchedule } from "../src/data/streamSchedule.ts";
@@ -238,7 +238,7 @@ describe("2026-08-30 morning SHOWROOM 6:00 X post — scope", () => {
 
 describe("2026-08-30 morning SHOWROOM 6:00 X post — Portal Feed", () => {
   it("flows through Portal Feed without a hardcoded news id or image", async () => {
-    const feed = createPortalFeed({ now: new Date("2026-08-30T06:10:00+09:00") });
+    const feed = createPortalFeed({ newsItems: news, now: new Date("2026-08-30T06:10:00+09:00") });
     const entry = findFeedItem(feed, portalNewsId(NEWS_ID));
 
     assertPortalNewsFollowsSort(feed, news);

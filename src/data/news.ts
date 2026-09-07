@@ -1,3 +1,4 @@
+import { tiktokPortraitVideo } from "./tiktokPortraitVideo.ts";
 /**
  * Latest updates. Keep this empty rather than filling unverified items.
  * The UI sorts a copy by date, then optional sameDayOrder. Unranked same-day
@@ -13,7 +14,10 @@
  * - ctaLabel: optional. href is url ?? source
  */
 import type { ActivityId } from "./activities.ts";
-import { campusGirlsPatonVoteLink } from "./links.ts";
+import {
+  campusGirlsPatonVoteLink,
+  missCircleWebVoteLink,
+} from "./links.ts";
 import {
   eventStory20260821,
   morningOhayo20260821,
@@ -37,6 +41,7 @@ import { ohayoSeptemberXVideo } from "./ohayoSeptemberXVideo.ts";
 import { tiktokRadioVideo } from "./tiktokRadioVideo.ts";
 import { tiktokSayonaraIchigoVideo } from "./tiktokSayonaraIchigoVideo.ts";
 import { campusGirlsSecondStageResultImage } from "./campusGirlsSecondStageResultImage.ts";
+import { campusGirlsPrelimFinalResultImage } from "./campusGirlsPrelimFinalResultImage.ts";
 import { earthquakeSafetyStoryVideo } from "./earthquakeSafetyStoryVideo.ts";
 import { nightThanksMorningStreamStoryVideo } from "./nightThanksMorningStreamStoryVideo.ts";
 import { seasideCircleMusicalSpecialThanksVideo } from "./seasideCircleMusicalSpecialThanksVideo.ts";
@@ -76,6 +81,10 @@ import {
 import { pandaPastPicImage } from "./pandaPastPic.ts";
 import { eveningRadioShowroomImage } from "./eveningRadioShowroom.ts";
 import { campusGirlsFinalStageFlyerImage } from "./campusGirlsFinalStageFlyer.ts";
+import {
+  campusGirlsFinalsExScheduleImage,
+  campusGirlsFinalsExGuideImage,
+} from "./campusGirlsFinalsExImages.ts";
 import { secondRoundTimetableImage } from "./secondRoundTimetable.ts";
 import { gandaBeforeNightStreamImage } from "./gandaBeforeNightStream.ts";
 import { autumnLeafNewsImage } from "./autumnLeafNewsImage.ts";
@@ -85,6 +94,7 @@ import {
 } from "./firstSeptemberShowroomImages.ts";
 import { thirdRoundTimetableImage } from "./thirdRoundTimetableImage.ts";
 import { thirdRoundStoryAdditionalMedia } from "./thirdRoundStoryMedia.ts";
+import { webVoteDay2StoryVideo } from "./webVoteDay2StoryVideo.ts";
 import {
   PATON_VOTE_HOW_TO_CTA_LABEL,
   PATON_VOTE_HOW_TO_CTA_URL,
@@ -191,6 +201,127 @@ export function newsDisplayMedia(item: NewsItem): NewsMedia[] {
 }
 
 export const news: NewsItem[] = [
+  {
+    id: "2026-09-07-campus-girls-finals-ex-vol1",
+    date: "2026-09-07",
+    sameDayOrder: 10,
+    activityIds: ["campus-girls"],
+    title: "CAMPUS GIRLS 2027 本選EX期間のお知らせ",
+    body:
+      "9月7日、みりぃがCAMPUS GIRLS 2027 本選EX期間の案内をXに投稿しました。本選EX vol.1は9月7日から9月20日です。SNS審査は9月7日12:00〜9月20日12:00、Paton投票審査は9月16日18:00〜9月22日23:59です。みりぃはキャンガルでの配信は行わないと伝えています。",
+    source: campusGirlsFinalsExGuideImage.sourceUrl,
+    sourceLabel: "みりぃのX",
+    media: campusGirlsFinalsExGuideImage,
+    additionalMedia: [campusGirlsFinalsExScheduleImage],
+    message: {
+      label: "みりぃのX",
+      text:
+        "【キャンガル2027 本選EX期間】\n" +
+        "本選まで長いので、是非目を通しておいてくださると嬉しいです😳🙏🏻🩵✨\n" +
+        "個人的解釈ですが、この期間は、『私を知ってもらって、本選でも応援してくださる方々に出逢うための期間』。\n" +
+        "キャンガルでの配信は行いませんが、私らしく授賞式登壇するぞ〜✊🏻❤️‍🔥",
+    },
+  },
+  {
+    id: "2026-09-06-stream-thanks-next-slots",
+    date: "2026-09-06",
+    sameDayOrder: 40,
+    activityIds: ["live-stream"],
+    title: "配信ありがとう、明日は6:30と22:00",
+    body: "みりぃがXで、配信へのお礼と、翌日の配信が6:30〜7:30と22:00〜23:00であることを伝えました。",
+    source: "https://x.com/Mily_chan36/status/2096604917893095494",
+    sourceLabel: "みりぃのX",
+  },
+  {
+    id: "2026-09-06-campus-girls-prelim-final-result",
+    date: "2026-09-06",
+    sameDayOrder: 30,
+    activityIds: ["campus-girls"],
+    title: "CAMPUS GIRLS 2027 予選final、本戦進出決定✨",
+    body: "9月6日、みりぃがCAMPUS GIRLS 2027 予選ファイナルの結果を報告しました。総合は審査員賞、面接審査は1位、Paton投票審査は2位で、本戦進出が決まりました。",
+    source: campusGirlsPrelimFinalResultImage.sourceUrl,
+    sourceLabel: "みりぃのX",
+    media: campusGirlsPrelimFinalResultImage,
+    message: {
+      label: "みりぃのX",
+      text:
+        "【キャンガル2027 予選final 結果報告✨】\n" +
+        "総合：審査員賞\n" +
+        "面接審査：1位 🥇\n" +
+        "Paton投票審査：2位 🥈\n" +
+        "\n" +
+        "よって、本戦進出決定‼️\n" +
+        "\n" +
+        "皆様の応援のおかげです🥺🫶🏻💙\n" +
+        "本当にありがとーーう！\n" +
+        "これからもみんなの前で喜怒哀楽を楽しみながら頑張らせてね♪",
+    },
+  },
+  {
+    id: "2026-09-06-night-slot-2230",
+    date: "2026-09-06",
+    sameDayOrder: 20,
+    activityIds: ["live-stream"],
+    title: "今夜の配信、22:30から",
+    body: "みりぃがXで、今夜の配信を22:30〜23:00に変更すると案内しました。",
+    source: "https://x.com/Mily_chan36/status/2096366715181691270",
+    sourceLabel: "みりぃのX",
+    message: {
+      label: "みりぃのX",
+      text: "⚠️夜の配信 22:30〜23:00 に変更⚠️",
+    },
+  },
+  {
+    id: "2026-09-05-morning-stream-thanks",
+    date: "2026-09-05",
+    sameDayOrder: 20,
+    activityIds: ["live-stream"],
+    title: "朝配信ありがとう",
+    body: "みりぃがXで、朝配信へのお礼を伝えました。次は14:30〜、ともあります。",
+    source: "https://x.com/Mily_chan36/status/2096037739833737354",
+    sourceLabel: "みりぃのX",
+    message: {
+      label: "みりぃのX",
+      text:
+        "朝配信来てくれてありがとう✊🏻❤️‍🔥\n" +
+        "みんなにも元気届けられたかなー？少しづつ前向いてくよ🙂‍↕️\n" +
+        "次は14:30〜ね！投票も忘れずにっ‼️",
+    },
+  },
+  {
+    id: "2026-09-05-tiktok-radio-portrait",
+    date: "2026-09-05",
+    title: "「覚えて帰ってね〜」ラジオDJみりぃのTikTok",
+    body: "9月5日、みりぃのTikTok動画が投稿されました。手で作ったフレームの中に、さまざまな表情や装いの写真が次々に登場。投稿文では、3時間の生放送でおしゃべりするラジオDJとして自己紹介し、ミスサークルコンテスト2026への出場にも触れています。",
+    source: tiktokPortraitVideo.sourceUrl,
+    sourceLabel: "TikTokの投稿を見る",
+    media: tiktokPortraitVideo,
+  },
+  {
+    id: "2026-09-04-third-round-vote-day2-story",
+    date: "2026-09-04",
+    sameDayOrder: 10,
+    activityIds: ["miss-circle"],
+    title: "「2日目ポチッとな〜」投票の呼びかけ",
+    body:
+      "みりぃがInstagram Storyで、リンクスタンプに「2日目ポチッとな〜」と書いて投票を呼びかけました。あわせて「毎日連続投票者の特典ちゃんもあるよっ」と添えています。リンク先と特典の内容はStoryの表示だけでは確認できないため、ここには書きません。くま耳とキラキラのフィルターをつけて、手を振ったりピースをしたりしている短い動画です。",
+    sourceLabel: webVoteDay2StoryVideo.sourceLabel,
+    relatedUrl: "https://www.instagram.com/mily_chan36",
+    ctaLabel: "Instagramプロフィールを見る",
+    additionalCtas: [
+      {
+        label: missCircleWebVoteLink.label,
+        url: missCircleWebVoteLink.url,
+      },
+    ],
+    media: webVoteDay2StoryVideo,
+    message: {
+      label: "みりぃのStory",
+      text:
+        "（毎日連続投票者の特典ちゃんもあるよっ\u{1FA75}\u30DC\u30BD\u30C3）\n" +
+        "2日目ポチッとな〜\u{1F5F3}\u{FE0F}\u2763\u{FE0F}\u2763\u{FE0F}",
+    },
+  },
   {
     id: "2026-09-03-miss-circle-goals-support",
     date: "2026-09-03",

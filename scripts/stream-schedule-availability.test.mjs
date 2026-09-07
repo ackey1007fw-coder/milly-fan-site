@@ -369,14 +369,32 @@ describe("SHOWROOM schedule availability", () => {
     assert.equal(clock.pending.size, 0);
   });
 
+  it("uses only the official schedule after success, including moved and cancelled slots", () => {
+    const now = Date.parse("2026-09-06T08:25:00+09:00");
+    const manual = [
+      { date: "2026-09-06", time: "14:40", endTime: "15:20" },
+      { date: "2026-09-06", time: "22:30", endTime: "23:00" },
+      { date: "2026-09-08", time: "07:00", endTime: "08:00" },
+    ];
+    const official = [
+      { date: "2026-09-06", time: "21:30" },
+      { date: "2026-09-08", time: "07:00" },
+    ];
+    const snapshot = { slots: official, roomUrl: null, availability: "ok" };
+    assert.deepEqual(toStreamScheduleView(snapshot, manual, now).slots, official);
+    assert.deepEqual(toStreamScheduleView({ ...snapshot, slots: [] }, manual, now).slots, []);
+    // A fetch failure is distinct from a successful empty official schedule.
+    assert.deepEqual(toStreamScheduleView({ ...snapshot, slots: [], availability: "unavailable" }, manual, now).slots, manual);
+  });
+
   it("keeps the confirmed manual fallback separate from the fetched slots", async () => {
     // 手入力fallbackはAPIの成否と無関係に確認済みなので、hookは両方を返す。
     const hook = readFileSync(
       new URL("../src/lib/useStreamSchedule.ts", import.meta.url),
       "utf8",
     );
-    assert.match(hook, /return toStreamScheduleView\(fetched, streamSchedule, Date\.now\(\)\)/);
-    assert.match(hook, /slots: upcomingSlots\(manual, fetched\.slots, now\)/);
+    assert.match(hook, /withShowroomNext\(toStreamScheduleView\(fetched, streamSchedule, now\), live, now\)/);
+
     assert.match(hook, /manualSlots: upcomingSlots\(manual, \[\], now\)/);
     assert.match(hook, /ok\?: boolean/);
     assert.match(hook, /response\.ok !== true/);

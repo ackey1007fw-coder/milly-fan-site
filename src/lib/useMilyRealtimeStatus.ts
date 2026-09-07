@@ -1,7 +1,7 @@
 import { useSyncExternalStore } from "react";
 import type { SchedulePhase } from "../../shared/radio-program.js";
 import type { RadioStatus } from "../data/radio";
-import { schedulePhaseStore } from "./scheduleClock";
+import { schedulePhaseStore } from "./scheduleClock.ts";
 import {
   createPollStore,
   expireLivePayload,
@@ -11,7 +11,7 @@ import {
   toLiveView,
   type LivePayload,
   type LiveView,
-} from "./realtimeStore";
+} from "./realtimeStore.ts";
 
 export type { LivePayload, LiveView };
 export { toLiveView };
@@ -73,11 +73,7 @@ export function useMilyRealtimeStatus(): {
   radio: RadioStatus | null;
   schedulePhase: SchedulePhase;
 } {
-  const livePayload = useSyncExternalStore(
-    liveStore.subscribe,
-    liveStore.getSnapshot,
-    () => null,
-  );
+  const live = useShowroomLive();
   const radio = useSyncExternalStore(
     radioStore.subscribe,
     radioStore.getSnapshot,
@@ -90,5 +86,15 @@ export function useMilyRealtimeStatus(): {
     () => "idle" as SchedulePhase,
   );
 
-  return { live: toLiveView(livePayload), radio, schedulePhase };
+  return { live, radio, schedulePhase };
+}
+
+/** 次回予定も同じstoreを購読し、ページ内の追加取得を発生させない。 */
+export function useShowroomLive(): LiveView {
+  const payload = useSyncExternalStore(
+    liveStore.subscribe,
+    liveStore.getSnapshot,
+    () => null,
+  );
+  return toLiveView(payload);
 }

@@ -282,7 +282,7 @@ describe("Gallery video contracts", () => {
     // b01の6枚（誕生日5枚 + ネックレス）は残したまま、2026-08-19 に b05-01、
     // 2026-08-20 に b08-01 と b10 の5枚、2026-08-23 に b20 の3枚と b22 の2枚、
     // 2026-08-26 に b28-01 と b27 の静止画2枚、b29-01 の誕生日室内セルフィーを追加した。
-    assert.equal(media.filter((item) => item.kind === "photo").length, 32);
+    assert.equal(media.filter((item) => item.kind === "photo").length, 33);
     for (const id of [
       "mily-b01-01",
       "mily-b01-02",

@@ -156,10 +156,11 @@ describe("LIVE は fetch を待たずに90秒で失効する", () => {
     assert.equal(toLiveView(store.getSnapshot(), clock.now()).state, "unknown");
   });
 
-  it("失効しても roomUrl と予定は残す（別の事実なので）", () => {
+  it("失効時はroomUrlを残し、次回予定を未確認へ戻す", () => {
     const expired = expireLivePayload(livePayload("live", "2026-08-16T03:00:00.000Z"));
     assert.equal(expired.live.state, "unknown");
     assert.equal(expired.roomUrl, ROOM_URL);
+    assert.deepEqual(expired.next, { state: "unknown", at: null });
     // 二重失効ループを作らない
     assert.equal(liveExpiresAt(expired), null);
   });

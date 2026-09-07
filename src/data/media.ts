@@ -24,6 +24,7 @@ import {
 import { morningMakeupShowroomPhoto } from "./morningMakeupShowroomImage.ts";
 import { gandaBeforeNightStreamPhoto } from "./gandaBeforeNightStream.ts";
 import { movieNightPhotos } from "./movieNightPhotos.ts";
+import { campusGirlsPrelimFinalResultPhoto } from "./campusGirlsPrelimFinalResultImage.ts";
 
 export type MediaKind = "photo" | "video";
 
@@ -74,6 +75,7 @@ const FM_SMW_X_AFTER =
   "https://x.com/fm_smw856/status/2091499993102524714";
 
 export const media: MediaItem[] = [
+  campusGirlsPrelimFinalResultPhoto,
   ...movieNightPhotos,
   eveningRadioShowroomPhoto,
   pandaPastPicPhoto,

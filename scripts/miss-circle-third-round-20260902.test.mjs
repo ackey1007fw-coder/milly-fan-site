@@ -15,7 +15,7 @@ import {
   missCircleWebVoteLink,
 } from "../src/data/links.ts";
 import { media } from "../src/data/media.ts";
-import { news, sortNewsByDateDesc } from "../src/data/news.ts";
+import { news, sortNewsByDateDesc } from "./fixtures/news-before-b58.ts";
 import { stories } from "../src/data/stories.ts";
 import {
   streamSchedule,
@@ -113,9 +113,10 @@ const EXPECTED_SLOTS = [
   { date: "2026-09-05", time: "09:00", endTime: "09:20" },
   { date: "2026-09-05", time: "14:30", endTime: "15:20" },
   { date: "2026-09-05", time: "21:00", endTime: "21:50" },
-  { date: "2026-09-06", time: "05:30", endTime: "06:30" },
-  { date: "2026-09-06", time: "14:40", endTime: "15:20" },
-  { date: "2026-09-06", time: "22:30", endTime: "22:50" },
+  { date: "2026-09-06", time: "05:30", endTime: "07:00" },
+  { date: "2026-09-06", time: "21:30" },
+  { date: "2026-09-07", time: "06:30", endTime: "07:30" },
+  { date: "2026-09-07", time: "22:00", endTime: "23:00" },
   { date: "2026-09-08", time: "07:00", endTime: "08:00" },
   {
     date: "2026-09-09",
@@ -373,7 +374,7 @@ describe("2026-09-02 MISS CIRCLE 三次審査 NEWS + calendar", () => {
       EXPECTED_SLOTS.map((slot) => ({
         date: slot.date,
         startTime: slot.time,
-        endTime: slot.endTime,
+        endTime: slot.endTime ?? null,
         note: slot.note,
       })),
     );
@@ -478,15 +479,25 @@ describe("2026-09-02 MISS CIRCLE 三次審査 NEWS + calendar", () => {
   });
 
   it("aligns the shared clock with #131 contest end and the new review bounds", () => {
+    const snsStart = Date.parse("2026-09-07T12:00:00+09:00");
+    const snsEnd = Date.parse("2026-09-20T12:00:00+09:00");
+    const patonExStart = Date.parse("2026-09-16T18:00:00+09:00");
+    const patonExEnd = Date.parse("2026-09-22T23:59:00+09:00");
+    const vol2Start = Date.parse("2026-09-28T12:00:00+09:00");
     assert.equal(nextSupportEventBoundary(PATON_END + 1), SPOTLIGHT_DAY_START);
     assert.equal(nextSupportEventBoundary(SPOTLIGHT_DAY_START), SHOWROOM_START);
     assert.equal(nextDisplayStatusBoundary(missCircleThirdRoundShowroomReview.schedule, SHOWROOM_START - 1), SHOWROOM_START);
     assert.equal(nextSupportEventBoundary(SHOWROOM_START), WEB_START);
-    assert.equal(nextSupportEventBoundary(WEB_START), SHOWROOM_END + 1);
+    assert.equal(nextSupportEventBoundary(WEB_START), snsStart);
+    assert.equal(nextSupportEventBoundary(snsStart), SHOWROOM_END + 1);
     assert.equal(nextSupportEventBoundary(SHOWROOM_END + 1), WEB_END + 1);
     assert.equal(nextSupportEventBoundary(WEB_END + 1), CONTEST_END);
     assert.equal(nextSupportEventBoundary(CONTEST_END - 1), CONTEST_END);
-    assert.equal(nextSupportEventBoundary(CONTEST_END), null);
+    assert.equal(nextSupportEventBoundary(CONTEST_END), patonExStart);
+    assert.equal(nextSupportEventBoundary(patonExStart), snsEnd + 1);
+    assert.equal(nextSupportEventBoundary(snsEnd), snsEnd + 1);
+    assert.equal(nextSupportEventBoundary(snsEnd + 1), patonExEnd + 1);
+    assert.equal(nextSupportEventBoundary(patonExEnd + 1), vol2Start);
   });
 
   it("derives the vote start day from the Tokyo instant, not the timestamp text", () => {
@@ -520,9 +531,21 @@ describe("2026-09-02 MISS CIRCLE 三次審査 NEWS + calendar", () => {
     ]);
     assert.match(contestPhaseDisplayNote(contest.currentPhase), /3次審査（9\/3〜9\/13）/);
     assert.deepEqual(streamSchedule, EXPECTED_SLOTS);
-    assert.equal(
-      streamSchedule.some((slot) => slot.date === "2026-09-07"),
-      false,
+    assert.ok(
+      streamSchedule.some(
+        (slot) =>
+          slot.date === "2026-09-07" &&
+          slot.time === "06:30" &&
+          slot.endTime === "07:30",
+      ),
+    );
+    assert.ok(
+      streamSchedule.some(
+        (slot) =>
+          slot.date === "2026-09-07" &&
+          slot.time === "22:00" &&
+          slot.endTime === "23:00",
+      ),
     );
     assert.equal(
       streamSchedule.some((slot) => slot.date === "2026-09-10"),
@@ -594,7 +617,7 @@ describe("2026-09-02 MISS CIRCLE 三次審査 NEWS + calendar", () => {
     const adapted = adaptStreamSlots(streamSchedule);
     assert.deepEqual(
       adapted.map((item) => item.endTime),
-      EXPECTED_SLOTS.map((slot) => slot.endTime),
+      EXPECTED_SLOTS.map((slot) => slot.endTime ?? null),
     );
     assert.equal(adapted.every((item) => item.origin === "showroom-schedule"), true);
 

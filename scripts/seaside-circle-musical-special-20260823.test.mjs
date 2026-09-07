@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { withoutApprovedSongLinks } from "./approved-song-links.mjs";
 import { createHash } from "node:crypto";
 import { execFile } from "node:child_process";
 import { existsSync } from "node:fs";
@@ -414,7 +415,9 @@ describe("2026-08-23 seaside circle musical special — privacy and routing", ()
     for (const relative of published) {
       const text = await readFile(path.join(root, relative), "utf8");
       for (const pattern of forbidden) {
-        assert.equal(pattern.test(text), false, `${relative} ${pattern}`);
+        const checkedText = relative === "docs/CONTENT-OPS.md" && pattern === YOUTUBE_ARCHIVE_PATTERN
+          ? withoutApprovedSongLinks(text) : text;
+        assert.equal(pattern.test(checkedText), false, `${relative} ${pattern}`);
       }
       assert.equal(findDriveIds(text).length, 0, relative);
     }

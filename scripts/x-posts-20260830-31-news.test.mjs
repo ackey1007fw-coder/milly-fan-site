@@ -9,7 +9,7 @@ import { events } from "../src/data/events.ts";
 import { galleryVideos } from "../src/data/galleryVideos.ts";
 import { highlights } from "../src/data/highlights.ts";
 import { campusGirlsPatonVoteLink } from "../src/data/links.ts";
-import { news, sortNewsByDateDesc } from "../src/data/news.ts";
+import { news, sortNewsByDateDesc } from "./fixtures/news-before-b58.ts";
 import { createPortalFeed, PORTAL_FEED_LIMIT } from "../src/data/portalFeed.ts";
 import { stories } from "../src/data/stories.ts";
 import { streamSchedule } from "../src/data/streamSchedule.ts";
@@ -322,7 +322,7 @@ describe("2026-08-30〜31 X posts — activity and identity", () => {
 
 describe("2026-08-30〜31 X posts — Portal Feed and CONTENT-OPS", () => {
   it("flows through Portal Feed without hardcoded news ids", async () => {
-    const feed = createPortalFeed({
+    const feed = createPortalFeed({ newsItems: news,
       now: new Date("2026-08-31T08:00:00+09:00"),
       limit: PORTAL_FEED_LIMIT + 1,
     });

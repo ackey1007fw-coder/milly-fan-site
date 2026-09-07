@@ -63,7 +63,6 @@ describe("daily content-ops guide", () => {
     assert.match(mediaGuide, /src\/data\/media\.ts/);
     assert.match(mediaGuide, /SNSから自動取得しない|自動取得しない/);
     assert.match(mediaGuide, /AI 生成/);
-    assert.match(ops, /docs\/LIVE-STREAM-OPS\.md/);
 
     assert.match(gitignore, /media\/original\/\*/);
     assert.match(gitignore, /!media\/original\/README\.md/);

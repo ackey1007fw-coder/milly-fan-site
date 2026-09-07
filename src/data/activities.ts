@@ -100,6 +100,7 @@ export const activities: Activity[] = [
     relatedSocialIds: [],
     relatedLinkIds: [],
     relatedHighlightIds: [
+      "campus-girls-2027-prelim-final-result",
       "campus-girls-2027-second-stage-jury-award",
       "campus-girls-2027-jury-award",
     ],

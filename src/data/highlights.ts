@@ -12,6 +12,14 @@ export type Highlight = {
 
 export const highlights: Highlight[] = [
   {
+    id: "campus-girls-2027-prelim-final-result",
+    year: 2026,
+    dateLabel: "2026年9月6日",
+    title: "CAMPUS GIRLS 2027 予選ファイナル 審査員賞・本戦進出",
+    body: "予選ファイナルで総合審査員賞、面接審査1位、Paton投票審査2位を報告し、本戦進出が決まりました。",
+    source: "https://x.com/mily_chan36/status/2096422147476627841",
+  },
+  {
     id: "campus-girls-2027-second-stage-jury-award",
     year: 2026,
     dateLabel: "2026年8月22日",

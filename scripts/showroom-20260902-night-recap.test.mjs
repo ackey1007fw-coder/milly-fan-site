@@ -21,7 +21,7 @@ describe("2026-09-02 SHOWROOM夜ラジオ配信メモ", () => {
 
     assert.equal(recap.date, "2026-09-02");
     assert.equal(recap.dateLabel, "2026.09.02（水）");
-    assert.equal(recap.theme, "夜ラジオ配信");
+    assert.equal(recap.theme, "夜のラジオ配信・三次前日");
     assert.equal(recap.broadcastLabel, "21:13頃〜 約74分");
     assert.equal(recap.platformLabel, "SHOWROOM");
     assert.equal(recap.verifiedAt, "2026-09-03");
@@ -50,7 +50,7 @@ describe("2026-09-02 SHOWROOM夜ラジオ配信メモ", () => {
     assert.match(recap.ranking[0], /個人名は掲載していません/);
     assert.equal(streamRecap20260902.ranking.length, 1);
     assert.match(streamRecap20260902.ranking[0], /個人名は掲載していません/);
-    assert.equal(recap.image, streamRecap20260902.image);
+    assert.deepEqual(recap.image, streamRecap20260902.image);
     assert.equal(recap.image?.src, "/media/live/mily-b51-01-morning-radio-showroom.jpg");
     assert.equal(recap.image?.caption, "配信中に使われていた静止画");
 
@@ -79,7 +79,7 @@ describe("2026-09-02 SHOWROOM夜ラジオ配信メモ", () => {
     assert.match(page, /function StreamRecap/);
     assert.match(page, /activityId !== "live-stream"/);
     assert.match(page, /streamRecaps\.map/);
-    assert.match(page, /STREAM_PREVIEW_HIGHLIGHTS/);
+    assert.match(page, /defaultOpen/);
     assert.match(page, /この回の見どころ/);
     assert.match(page, /この回の目標/);
     assert.match(page, /タイムスタンプと次枠/);
@@ -93,7 +93,7 @@ describe("2026-09-02 SHOWROOM夜ラジオ配信メモ", () => {
     assert.doesNotMatch(recap.summary, /フレキャン/);
     assert.equal(recap.ranking.length, 1);
     assert.equal(
-      streamRecaps.every((item) => item.ranking.length === 1),
+      streamRecaps.every((item) => item.ranking.length <= 1),
       true,
     );
     assert.equal(

@@ -110,7 +110,8 @@ describe("2026-08-27 movie-night Instagram post — NEWS", () => {
 describe("2026-08-27 movie-night Instagram post — Gallery", () => {
   it("publishes exactly the five approved local photos with confirmed provenance", () => {
     assert.deepEqual(verifyMedia(media), []);
-    assert.deepEqual(media.slice(0, 5), [...movieNightPhotos]);
+    assert.equal(media[0].id, "mily-b63-01");
+    assert.deepEqual(media.slice(1, 6), [...movieNightPhotos]);
 
     for (const item of movieNightPhotos) {
       assert.equal(item.kind, "photo");

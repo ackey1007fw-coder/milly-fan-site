@@ -226,7 +226,7 @@ describe("2026-08-26 GirlsAward SHOWROOM 6th-place X post — self-hosted photo"
     const gallery = media.find((entry) => entry.id === "mily-b28-01");
 
     assert.equal(gallery, girlsawardShowroomSixthPhoto);
-    assert.equal(visible[9], girlsawardShowroomSixthPhoto);
+    assert.equal(visible[10], girlsawardShowroomSixthPhoto);
     assert.equal(gallery.kind, "photo");
     assert.equal(gallery.published, true);
     assert.equal(gallery.provenance, "sns-post");
@@ -239,7 +239,7 @@ describe("2026-08-26 GirlsAward SHOWROOM 6th-place X post — self-hosted photo"
     assert.equal(gallery.aspect, "1156 / 2048");
     assert.notEqual(gallery.featured, true);
     assert.equal(featuredPhoto(media)?.id, "mily-b01-03");
-    assert.equal(media.filter((entry) => entry.kind === "photo").length, 32);
+    assert.equal(media.filter((entry) => entry.kind === "photo").length, 33);
     assert.deepEqual(verifyMedia(media), []);
 
     const jpg480 = publicFile(`${GALLERY_BASE}-480.jpg`);

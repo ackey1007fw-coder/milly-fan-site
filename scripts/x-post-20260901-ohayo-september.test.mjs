@@ -5,11 +5,11 @@ import { describe, it } from "node:test";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { events } from "../src/data/events.ts";
-import { galleryVideos } from "../src/data/galleryVideos.ts";
+import { galleryVideos } from "./fixtures/gallery-videos-before-b58.ts";
 import { highlights } from "../src/data/highlights.ts";
 import { media } from "../src/data/media.ts";
 import { isMixchMovie } from "../src/data/mixchMovies.ts";
-import { news, sortNewsByDateDesc } from "../src/data/news.ts";
+import { news, sortNewsByDateDesc } from "./fixtures/news-before-b58.ts";
 import { ohayoSeptemberXVideo } from "../src/data/ohayoSeptemberXVideo.ts";
 import { createPortalFeed } from "../src/data/portalFeed.ts";
 import { septemberMilyStoryVideo } from "../src/data/septemberMilyStoryVideo.ts";
@@ -290,7 +290,7 @@ describe("2026-09-01 X おはよ〜 今日から9月ー — scope and identity",
 
 describe("2026-09-01 X おはよ〜 今日から9月ー — Portal Feed and CONTENT-OPS", () => {
   it("flows through Portal Feed with the X source and shared poster", async () => {
-    const feed = createPortalFeed({ now: new Date("2026-09-01T09:20:00+09:00") });
+    const feed = createPortalFeed({ newsItems: news, now: new Date("2026-09-01T09:20:00+09:00") });
     const entry = findFeedItem(feed, portalNewsId(NEWS_ID));
 
     assertPortalNewsFollowsSort(feed, news);

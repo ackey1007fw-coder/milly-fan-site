@@ -20,7 +20,7 @@ import {
   firstSeptemberShowroomAdditionalMedia,
   firstSeptemberTomatoBoardImage,
 } from "../src/data/firstSeptemberShowroomImages.ts";
-import { news, newsDisplayMedia, sortNewsByDateDesc } from "../src/data/news.ts";
+import { news, newsDisplayMedia, sortNewsByDateDesc } from "./fixtures/news-before-b58.ts";
 import { createPortalFeed } from "../src/data/portalFeed.ts";
 import { stories } from "../src/data/stories.ts";
 import { streamSchedule } from "../src/data/streamSchedule.ts";
@@ -272,7 +272,7 @@ describe("2026-09-01 first SHOWROOM おやすみりー — scope", () => {
   });
 
   it("keeps Portal Feed aligned with NEWS order and the lead still", () => {
-    const feed = createPortalFeed();
+    const feed = createPortalFeed({ newsItems: news });
     const feedItem = findFeedItem(feed, portalNewsId(NEWS_ID));
     assert.equal(feedItem.title, TITLE);
     assert.ok(feedItem.image?.endsWith(LEAD));

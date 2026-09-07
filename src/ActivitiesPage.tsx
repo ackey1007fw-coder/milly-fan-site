@@ -1,4 +1,4 @@
-import { type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { radioProgram } from "../shared/radio-program.js";
 import { ExternalLink } from "./components/ExternalLink";
 import { Footer } from "./components/Footer";
@@ -46,8 +46,6 @@ const primaryCta =
   "inline-flex min-h-11 items-center justify-center rounded-full bg-sage px-5 py-2.5 text-sm font-semibold text-white hover:bg-sage-deep";
 const secondaryCta =
   "inline-flex min-h-11 items-center justify-center rounded-full border border-sage/25 bg-paper px-4 py-2.5 text-sm font-semibold text-sage-deep hover:bg-sage-soft";
-
-const STREAM_PREVIEW_HIGHLIGHTS = 3;
 
 function formatDate(value: string): string {
   return value.replace(/-/g, ".");
@@ -141,8 +139,8 @@ function HubLiveStatus() {
           : status.value
       }
       note={
-        status.slot && !status.slot.endTime
-          ? "終了時刻は確認できていません。"
+        status.slot
+          ? [status.slot.note, !status.slot.endTime ? "終了時刻は確認できていません。" : null].filter(Boolean).join(" / ") || undefined
           : undefined
       }
     />
@@ -497,12 +495,13 @@ function StreamRecap({ activityId }: { activityId: ActivityId }) {
   return (
     <SectionShell eyebrow="Stream Archive" title="配信メモ">
       <p className="mt-4 text-sm leading-7 text-ink-muted">
-        どの回も同じカード構造で、代表カットと3つの見どころを先に表示します。カードを開くと、追加の見どころ・スクショ・目標・タイムスタンプを確認できます。
+        新しい回を上に置いています。どの回も同じ並び（見どころ → スクショ → 目標 →
+        ランキング → タイムスタンプと次枠 → 出典）で書いています。スクショは写真のある回だけです。閉じても日付と一言は残り、画像がある回は静止画も残します。
       </p>
       <ul className="mt-6 space-y-4">
-        {streamRecaps.map((recap) => (
+        {streamRecaps.map((recap, index) => (
           <li key={recap.id}>
-            <StreamRecapArticle recap={recap} />
+            <StreamRecapArticle recap={recap} defaultOpen={index === 0} />
           </li>
         ))}
       </ul>
@@ -510,226 +509,253 @@ function StreamRecap({ activityId }: { activityId: ActivityId }) {
   );
 }
 
-function StreamRecapHighlightItem({
-  highlight,
+function StreamRecapSection({
+  title,
+  id,
+  note,
+  children,
 }: {
-  highlight: StreamRecapData["highlights"][number];
+  title: string;
+  id?: string;
+  note?: string;
+  children: ReactNode;
 }) {
   return (
-    <li className="rounded-2xl border border-sage/15 bg-paper px-4 py-3">
-      <div className="flex gap-3">
-        <span className="shrink-0 pt-0.5 text-xs font-semibold tabular-nums text-sage-deep">
-          {highlight.timestamp}
-        </span>
-        <div className="min-w-0">
-          <h4 className="text-sm font-bold leading-6 text-ink">{highlight.title}</h4>
-          <p className="mt-1 text-sm leading-6 text-ink-muted">{highlight.body}</p>
-          {highlight.quote ? (
-            <blockquote className="mt-2 border-l-2 border-apricot pl-3 text-sm font-medium leading-6 text-ink">
-              {highlight.quote}
-            </blockquote>
-          ) : null}
-        </div>
-      </div>
-    </li>
+    <section aria-labelledby={id} className="mt-6">
+      <h4 id={id} className="text-sm font-bold text-ink">
+        {title}
+      </h4>
+      {note ? (
+        <p className="mt-2 text-sm leading-6 text-ink-muted">{note}</p>
+      ) : null}
+      {children}
+    </section>
   );
 }
 
-function StreamRecapArticle({ recap }: { recap: StreamRecapData }) {
-  const rankingId = `${recap.id}-ranking`;
-  const hasNamedRanking = recap.ranking.some((entry) => /^\d+\s/.test(entry));
-  const previewHighlights = recap.highlights.slice(0, STREAM_PREVIEW_HIGHLIGHTS);
-  const detailHighlights = recap.highlights.slice(STREAM_PREVIEW_HIGHLIGHTS);
+function StreamRecapArticle({
+  recap,
+  defaultOpen,
+}: {
+  recap: StreamRecapData;
+  defaultOpen: boolean;
+}) {
+  const [open, setOpen] = useState(defaultOpen);
 
   return (
-    <details className="group overflow-hidden rounded-3xl border border-sage/20 bg-paper-card shadow-card">
+    <details
+      className="group rounded-3xl border border-sage/20 bg-paper-card p-5 shadow-card open:shadow-card sm:p-6"
+      open={open}
+      onToggle={(event) => {
+        const next = event.currentTarget.open;
+        if (next !== open) setOpen(next);
+      }}
+    >
       <summary className="cursor-pointer list-none focus:outline-none focus-visible:ring-2 focus-visible:ring-sage [&::-webkit-details-marker]:hidden">
-        <div className="grid gap-5 p-5 sm:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] sm:p-6">
-          {recap.image ? (
-            <figure className="min-w-0 overflow-hidden rounded-2xl">
-              <div className="flex aspect-video items-center justify-center overflow-hidden rounded-2xl bg-sage-soft/40 p-2">
-                <img
-                  src={recap.image.src}
-                  width={recap.image.width}
-                  height={recap.image.height}
-                  alt={recap.image.alt}
-                  className="max-h-full max-w-full object-contain"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              {recap.image.caption ? (
-                <figcaption className="px-1 pt-2 text-xs leading-5 text-ink-muted">
-                  {recap.image.caption}
-                </figcaption>
-              ) : null}
-            </figure>
-          ) : null}
-
-          <div className="min-w-0">
-            <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-sage-deep">
-              <span>{recap.dateLabel}</span>
-              <span className="rounded-full bg-sage-soft px-3 py-1">{recap.platformLabel}</span>
-              <span className="rounded-full bg-sage-soft px-3 py-1">{recap.broadcastLabel}</span>
-            </div>
-            <h3 className="mt-3 text-xl font-bold text-ink sm:text-2xl">{recap.theme}</h3>
-            <p className="mt-3 text-sm leading-7 text-ink-muted">{recap.summary}</p>
-
-            <div className="mt-5">
-              <p className="text-xs font-bold uppercase tracking-[0.14em] text-sage-deep">
-                この回の見どころ
-              </p>
-              <ol className="mt-3 space-y-2">
-                {previewHighlights.map((highlight) => (
-                  <StreamRecapHighlightItem
-                    key={highlight.timestamp + highlight.title}
-                    highlight={highlight}
-                  />
-                ))}
-              </ol>
-            </div>
-
-            <span className="mt-5 inline-flex min-h-10 items-center gap-2 rounded-full border border-sage/25 px-4 py-2 text-sm font-semibold text-sage-deep transition group-open:bg-sage-soft">
-              <span className="group-open:hidden">詳しく見る</span>
-              <span className="hidden group-open:inline">閉じる</span>
-              <span aria-hidden="true" className="text-base leading-none transition group-open:rotate-180">
-                ↓
-              </span>
-            </span>
-          </div>
+        <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-sage-deep">
+          <span>{recap.dateLabel}</span>
+          <span className="rounded-full bg-sage-soft px-3 py-1">{recap.platformLabel}</span>
+          <span className="rounded-full bg-sage-soft px-3 py-1">{recap.broadcastLabel}</span>
+          <span className="ml-auto text-[11px] font-semibold text-sage-deep">
+            <span className="group-open:hidden">開く</span>
+            <span className="hidden group-open:inline">閉じる</span>
+          </span>
         </div>
+        <h3 className="mt-3 text-xl font-bold text-ink sm:text-2xl">{recap.theme}</h3>
+        <p className="mt-3 text-sm leading-7 text-ink-muted">{recap.summary}</p>
+        {recap.image ? (
+          <figure className="mx-auto mt-4 max-w-[640px] overflow-hidden rounded-2xl bg-sage-soft/40">
+            <div className="flex aspect-[16/9] items-center justify-center">
+              <img
+                src={recap.image.src}
+                width={recap.image.width}
+                height={recap.image.height}
+                alt={recap.image.alt}
+                className="max-h-full max-w-full object-contain"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            {recap.image.caption ? (
+              <figcaption className="px-3 py-2 text-xs leading-5 text-ink-muted">
+                {recap.image.caption}
+              </figcaption>
+            ) : null}
+          </figure>
+        ) : null}
       </summary>
 
-      <div className="border-t border-sage/15 bg-sage-soft/10 p-5 sm:p-6">
-        {detailHighlights.length > 0 ? (
-          <section aria-labelledby={`${recap.id}-additional-highlights`}>
-            <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <h4 id={`${recap.id}-additional-highlights`} className="text-sm font-bold text-ink">
-                追加の見どころ
-              </h4>
-              <span className="text-xs text-ink-muted">全{recap.highlights.length}件</span>
-            </div>
-            <ol className="mt-3 space-y-2">
-              {detailHighlights.map((highlight) => (
-                <StreamRecapHighlightItem
-                  key={highlight.timestamp + highlight.title}
-                  highlight={highlight}
-                />
-              ))}
-            </ol>
-          </section>
-        ) : null}
-
-        {recap.gallery && recap.gallery.length > 0 ? (
-          <section className="mt-6" aria-labelledby={`${recap.id}-stills`}>
-            <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <h4 id={`${recap.id}-stills`} className="text-sm font-bold text-ink">
-                この回のスクショ
-              </h4>
-              <span className="text-xs text-ink-muted">保存用 {recap.gallery.length}枚</span>
-            </div>
-            <p className="mt-2 text-sm leading-6 text-ink-muted">
-              コメントや他の方の表示を外した実フレームです。各写真またはZIPで保存できます。
-            </p>
-            <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-5">
-              {recap.gallery.map((still) => (
-                <li key={still.src} className="overflow-hidden rounded-2xl border border-sage/15 bg-paper">
-                  <figure>
-                    <div className="flex aspect-[4/3] items-center justify-center bg-sage-soft/40 p-1">
-                      <img
-                        src={still.src}
-                        width={still.width}
-                        height={still.height}
-                        alt={still.alt}
-                        className="max-h-full max-w-full object-contain"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                    <figcaption className="flex min-h-11 flex-col gap-1 px-2 py-2">
-                      <span className="text-[11px] leading-4 text-ink-muted">{still.caption}</span>
+      {recap.songs && recap.songs.length > 0 ? (
+        <StreamRecapSection
+          title="この回に歌った曲"
+          id={`${recap.id}-songs`}
+          note="「原曲を聴く」は原曲の公式動画、「カラオケで歌う」は参考伴奏です。みりぃの歌唱映像ではありません。時刻は録画内の目安です。"
+        >
+          <ol className="mt-3 space-y-3">
+            {recap.songs.map((song, index) => (
+              <li
+                key={`${song.timestamp}-${song.title}`}
+                className="flex gap-3 rounded-2xl border border-sage/15 bg-sage-soft/30 p-4"
+              >
+                <span
+                  aria-hidden="true"
+                  className="pt-0.5 text-xs font-semibold tabular-nums text-sage-deep"
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div className="min-w-0 flex-1">
+                  <p className="break-words text-sm font-bold leading-relaxed text-ink">
+                    {song.title}
+                  </p>
+                  <p className="mt-1 break-words text-sm leading-6 text-ink-muted">
+                    {song.artist}
+                  </p>
+                  <p className="mt-1 text-xs tabular-nums text-ink-muted">
+                    {song.timestamp}頃〜
+                  </p>
+                  <a
+                    href={song.youtubeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-sage-deep underline underline-offset-4"
+                    aria-label={`${song.title} — 原曲の公式動画をYouTubeで聴く（新しいタブ）`}
+                  >
+                    YouTubeで原曲を聴く ↗
+                  </a>
+                  {song.karaoke ? (
+                    <div className="mt-1">
                       <a
-                        href={still.src}
-                        download={still.downloadName ?? still.src.split("/").pop()}
-                        className="inline-flex min-h-11 items-center text-xs font-semibold text-sage-deep underline-offset-2 hover:underline"
+                        href={song.karaoke.youtubeUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex min-h-11 items-center text-sm font-semibold text-sage-deep underline underline-offset-4"
+                        aria-label={`${song.title} — カラオケの参考動画をYouTubeで開く（新しいタブ）`}
                       >
-                        保存
+                        カラオケで歌う ↗
                       </a>
-                    </figcaption>
-                  </figure>
-                </li>
-              ))}
-            </ul>
-            {recap.galleryZip ? (
-              <p className="mt-4">
-                <a
-                  href={recap.galleryZip.src}
-                  download={recap.galleryZip.filename}
-                  className="inline-flex min-h-11 items-center rounded-full bg-sage px-4 py-2 text-sm font-semibold text-white hover:bg-sage-deep"
-                >
-                  {recap.galleryZip.label}
-                </a>
-              </p>
-            ) : null}
-          </section>
-        ) : null}
+                      <p className="break-words text-xs leading-5 text-ink-muted">
+                        {song.karaoke.channel}の参考伴奏（ガイドメロディなし）
+                      </p>
+                      <p className="text-xs leading-5 text-ink-muted">
+                        練習用の参考リンクです。配信での使用音源は未確認です。
+                      </p>
+                    </div>
+                  ) : null}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </StreamRecapSection>
+      ) : null}
 
-        {recap.goals.length > 0 ? (
-          <section className="mt-6" aria-labelledby={`${recap.id}-goals`}>
-            <h4 id={`${recap.id}-goals`} className="text-sm font-bold text-ink">
-              この回の目標
-            </h4>
-            <ul className="mt-3 flex flex-wrap gap-2">
-              {recap.goals.map((goal) => (
-                <li
-                  key={goal.item}
-                  className="rounded-full border border-sage/15 bg-paper px-3 py-1.5 text-xs leading-5 text-ink"
-                >
-                  <span className="font-semibold">{goal.item}</span>
-                  <span className="text-ink-muted">
-                    {" "}
-                    {goal.statusThen} / {goal.target}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ) : null}
-
-        {recap.ranking.length > 0 ? (
-          <section aria-labelledby={rankingId} className="mt-6">
-            <h4 id={rankingId} className="text-sm font-bold text-ink">
-              読み上げたランキング
-            </h4>
-            {hasNamedRanking ? (
-              <>
-                <p className="mt-2 text-sm leading-6 text-ink-muted">
-                  配信終了時に、下から読み上げた順です。
+      {recap.highlights.length > 0 ? (
+        <StreamRecapSection title="この回の見どころ" id={`${recap.id}-highlights`}>
+          <ul className="mt-3 space-y-3">
+            {recap.highlights.map((highlight) => (
+              <li
+                key={highlight.timestamp + highlight.title}
+                className="rounded-2xl border border-sage/15 bg-sage-soft/30 p-4"
+              >
+                <p className="text-xs font-semibold tabular-nums text-sage-deep">
+                  {highlight.timestamp}
                 </p>
-                <ul className="mt-4 space-y-2">
-                  {recap.ranking.map((entry) => (
-                    <li
-                      key={entry}
-                      className="rounded-xl border border-sage/15 bg-paper px-4 py-2 text-sm leading-7 text-ink"
-                    >
-                      {entry}
-                    </li>
-                  ))}
-                </ul>
-              </>
-            ) : (
-              <p className="mt-4 rounded-2xl border border-sage/15 bg-paper p-4 text-sm leading-7 text-ink-muted">
-                {recap.ranking[0]}
-              </p>
-            )}
-          </section>
-        ) : null}
+                <h5 className="mt-1 text-sm font-bold leading-relaxed text-ink">
+                  {highlight.title}
+                </h5>
+                <p className="mt-2 text-sm leading-6 text-ink-muted">{highlight.body}</p>
+                {highlight.quote ? (
+                  <blockquote className="mt-3 border-l-2 border-apricot pl-3 text-sm font-medium leading-6 text-ink">
+                    {highlight.quote}
+                  </blockquote>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </StreamRecapSection>
+      ) : null}
 
-        <div className="mt-6 rounded-2xl border border-sage/15 bg-paper px-4 py-3">
-          <details>
-            <summary className="cursor-pointer text-sm font-bold text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-sage">
-              タイムスタンプと次枠
-            </summary>
+      {recap.gallery && recap.gallery.length > 0 ? (
+        <StreamRecapSection
+          title="この回のスクショ"
+          id={`${recap.id}-stills`}
+          note={`かわいいカットを${recap.gallery.length}枚。コメントや他の方の表示は外してあります。各写真を保存できます。`}
+        >
+          <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-5">
+            {recap.gallery.map((still) => (
+              <li key={still.src}>
+                <figure className="overflow-hidden rounded-2xl bg-sage-soft/40">
+                  <img
+                    src={still.src}
+                    width={still.width}
+                    height={still.height}
+                    alt={still.alt}
+                    className="h-auto w-full object-contain"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption className="flex min-h-11 flex-col gap-1 px-2 py-2">
+                    <span className="text-[11px] leading-4 text-ink-muted">{still.caption}</span>
+                    <a
+                      href={still.src}
+                      download={still.downloadName ?? still.src.split("/").pop()}
+                      className="inline-flex min-h-11 items-center text-xs font-semibold text-sage-deep underline-offset-2 hover:underline"
+                    >
+                      保存
+                    </a>
+                  </figcaption>
+                </figure>
+              </li>
+            ))}
+          </ul>
+          {recap.galleryZip ? (
+            <p className="mt-4">
+              <a
+                href={recap.galleryZip.src}
+                download={recap.galleryZip.filename}
+                className="inline-flex min-h-11 items-center rounded-full bg-sage px-4 py-2 text-sm font-semibold text-white hover:bg-sage-deep"
+              >
+                {recap.galleryZip.label}
+              </a>
+            </p>
+          ) : null}
+        </StreamRecapSection>
+      ) : null}
+
+      {recap.goals.length > 0 ? (
+        <StreamRecapSection title="この回の目標" id={`${recap.id}-goals`}>
+          <ul className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
+            {recap.goals.map((goal) => (
+              <li
+                key={goal.item}
+                className="rounded-2xl border border-sage/15 bg-sage-soft/50 px-3 py-2 text-xs leading-5"
+              >
+                <span className="block font-semibold text-ink">{goal.item}</span>
+                <span className="mt-1 block text-ink-muted">目標 {goal.target}</span>
+                <span className="block text-ink-muted">この回 {goal.statusThen}</span>
+              </li>
+            ))}
+          </ul>
+        </StreamRecapSection>
+      ) : null}
+
+      {recap.ranking.length > 0 ? (
+        <StreamRecapSection title="読み上げたランキング" id={`${recap.id}-ranking`}>
+          <div className="mt-3 rounded-2xl border border-sage/15 bg-sage-soft/35 p-4">
+            {recap.ranking.map((entry) => (
+              <p key={entry} className="text-sm leading-7 text-ink-muted">
+                {entry}
+              </p>
+            ))}
+          </div>
+        </StreamRecapSection>
+      ) : null}
+
+      {recap.timeline.length > 0 || recap.nextNote ? (
+        <details className="mt-6 rounded-2xl border border-sage/15 bg-paper px-4 py-3">
+          <summary className="cursor-pointer text-sm font-bold text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-sage">
+            タイムスタンプと次枠
+          </summary>
+          {recap.timeline.length > 0 ? (
             <ol className="mt-3 space-y-2">
               {recap.timeline.map((item) => (
                 <li key={item.timestamp} className="flex gap-3 text-sm leading-6">
@@ -740,13 +766,18 @@ function StreamRecapArticle({ recap }: { recap: StreamRecapData }) {
                 </li>
               ))}
             </ol>
+          ) : null}
+          {recap.nextNote ? (
             <p className="mt-3 text-sm leading-6 text-ink-muted">{recap.nextNote}</p>
-          </details>
-          <p className="mt-4 text-xs leading-5 text-ink-muted">
-            出典: {recap.sourceLabel} · {formatDate(recap.verifiedAt)}確認
-          </p>
-        </div>
-        <p className="mt-4 text-xs leading-5 text-ink-muted">{recap.transcriptionNote}</p>
+          ) : null}
+        </details>
+      ) : null}
+
+      <div className="mt-4 rounded-2xl border border-sage/15 bg-paper px-4 py-3">
+        <p className="text-xs leading-5 text-ink-muted">
+          出典: {recap.sourceLabel} · {formatDate(recap.verifiedAt)}確認
+        </p>
+        <p className="mt-2 text-xs leading-5 text-ink-muted">{recap.transcriptionNote}</p>
       </div>
     </details>
   );
@@ -779,8 +810,8 @@ function LiveCurrent() {
             label={status.label}
             value={value}
             note={
-              status.slot && !status.slot.endTime
-                ? "終了時刻は確認できていません。"
+              status.slot
+                ? [status.slot.note, !status.slot.endTime ? "終了時刻は確認できていません。" : null].filter(Boolean).join(" / ") || undefined
                 : undefined
             }
           />
@@ -961,43 +992,36 @@ function ActivityMedia({ items }: { items: ActivityMediaItem[] }) {
           const key = activityMediaKey(media);
           const caption = mediaCaption(media);
           return (
-            <li key={key} className="overflow-hidden rounded-3xl border border-sage/15 bg-paper-card shadow-card">
-              <div className="flex aspect-[4/3] items-center justify-center overflow-hidden bg-sage-soft/35 p-2 sm:p-3">
-                {media.kind === "video" ? (
-                  <video
-                    src={media.src}
-                    poster={media.poster}
-                    width={media.width}
-                    height={media.height}
-                    controls
-                    playsInline
-                    preload="none"
-                    aria-label={mediaLabel(media)}
-                    className="max-h-full max-w-full rounded-2xl object-contain focus:outline-none focus-visible:ring-2 focus-visible:ring-sage"
-                  />
-                ) : isNewsImageMedia(media) ? (
-                  <NewsImage
-                    media={media}
-                    className="max-h-full max-w-full rounded-2xl object-contain"
-                  />
-                ) : (
-                  <img
-                    src={media.src}
-                    width={media.width}
-                    height={media.height}
-                    alt={media.alt}
-                    loading="lazy"
-                    decoding="async"
-                    className="max-h-full max-w-full rounded-2xl object-contain"
-                  />
-                )}
-              </div>
-              <div className="border-t border-sage/10 px-4 py-3">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-sage-deep">
-                  {media.kind === "video" ? "Video" : "Photo"}
-                </p>
-                {caption ? <p className="mt-1 text-sm leading-6 text-ink-muted">{caption}</p> : null}
-              </div>
+            <li key={key} className="overflow-hidden rounded-2xl border border-sage/15 bg-paper-card p-2 shadow-card">
+              {media.kind === "video" ? (
+                <video
+                  src={media.src}
+                  poster={media.poster}
+                  width={media.width}
+                  height={media.height}
+                  controls
+                  playsInline
+                  preload="none"
+                  aria-label={mediaLabel(media)}
+                  className="mx-auto aspect-[9/16] max-h-[70vh] w-full rounded-xl bg-sage-soft object-contain focus:outline-none focus-visible:ring-2 focus-visible:ring-sage"
+                />
+              ) : isNewsImageMedia(media) ? (
+                <NewsImage
+                  media={media}
+                  className="max-h-[42rem] w-full rounded-xl bg-sage-soft/30 object-contain"
+                />
+              ) : (
+                <img
+                  src={media.src}
+                  width={media.width}
+                  height={media.height}
+                  alt={media.alt}
+                  loading="lazy"
+                  decoding="async"
+                  className="max-h-[42rem] w-full rounded-xl bg-sage-soft/30 object-contain"
+                />
+              )}
+              {caption ? <p className="px-3 pb-2 pt-3 text-xs leading-6 text-ink-muted">{caption}</p> : null}
             </li>
           );
         })}

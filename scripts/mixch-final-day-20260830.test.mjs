@@ -12,7 +12,7 @@ import {
   mixchConfidenceMessageMovie,
   visibleGalleryVideos,
 } from "../src/data/galleryVideos.ts";
-import { news, newsDisplayMedia, sortNewsByDateDesc } from "../src/data/news.ts";
+import { news, newsDisplayMedia, sortNewsByDateDesc } from "./fixtures/news-before-b58.ts";
 import { createPortalFeed } from "../src/data/portalFeed.ts";
 import { streamSchedule } from "../src/data/streamSchedule.ts";
 import { selectActivityMedia } from "../src/lib/activityMedia.ts";
@@ -140,7 +140,7 @@ describe("2026-08-30 Mixch final-day NEWS", () => {
 
   it("appears on CAMPUS GIRLS and is derived into the Portal Feed without a local image", () => {
     const selected = selectActivityNews("campus-girls", news, news.length);
-    const feed = createPortalFeed();
+    const feed = createPortalFeed({ newsItems: news });
     const feedItem = feed.items.find(
       (candidate) => candidate.id === `mily:news:${NEWS_ID}`,
     );

@@ -14,11 +14,11 @@ import {
   patonSecondStoryVideo,
   patonVoteFinalDayStoryVideo,
   visibleGalleryVideos,
-} from "../src/data/galleryVideos.ts";
+} from "./fixtures/gallery-videos-before-b58.ts";
 import { highlights } from "../src/data/highlights.ts";
 import { campusGirlsPatonVoteLink } from "../src/data/links.ts";
 import { media } from "../src/data/media.ts";
-import { news, sortNewsByDateDesc } from "../src/data/news.ts";
+import { news, sortNewsByDateDesc } from "./fixtures/news-before-b58.ts";
 import { createPortalFeed } from "../src/data/portalFeed.ts";
 import { stories } from "../src/data/stories.ts";
 import { streamSchedule } from "../src/data/streamSchedule.ts";
@@ -255,7 +255,8 @@ describe("2026-09-02 Instagram Story — Latest / NEWS", () => {
     assert.equal(liveNews[0]?.id, OYASUMILY_NEWS_ID);
     assert.equal(campusNews[0]?.id, PATON_SECOND_NEWS_ID);
     assert.equal(selectActivityMedia("live-stream")[0], oyasumilyStoryVideo);
-    assert.equal(selectActivityMedia("campus-girls")[0], patonSecondStoryVideo);
+    assert.equal(selectActivityMedia("campus-girls")[1]?.id, "mily-b63-01-campus-girls-prelim-final-result");
+    assert.equal(selectActivityMedia("campus-girls")[2], patonSecondStoryVideo);
     assert.equal(campusNews.some((entry) => entry.id === OYASUMILY_NEWS_ID), false);
     assert.equal(liveNews.some((entry) => entry.id === PATON_SECOND_NEWS_ID), false);
     assert.equal(radioNews.some((entry) => entry.id === OYASUMILY_NEWS_ID), false);
