@@ -1,0 +1,62 @@
+import type { StreamRecap } from "./streamRecaps.ts";
+import { AUTO_TRANSCRIPT_MATERIAL_NOTE, buildTranscriptionNote, RANKING_NOTE } from "./streamRecapRules.ts";
+
+const radioStill = {
+  src: "/media/live/mily-b78-01-day-radio-still.jpg",
+  width: 640,
+  height: 360,
+  alt: "チュロスとポップコーンを手にしたみりぃ。8月27日昼のラジオ形式配信で表示された写真",
+  caption: "0:05:00 ラジオ形式の配信で表示された写真",
+  downloadName: "2026-08-27-day-01-r1401-t00h05m00s.jpg",
+};
+
+export const streamRecap20260827Day: StreamRecap = {
+  id: "2026-08-27-day-showroom",
+  date: "2026-08-27",
+  dateLabel: "2026.08.27（木）",
+  theme: "昼のラジオ・声と会話",
+  broadcastLabel: "14:01頃〜 約120分",
+  platformLabel: "SHOWROOM",
+  summary: "チュロスを持った写真を表示しながら、ラジオ形式で約2時間。吹奏楽を始めたきっかけや、話し方を磨く努力を語り、声や会話を好きと言ってもらえる喜びを伝えました。",
+  highlights: [
+    { timestamp: "0:03:47", title: "元気をチャージできる場所に", body: "みんなを元気にしたいという気持ちで配信していると話しました。初めて来た人にも、また元気をチャージしに来てほしいと呼びかけました。" },
+    { timestamp: "0:12:53", title: "自分の可能性を広げたい", body: "アナウンスを学びながら、いろいろな可能性を開拓したいと話しました。自分をもっと信じられるようになりたいと、模索している気持ちを伝えました。" },
+    { timestamp: "0:17:03", title: "コメントを拾う努力", body: "配信を始めた頃はコメントを読み忘れることもあったため、一つずつ拾うよう頑張っていると話しました。会話へ参加してもらえることを喜びました。" },
+    { timestamp: "0:29:55", title: "フォロワー250人へ", body: "フォロワーが245人になったと報告し、250人を目指していると呼びかけました。終盤には247人になったと伝え、再訪を楽しみにしていました。" },
+    { timestamp: "0:38:06", title: "吹奏楽に飛び込んだ理由", body: "水泳や新体操を経験した後、中学で吹奏楽を始めたと振り返りました。今しかできない経験を大事にしたくて挑戦し、高校でも続けてキャプテンを務めたと話しました。" },
+    { timestamp: "1:13:37", title: "声を好きと言われる喜び", body: "自分の声は好きではなかったものの、皆さんから好き、聞き心地がよいと言ってもらえて嬉しいと話しました。ラジオを録って聞き直すことも勉強になっていたのかと振り返りました。" },
+    { timestamp: "1:25:37", title: "初めてのコメントも歓迎", body: "挨拶してくれた人のことも覚えていると話しました。初めてでも輪に入りやすいようにしたいと伝え、緊張しながらでもコメントしてみてほしいと呼びかけました。" },
+    { timestamp: "1:55:40", title: "夜23時にまた", body: "当初考えていた終了時刻を過ぎて会話を楽しみ、夜は23時から配信すると案内しました。最後にランキングを読み上げ、来てくれた皆さんへ感謝しました。" },
+  ],
+  goals: [
+    { item: "フォロワー", target: "250人", statusThen: "終盤に247人と報告" },
+    { item: "コメント", target: "一つずつ拾う", statusThen: "読み忘れを減らす努力" },
+    { item: "話し方", target: "進行を磨きたい", statusThen: "録音を聞き直して学ぶ" },
+  ],
+  ranking: [RANKING_NOTE],
+  timeline: [
+    { timestamp: "0:00:18", label: "映画に行ったときの写真" },
+    { timestamp: "0:03:47", label: "元気をチャージできる配信" },
+    { timestamp: "0:08:49", label: "ラジオ形式を選んだ話" },
+    { timestamp: "0:12:53", label: "アナウンスと将来の可能性" },
+    { timestamp: "0:17:03", label: "コメントを拾う努力" },
+    { timestamp: "0:25:47", label: "継続する努力への尊敬" },
+    { timestamp: "0:29:55", label: "フォロワー245人の報告" },
+    { timestamp: "0:33:55", label: "映画とチュロス・ポップコーン" },
+    { timestamp: "0:38:06", label: "吹奏楽を始めたきっかけ" },
+    { timestamp: "1:13:37", label: "声や話し方への感想" },
+    { timestamp: "1:14:47", label: "締めの言葉や進行の課題" },
+    { timestamp: "1:20:55", label: "投稿への応援の呼びかけ" },
+    { timestamp: "1:25:37", label: "初めてのコメントを歓迎" },
+    { timestamp: "1:49:12", label: "フォロワー247人の報告" },
+    { timestamp: "1:56:20", label: "ランキング読み上げ" },
+    { timestamp: "1:59:31", label: "次は23時と案内" },
+  ],
+  nextNote: "配信時点では、同日23時から顔出しで配信すると案内していました。",
+  sourceLabel: "2026年8月27日 SHOWROOM昼配信（オーナー提供録画の自動文字起こし）",
+  verifiedAt: "2026-09-08",
+  image: radioStill,
+  gallery: [radioStill],
+  galleryZip: { src: "/media/live/mily-b78-day-stills.zip", filename: "みりぃ_20260827昼_1枚.zip", label: "画像をZIPで保存" },
+  transcriptionNote: buildTranscriptionNote({ material: AUTO_TRANSCRIPT_MATERIAL_NOTE, stills: "静止画はラジオ形式の録画に表示された同じ写真から1枚を掲載しています。", extra: "確認した自動字幕では歌唱を確定できる曲はなく、前日の歌の振り返りは曲リストに含めていません。録画の記録時刻を概数で表示し、実際の配信開始時刻との一致は未確認です。" }),
+};
