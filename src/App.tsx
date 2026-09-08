@@ -1,5 +1,6 @@
 import { ActivitiesGateway } from "./components/ActivitiesGateway";
 import { ActivityBanner } from "./components/ActivityBanner";
+import { ChallengeConnection } from "./components/ChallengeConnection";
 import { Footer } from "./components/Footer";
 import { Gallery } from "./components/Gallery";
 import { Header } from "./components/Header";
@@ -34,6 +35,7 @@ export default function App() {
         <TodayDashboard />
         <Support />
         <ActivitiesGateway />
+        <ChallengeConnection />
         <Latest limit={HOME_NEWS_LIMIT} />
         <Stories limit={HOME_STORY_LIMIT} />
         <Gallery limit={HOME_GALLERY_LIMIT} />

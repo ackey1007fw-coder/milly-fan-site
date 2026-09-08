@@ -3512,3 +3512,13 @@ ffmpeg -i public/media/gallery/mily-b66-01-stream-thanks-morning-slot-story.mp4 
   Latest / NEWS / Gallery / LIVE STREAM Activityで共有し、公開MP4 1本・poster 1枚だけを参照する。
 - 追加CTAは既存のSHOWROOMルームのみ。「明日の朝枠は7:30〜8:20」は本文引用に留め、
   streamSchedule へ転記しない。
+
+## batch b91 — 2026-09-09 天宮あみさんX「韓国旅行の約束」
+
+- 公開面: HOME `ChallengeConnection` 専用。NEWS / Gallery / Activities / Stories には展開しない。
+- 元投稿: `https://x.com/amis2_mh/status/2097322336387297549`（2026-09-08 22:53 JST）。オーナーが当該画像のサイト掲載を明示指定。
+- 関連する本人確認: みりぃの返信 `https://x.com/Mily_chan36/status/2097324863921041811`。
+- 天宮あみさん公式ENTRY: `https://2026.frecam.jp/entry/837`。公開Xは `https://x.com/amis2_mh`。
+- 元画像: 1536×1024 JPEG / sha256 `2ffcad19044b9aeeb5197605c8467c2f3ad4fd01bbcadee21c7caeaf992c5dd7`。EXIF / IPTC / XMP / ICCなし。
+- 公開派生: `public/media/news/mily-b91-01-ami-mily-korea-promise-public.jpg`、1536×1024 JPEG / sha256 `7225b892ddbd7a62338a106afcad50143355b5d96c34953d715ae0d4e0eb3282`。metadataなし。crop・resize・AI加工・顔補正・生成塗り足しなし。
+- X上で当該投稿にはAI生成メディア表示があるため、サイト側にもその事実を注記する。画像のどの部分がAI処理されたかは推測しない。
