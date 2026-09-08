@@ -2,6 +2,7 @@
 // Removing only these exact URLs lets existing private-archive checks keep running.
 const approved = new Set([
   "https://www.youtube.com/watch?v=PwlB-rXk1gM",
+  "https://www.youtube.com/watch?v=Wuyx1pDlDvg",
   "https://www.youtube.com/watch?v=ZVUxJsPfoX8",
   "https://www.youtube.com/watch?v=d0rOHgzCe6s",
   "https://www.youtube.com/watch?v=UykGAa6AfbA",

@@ -1,6 +1,89 @@
 import type { StreamRecap } from "./streamRecaps.ts";
 import { AUTO_TRANSCRIPT_MATERIAL_NOTE, buildTranscriptionNote, RANKING_NOTE } from "./streamRecapRules.ts";
 
+const approvedStills = [
+  {
+    "src": "/media/live/mily-b72-01-night-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年8月30日夜配信のみりぃ。カメラに向かって笑顔",
+    "caption": "0:04:17 カメラに向かって笑顔",
+    "downloadName": "2026-08-30-night-01-r2011-t00h04m17s.jpg"
+  },
+  {
+    "src": "/media/live/mily-b72-02-night-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年8月30日夜配信のみりぃ。両手を合わせて",
+    "caption": "0:06:19 両手を合わせて",
+    "downloadName": "2026-08-30-night-02-r2011-t00h06m19s.jpg"
+  },
+  {
+    "src": "/media/live/mily-b72-03-night-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年8月30日夜配信のみりぃ。髪に手を添えて笑顔",
+    "caption": "0:12:21 髪に手を添えて笑顔",
+    "downloadName": "2026-08-30-night-03-r2011-t00h12m21s.jpg"
+  },
+  {
+    "src": "/media/live/mily-b72-04-night-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年8月30日夜配信のみりぃ。「30日ありがとう」のボードを持って",
+    "caption": "0:32:19 「30日ありがとう」のボードを持って",
+    "downloadName": "2026-08-30-night-04-r2011-t00h32m19s.jpg"
+  },
+  {
+    "src": "/media/live/mily-b72-05-night-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年8月30日夜配信のみりぃ。片手を上げて笑顔",
+    "caption": "0:38:21 片手を上げて笑顔",
+    "downloadName": "2026-08-30-night-05-r2011-t00h38m21s.jpg"
+  },
+  {
+    "src": "/media/live/mily-b72-06-night-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年8月30日夜配信のみりぃ。両手を頭の後ろに添えて",
+    "caption": "0:48:20 両手を頭の後ろに添えて",
+    "downloadName": "2026-08-30-night-06-r2011-t00h48m20s.jpg"
+  },
+  {
+    "src": "/media/live/mily-b72-07-night-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年8月30日夜配信のみりぃ。手を振って",
+    "caption": "0:52:20 手を振って",
+    "downloadName": "2026-08-30-night-07-r2011-t00h52m20s.jpg"
+  },
+  {
+    "src": "/media/live/mily-b72-08-night-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年8月30日夜配信のみりぃ。両手でピース",
+    "caption": "1:10:22 両手でピース",
+    "downloadName": "2026-08-30-night-08-r2011-t01h10m22s.jpg"
+  },
+  {
+    "src": "/media/live/mily-b72-09-night-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年8月30日夜配信のみりぃ。首を傾けて笑顔",
+    "caption": "1:14:20 首を傾けて笑顔",
+    "downloadName": "2026-08-30-night-09-r2011-t01h14m20s.jpg"
+  },
+  {
+    "src": "/media/live/mily-b72-10-night-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年8月30日夜配信のみりぃ。片手でピース",
+    "caption": "1:24:20 片手でピース",
+    "downloadName": "2026-08-30-night-10-r2011-t01h24m20s.jpg"
+  }
+];
+
 export const streamRecap20260830Night: StreamRecap = {
   id: "2026-08-30-night-showroom",
   date: "2026-08-30",
@@ -9,6 +92,9 @@ export const streamRecap20260830Night: StreamRecap = {
   broadcastLabel: "20:11頃〜 約88分",
   platformLabel: "SHOWROOM",
   summary: "「30日ありがとう」のボードを手に、配信を続けてきた感謝を伝えました。ラジオで挑戦した即興の俳句や、初配信を再現するやりとりも。皆さんの言葉に自信をもらいながら、声や話し方をもっと磨きたいと話した夜です。",
+  image: approvedStills[3],
+  gallery: approvedStills,
+  galleryZip: {"src": "/media/live/mily-b72-night-stills.zip", "filename": "みりぃ_20260830夜_10枚.zip", "label": "10枚まとめて保存"},
   highlights: [
     { timestamp: "0:14:36", title: "初心を忘れずに", body: "30日記念の配信で、慣れてきても初心は忘れたくないと話しました。皆さんとの冗談を交えながら、配信を続けてきた日々を振り返りました。" },
     { timestamp: "0:31:18", title: "30日ありがとうの一枚", body: "「30日ありがとう」と書いたボードを持ってスクショタイム。かわいい場面を撮ってほしいとお願いし、カメラに向けてポーズを取りました。" },
@@ -44,5 +130,5 @@ export const streamRecap20260830Night: StreamRecap = {
   nextNote: "配信時点では、翌朝にも配信する見込みと話していました。開始時刻は未確定の案内でした。",
   sourceLabel: "2026年8月30日 SHOWROOM夜配信（オーナー提供録画の自動文字起こし）",
   verifiedAt: "2026-09-08",
-  transcriptionNote: buildTranscriptionNote({ material: AUTO_TRANSCRIPT_MATERIAL_NOTE, stills: "静止画は掲載していません。", extra: "録画の記録時刻を概数で表示しています。実際の配信開始時刻との一致は未確認です。短い口ずさみは確認が十分でないため、歌リストに含めていません。" }),
+  transcriptionNote: buildTranscriptionNote({ material: AUTO_TRANSCRIPT_MATERIAL_NOTE, stills: "静止画は録画の実フレームから選んだ承認済み10枚を掲載しています。", extra: "録画の記録時刻を概数で表示しています。実際の配信開始時刻との一致は未確認です。短い口ずさみは確認が十分でないため、歌リストに含めていません。" }),
 };

@@ -27,6 +27,7 @@ import { streamRecap20260901Night } from "./streamRecap20260901Night.ts";
 import { streamRecap20260831Night } from "./streamRecap20260831Night.ts";
 import { streamRecap20260831Asa } from "./streamRecap20260831Asa.ts";
 import { streamRecap20260830Night } from "./streamRecap20260830Night.ts";
+import { streamRecap20260830Asa } from "./streamRecap20260830Asa.ts";
 
 export {
   AUTO_TRANSCRIPT_MATERIAL_NOTE,
@@ -153,6 +154,7 @@ export const streamRecaps: StreamRecap[] = [
   streamRecap20260831Night,
   streamRecap20260831Asa,
   streamRecap20260830Night,
+  streamRecap20260830Asa,
   streamRecap20260826Night,
   streamRecap20260825Asa,
   streamRecap20260821Day,
