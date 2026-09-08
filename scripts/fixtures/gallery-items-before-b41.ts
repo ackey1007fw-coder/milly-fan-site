@@ -14,6 +14,7 @@ const laterGalleryIds = new Set([
   "mily-b43-01-paton-vote-day5-story",
   "mily-b41-01-night-showroom-story",
   "mily-b41-02-paton-vote-day4-story",
+  "mixch-m-Tfb8i9dy",
   "mixch-m-UBHJplv4",
 ]);
 

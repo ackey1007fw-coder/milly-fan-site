@@ -12,7 +12,7 @@ it("shares the owner-dated TikTok between Latest and Gallery", async () => {
   assert.equal(item.sourceDate, "2026-09-05");
   assert.equal(item.sourceUrl, "https://vt.tiktok.com/ZSqNgRAvx/");
   assert.deepEqual(visibleGalleryVideos().filter(({ id }) => id === item.id), [item]);
-  assert.equal(galleryVideos.length, previous.length + 5);
+  assert.equal(galleryVideos.length, previous.length + 6);
   assert.deepEqual(
     galleryVideos.filter(
       ({ id }) =>
@@ -20,7 +20,8 @@ it("shares the owner-dated TikTok between Latest and Gallery", async () => {
         id !== "mily-b59-01-third-round-vote-day2-story" &&
         id !== "mily-b66-01-stream-thanks-morning-slot-story" &&
         id !== "mily-b65-02-morning-thanks-vote-day5-story" &&
-        id !== "mily-b65-01-web-vote-day5-soon-story",
+        id !== "mily-b65-01-web-vote-day5-soon-story" &&
+        id !== "mixch-m-Tfb8i9dy",
     ),
     previous,
   );
@@ -34,15 +35,16 @@ it("shares the owner-dated TikTok between Latest and Gallery", async () => {
   );
   const ordered = sortNewsByDateDesc(news);
   assert.equal(ordered[0]?.id, "2026-09-08-stream-thanks-morning-slot-story");
-  assert.equal(ordered[1]?.id, "2026-09-07-campus-girls-finals-ex-vol1");
-  assert.equal(ordered[2]?.id, "2026-09-07-morning-thanks-vote-day5-story");
-  assert.equal(ordered[3]?.id, "2026-09-06-third-round-vote-day5-soon-story");
-  assert.equal(ordered[4]?.id, "2026-09-06-stream-thanks-next-slots");
-  assert.equal(ordered[5]?.id, "2026-09-06-campus-girls-prelim-final-result");
-  assert.equal(ordered[6]?.id, "2026-09-06-night-slot-2230");
-  assert.equal(ordered[7]?.id, "2026-09-05-morning-stream-thanks");
-  assert.equal(ordered[8], updates[0]);
-  assert.equal(news.length, previousNews.length + 10);
+  assert.equal(ordered[1]?.id, "2026-09-07-mixch-ex-period-day1");
+  assert.equal(ordered[2]?.id, "2026-09-07-campus-girls-finals-ex-vol1");
+  assert.equal(ordered[3]?.id, "2026-09-07-morning-thanks-vote-day5-story");
+  assert.equal(ordered[4]?.id, "2026-09-06-third-round-vote-day5-soon-story");
+  assert.equal(ordered[5]?.id, "2026-09-06-stream-thanks-next-slots");
+  assert.equal(ordered[6]?.id, "2026-09-06-campus-girls-prelim-final-result");
+  assert.equal(ordered[7]?.id, "2026-09-06-night-slot-2230");
+  assert.equal(ordered[8]?.id, "2026-09-05-morning-stream-thanks");
+  assert.equal(ordered[9], updates[0]);
+  assert.equal(news.length, previousNews.length + 11);
   assert.deepEqual(
     news.filter(
       (entry) =>
@@ -53,6 +55,7 @@ it("shares the owner-dated TikTok between Latest and Gallery", async () => {
         entry.id !== "2026-09-07-campus-girls-finals-ex-vol1" &&
         entry.id !== "2026-09-06-stream-thanks-next-slots" &&
         entry.id !== "2026-09-08-stream-thanks-morning-slot-story" &&
+        entry.id !== "2026-09-07-mixch-ex-period-day1" &&
         entry.id !== "2026-09-07-morning-thanks-vote-day5-story" &&
         entry.id !== "2026-09-06-third-round-vote-day5-soon-story" &&
         entry.id !== "2026-09-04-third-round-vote-day2-story",
