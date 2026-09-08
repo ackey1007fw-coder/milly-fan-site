@@ -1,6 +1,17 @@
 import type { StreamRecap } from "./streamRecaps.ts";
 import { AUTO_TRANSCRIPT_MATERIAL_NOTE, buildTranscriptionNote, RANKING_NOTE } from "./streamRecapRules.ts";
 
+const approvedStills = [
+  {
+    "src": "/media/live/mily-b70-01-morning-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年8月31日朝配信のみりぃ。花束を手にしたラジオ配信の静止画",
+    "caption": "0:00:20 花束を手にしたラジオ配信の静止画",
+    "downloadName": "2026-08-31-morning-01-r0646-t00h00m20s.jpg"
+  }
+];
+
 export const streamRecap20260831Asa: StreamRecap = {
   id: "2026-08-31-morning-showroom",
   date: "2026-08-31",
@@ -9,6 +20,9 @@ export const streamRecap20260831Asa: StreamRecap = {
   broadcastLabel: "06:46頃〜 約31分",
   platformLabel: "SHOWROOM",
   summary: "予定を前倒しして始めた朝のラジオ配信。眠い朝に皆さんと話すうち、元気と勇気をもらったと感謝しました。応援の言葉が自信につながったことを振り返り、お互いに今日も頑張ろうと送り出した回です。",
+  image: approvedStills[0],
+  gallery: approvedStills,
+  galleryZip: {"src": "/media/live/mily-b70-morning-stills.zip", "filename": "みりぃ_20260831朝_1枚.zip", "label": "1枚を保存"},
   highlights: [
     { timestamp: "0:02:42", title: "前倒しの朝ラジオ", body: "眠気が抜けず、皆さんと話して目を覚まそうと予定を前倒し。準備に入る前のおしゃべりになりました。" },
     { timestamp: "0:07:21", title: "Paton投票を呼びかけ", body: "もう一つのコンテストの投票について、この日は1.5倍の日で、配信時点では1位と話しました。投票してくれた皆さんへ感謝を伝えました。" },
@@ -40,5 +54,5 @@ export const streamRecap20260831Asa: StreamRecap = {
   nextNote: "配信時点では、次枠は夜になる見込みで、ファンルームで改めて連絡すると案内していました。開始時刻は確定していません。",
   sourceLabel: "2026年8月31日 SHOWROOM朝配信（オーナー提供録画の自動文字起こし）",
   verifiedAt: "2026-09-08",
-  transcriptionNote: buildTranscriptionNote({ material: AUTO_TRANSCRIPT_MATERIAL_NOTE, stills: "静止画は掲載していません。", extra: "ラジオ配信です。時刻は録画先頭からの目安です。" }),
+  transcriptionNote: buildTranscriptionNote({ material: AUTO_TRANSCRIPT_MATERIAL_NOTE, stills: "静止画は録画の実フレームから選んだ承認済み1枚を掲載しています。", extra: "ラジオ配信です。時刻は録画先頭からの目安です。" }),
 };

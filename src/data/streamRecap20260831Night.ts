@@ -1,6 +1,49 @@
 import type { StreamRecap } from "./streamRecaps.ts";
 import { AUTO_TRANSCRIPT_MATERIAL_NOTE, buildTranscriptionNote, RANKING_NOTE } from "./streamRecapRules.ts";
 
+const approvedStills = [
+  {
+    "src": "/media/live/mily-b71-01-night-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年8月31日夜配信のみりぃ。顎に手を添えて",
+    "caption": "0:12:19 顎に手を添えて",
+    "downloadName": "2026-08-31-night-06-r2128-t00h12m19s.jpg"
+  },
+  {
+    "src": "/media/live/mily-b71-02-night-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年8月31日夜配信のみりぃ。両手を差し出して笑顔",
+    "caption": "0:20:18 両手を差し出して笑顔",
+    "downloadName": "2026-08-31-night-07-r2128-t00h20m18s.jpg"
+  },
+  {
+    "src": "/media/live/mily-b71-03-night-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年8月31日夜配信のみりぃ。髪に手を添えて笑顔",
+    "caption": "0:40:21 髪に手を添えて笑顔",
+    "downloadName": "2026-08-31-night-08-r2128-t00h40m21s.jpg"
+  },
+  {
+    "src": "/media/live/mily-b71-04-night-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年8月31日夜配信のみりぃ。篠笛を吹く場面",
+    "caption": "0:50:38 篠笛を吹く場面",
+    "downloadName": "2026-08-31-night-09-r2128-t00h50m38s.jpg"
+  },
+  {
+    "src": "/media/live/mily-b71-05-night-still.jpg",
+    "width": 640,
+    "height": 360,
+    "alt": "2026年8月31日夜配信のみりぃ。手を振って笑顔",
+    "caption": "0:58:19 手を振って笑顔",
+    "downloadName": "2026-08-31-night-10-r2128-t00h58m19s.jpg"
+  }
+];
+
 export const streamRecap20260831Night: StreamRecap = {
   id: "2026-08-31-night-showroom",
   date: "2026-08-31",
@@ -9,6 +52,9 @@ export const streamRecap20260831Night: StreamRecap = {
   broadcastLabel: "21:28頃〜 約65分",
   platformLabel: "SHOWROOM",
   summary: "8月最後の夜、初めての1か月の配信を振り返りました。応援で増えたトマトの栄養素を喜び、9月の目標を発表。ラジオや楽器の話から篠笛の披露まで、皆さんとのやりとりを楽しみ、次の月も一緒に頑張ろうと呼びかけた回です。",
+  image: approvedStills[4],
+  gallery: approvedStills,
+  galleryZip: {"src": "/media/live/mily-b71-night-stills.zip", "filename": "みりぃ_20260831夜_5枚.zip", "label": "5枚まとめて保存"},
   highlights: [
     { timestamp: "0:06:24", title: "皆さんが見つけてくれる魅力", body: "自分で気づいていない魅力を教えてもらえることが嬉しいと話しました。配信をしているからこその幸せだと感謝しました。" },
     { timestamp: "0:13:31", title: "トマトの栄養素が61人に", body: "月末の配信中に61人になったと喜びました。60人で終えると思っていたところへの応援に驚き、感謝を伝えました。" },
@@ -46,5 +92,5 @@ export const streamRecap20260831Night: StreamRecap = {
   nextNote: "配信時点では、翌日は朝枠を設けず昼頃と夜に配信する見込みで、昼枠は翌朝のファンルームで案内すると話していました。",
   sourceLabel: "2026年8月31日 SHOWROOM夜配信（オーナー提供録画の自動文字起こし）",
   verifiedAt: "2026-09-08",
-  transcriptionNote: buildTranscriptionNote({ material: AUTO_TRANSCRIPT_MATERIAL_NOTE, stills: "静止画は掲載していません。", extra: "本文と時刻は21:28頃からの録画約65分が対象です。同日21:01頃からの録画約17分も別途確認していますが、間の内容と配信の連続性は未確認です。録画開始時刻と配信開始時刻は一致するとは限りません。" }),
+  transcriptionNote: buildTranscriptionNote({ material: AUTO_TRANSCRIPT_MATERIAL_NOTE, stills: "静止画は録画の実フレームから選んだ承認済み5枚を掲載しています。", extra: "本文と時刻は21:28頃からの録画約65分が対象です。同日21:01頃からの録画約17分も別途確認していますが、間の内容と配信の連続性は未確認です。録画開始時刻と配信開始時刻は一致するとは限りません。" }),
 };
