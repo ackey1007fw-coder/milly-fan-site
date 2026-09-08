@@ -5,6 +5,7 @@ import { galleryVideos as current, type GalleryVideoItem } from "../../src/data/
 export const galleryVideos = current.filter(
   ({ id }) =>
     id !== "mily-b66-01-stream-thanks-morning-slot-story" &&
+    id !== "mixch-m-Tfb8i9dy" &&
     id !== "mily-b65-02-morning-thanks-vote-day5-story" &&
     id !== "mily-b65-01-web-vote-day5-soon-story" &&
     id !== "mily-b58-01-tiktok-radio-portrait" &&

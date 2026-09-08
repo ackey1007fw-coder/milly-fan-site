@@ -49,14 +49,15 @@ describe("2026-09-06 X 配信お礼と翌日枠 — Latest entry", () => {
       news.filter((candidate) => (candidate.source ?? "").includes(TWEET_ID)).length,
       1,
     );
-    assert.equal(news[4], entry);
+    assert.equal(news[5], entry);
     assert.equal(ordered[0]?.id, "2026-09-08-stream-thanks-morning-slot-story");
-    assert.equal(ordered[1]?.id, "2026-09-07-campus-girls-finals-ex-vol1");
-    assert.equal(ordered[2]?.id, "2026-09-07-morning-thanks-vote-day5-story");
-    assert.equal(ordered[3]?.id, "2026-09-06-third-round-vote-day5-soon-story");
-    assert.equal(ordered[4], entry);
-    assert.equal(ordered[5]?.id, RESULT_ID);
-    assert.equal(ordered[6]?.id, NIGHT_SLOT_ID);
+    assert.equal(ordered[1]?.id, "2026-09-07-mixch-ex-period-day1");
+    assert.equal(ordered[2]?.id, "2026-09-07-campus-girls-finals-ex-vol1");
+    assert.equal(ordered[3]?.id, "2026-09-07-morning-thanks-vote-day5-story");
+    assert.equal(ordered[4]?.id, "2026-09-06-third-round-vote-day5-soon-story");
+    assert.equal(ordered[5], entry);
+    assert.equal(ordered[6]?.id, RESULT_ID);
+    assert.equal(ordered[7]?.id, NIGHT_SLOT_ID);
     assert.equal(entry.date, "2026-09-06");
     assert.equal(entry.sameDayOrder, 40);
     assert.deepEqual(entry.activityIds, ["live-stream"]);

@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import { events } from "../src/data/events.ts";
 import {
   galleryVideos,
+  mixchExPeriodDay1Movie,
   mixchFinalDayMovie,
   mixchExpressiveMovie,
   mixch15xDayMovie,
@@ -166,11 +167,12 @@ describe("2026-08-30 Mixch final-day NEWS", () => {
     const gallery = selectGalleryEntries().filter((entry) => entry.kind === "mixch");
 
     assert.equal(item().media, mixchFinalDayMovie);
-    assert.equal(gallery[0]?.item, mixchFinalDayMovie);
-    assert.equal(gallery[1]?.item, mixchExpressiveMovie);
-    assert.equal(gallery[2]?.item, mixch15xDayMovie);
-    assert.equal(gallery[3]?.item, mixchConfidenceMessageMovie);
-    assert.equal(galleryVideos.filter((entry) => entry.kind === "mixch").length, 4);
+    assert.equal(gallery[0]?.item, mixchExPeriodDay1Movie);
+    assert.equal(gallery[1]?.item, mixchFinalDayMovie);
+    assert.equal(gallery[2]?.item, mixchExpressiveMovie);
+    assert.equal(gallery[3]?.item, mixch15xDayMovie);
+    assert.equal(gallery[4]?.item, mixchConfidenceMessageMovie);
+    assert.equal(galleryVideos.filter((entry) => entry.kind === "mixch").length, 5);
 
     const activityMedia = selectActivityMedia("campus-girls");
     assert.equal(activityMedia.includes(mixchFinalDayMovie), false);

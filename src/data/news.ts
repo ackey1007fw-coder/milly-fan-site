@@ -50,6 +50,7 @@ import { seasideCircleMovieThemeStoryVideo } from "./seasideCircleMovieThemeStor
 import { morningMakeupShowroomImage } from "./morningMakeupShowroomImage.ts";
 import { morningMakeupInstagramStoryImage } from "./morningMakeupInstagramStoryImage.ts";
 import {
+  mixchExPeriodDay1Movie,
   mixchFinalDayMovie,
   mixchExpressiveMovie,
   mixch15xDayMovie,
@@ -231,6 +232,27 @@ export const news: NewsItem[] = [
         "とか言ってたけど、\n" +
         "配信切った瞬間平気になった、、、( \u02C8\u203F\u02C8 )\n" +
         "明日の朝枠は7:30〜8:20\u203C\u{FE0F}",
+    },
+  },
+  {
+    id: "2026-09-07-mixch-ex-period-day1",
+    date: "2026-09-07",
+    sameDayOrder: 20,
+    activityIds: ["campus-girls"],
+    title: "「キャンガル2027Aブロック本選進出決定\u{203C}\u{FE0F}」——少し違う角度から授賞式登壇してみせる",
+    body: "9月7日、みりぃがMixchに動画を公開しました。キャンガル2027 Aブロック本選進出を伝え、他のコンテストとキャンガルを両立していること、両立の条件としてミクチャでは配信は行えないこと、ムービーや各SNS、Instagramのライブ配信は投稿・発信していけることを話しています。少し違う角度から、配信している方々と引けを取らず授賞式登壇してみせると呼びかけています。CAMPUS GIRLS関連のハッシュタグが添えられています。",
+    source: "https://x.com/Mily_chan36/status/2096935241034399948",
+    sourceLabel: "Xの投稿を見る",
+    url: "https://mixch.tv/m/Tfb8i9dy",
+    ctaLabel: "Mixchで見る",
+    media: mixchExPeriodDay1Movie,
+    message: {
+      label: "みりぃのX投稿",
+      text:
+        "キャンガル2027 EX期間初日\u{203C}\u{FE0F}\n" +
+        "ミクチャ投稿したよ〜\u{2728}皆様、応援よろしくお願いいたします\u{1F647}\u{1F3FB}\u{200D}\u{2640}\u{FE0F}\u{1FA75}\n" +
+        "\u{2B07}\u{FE0F}\u{2B07}\u{FE0F}\u{2B07}\u{FE0F}\n" +
+        "https://mixch.tv/m/Tfb8i9dy",
     },
   },
   {

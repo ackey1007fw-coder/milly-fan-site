@@ -85,13 +85,14 @@ describe("2026-09-07 CAMPUS GIRLS 本選EX vol.1 案内 — Latest entry", () =>
       news.filter((candidate) => (candidate.source ?? "").includes(TWEET_ID)).length,
       1,
     );
-    assert.equal(news[1], entry);
+    assert.equal(news[2], entry);
     assert.equal(ordered[0]?.id, "2026-09-08-stream-thanks-morning-slot-story");
-    assert.equal(ordered[1], entry);
-    assert.equal(ordered[2]?.id, "2026-09-07-morning-thanks-vote-day5-story");
-    assert.equal(ordered[3]?.id, "2026-09-06-third-round-vote-day5-soon-story");
-    assert.equal(ordered[4]?.id, NEXT_SLOTS_ID);
-    assert.equal(ordered[5]?.id, RESULT_ID);
+    assert.equal(ordered[1]?.id, "2026-09-07-mixch-ex-period-day1");
+    assert.equal(ordered[2], entry);
+    assert.equal(ordered[3]?.id, "2026-09-07-morning-thanks-vote-day5-story");
+    assert.equal(ordered[4]?.id, "2026-09-06-third-round-vote-day5-soon-story");
+    assert.equal(ordered[5]?.id, NEXT_SLOTS_ID);
+    assert.equal(ordered[6]?.id, RESULT_ID);
     assert.equal(entry.date, "2026-09-07");
     assert.equal(entry.sameDayOrder, 10);
     assert.deepEqual(entry.activityIds, ["campus-girls"]);
@@ -237,7 +238,8 @@ describe("2026-09-07 CAMPUS GIRLS 本選EX vol.1 案内 — media", () => {
 describe("2026-09-07 CAMPUS GIRLS 本選EX vol.1 案内 — scope", () => {
   it("surfaces on the campus-girls Activity only", () => {
     const campusNews = selectActivityNews("campus-girls", news, news.length);
-    assert.equal(campusNews[0]?.id, NEWS_ID);
+    assert.equal(campusNews[0]?.id, "2026-09-07-mixch-ex-period-day1");
+    assert.equal(campusNews[1]?.id, NEWS_ID);
     for (const activityId of ["miss-circle", "live-stream", "radio"]) {
       assert.equal(
         selectActivityNews(activityId, news, news.length).some(
