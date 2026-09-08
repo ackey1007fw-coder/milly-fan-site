@@ -30,6 +30,7 @@ import { webVoteDay2StoryVideo } from "./webVoteDay2StoryVideo.ts";
 import { voteDayFiveSoonStoryVideo } from "./voteDayFiveSoonStoryVideo.ts";
 import { morningThanksVoteStoryVideo } from "./morningThanksVoteStoryVideo.ts";
 import { streamThanksMorningSlotStoryVideo } from "./streamThanksMorningSlotStoryVideo.ts";
+import { miripochiWaitingStoryVideo } from "./miripochiWaitingStoryVideo.ts";
 import { seasideCircleMusicalSpecialVideo } from "./seasideCircleMusicalSpecialVideo.ts";
 import { seasideCircleMusicalSpecialThanksVideo } from "./seasideCircleMusicalSpecialThanksVideo.ts";
 import { seasideCircleYesTokyoVideo } from "./seasideCircleYesTokyoVideo.ts";
@@ -84,6 +85,7 @@ export {
   voteDayFiveSoonStoryVideo,
   morningThanksVoteStoryVideo,
   streamThanksMorningSlotStoryVideo,
+  miripochiWaitingStoryVideo,
   nightThanksMorningStreamStoryVideo,
   patonVoteCollageStoryVideo,
   patonVoteMirrorStoryVideo,
@@ -113,6 +115,7 @@ export function isSelfHostedGalleryVideo(
  * Mixch is not a DriveGalleryVideo.
  */
 export const galleryVideos: GalleryVideoItem[] = [
+  miripochiWaitingStoryVideo,
   streamThanksMorningSlotStoryVideo,
   morningThanksVoteStoryVideo,
   voteDayFiveSoonStoryVideo,

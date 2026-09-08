@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { execFile } from "node:child_process";
+import { existsSync } from "node:fs";
 import { readFile, readdir, stat } from "node:fs/promises";
 import { describe, it } from "node:test";
 import path from "node:path";
@@ -10,8 +11,9 @@ import sharp from "sharp";
 import { events } from "../src/data/events.ts";
 import {
   galleryVideos,
+  miripochiWaitingStoryVideo,
+  streamThanksMorningSlotStoryVideo,
   visibleGalleryVideos,
-  webVoteDay2StoryVideo,
 } from "../src/data/galleryVideos.ts";
 import { highlights } from "../src/data/highlights.ts";
 import {
@@ -23,39 +25,42 @@ import { news, sortNewsByDateDesc } from "../src/data/news.ts";
 import { createPortalFeed } from "../src/data/portalFeed.ts";
 import { stories } from "../src/data/stories.ts";
 import { streamSchedule } from "../src/data/streamSchedule.ts";
-import { missCircleThirdRoundWebVote } from "../src/data/supportEvents.ts";
 import { resolveNewsLinks } from "../src/lib/newsLinks.ts";
 import { selectActivityNews } from "../src/lib/activityContent.ts";
 import { selectActivityMedia } from "../src/lib/activityMedia.ts";
+import { selectGalleryEntries } from "../src/lib/galleryItems.ts";
 import { isFaststart } from "./build-drive-gallery.mjs";
 import { verifyNews } from "./content-invariants.mjs";
 import { DRIVE_FOLDER_PATTERN, DRIVE_HOST_PATTERN } from "./scan-tracked-text.mjs";
-import { findFeedItem, portalNewsId } from "./portal-feed-order.mjs";
+import {
+  assertPortalNewsFollowsSort,
+  findFeedItem,
+  portalNewsId,
+} from "./portal-feed-order.mjs";
 
 const run = promisify(execFile);
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const galleryDirectory = path.join(root, "public/media/gallery");
 const instagramProfile = "https://www.instagram.com/mily_chan36";
+const voteCta = { label: "WEB投票する", url: missCircleWebVoteLink.url };
 
-const NEWS_ID = "2026-09-04-third-round-vote-day2-story";
-const MEDIA_ID = "mily-b59-01-third-round-vote-day2-story";
-const PUBLIC_VIDEO = "mily-b59-01-third-round-vote-day2-story.mp4";
-const PUBLIC_POSTER = "mily-b59-01-third-round-vote-day2-story-poster.jpg";
-const PUBLIC_BYTES = 3_459_344;
+const NEWS_ID = "2026-09-08-miripochi-waiting-vote-story";
+const MEDIA_ID = "mily-b79-01-miripochi-waiting-story";
+const PUBLIC_VIDEO = "mily-b79-01-miripochi-waiting-story.mp4";
+const PUBLIC_POSTER = "mily-b79-01-miripochi-waiting-story-poster.jpg";
+const PUBLIC_BYTES = 585_726;
 const PUBLIC_SHA256 =
-  "e6666874750b57d43c1573964340773c78fc130c604a972107c815d3a11da49e";
-const POSTER_BYTES = 64_813;
+  "819779689509ee2e32d2ef5500ba4c285cf46c745d81b8d622c16181ac653d62";
+const POSTER_BYTES = 68_651;
 const POSTER_SHA256 =
-  "82a73892f10ac6e6ae562b1a46958747e2042290f0b05855787fd796c4640455";
+  "43346f678515886202b3610966cd5921d5d45d4dcb906f0dce3c62cde314b7f5";
 
-const TITLE = "「2日目ポチッとな〜」投票の呼びかけ";
+const TITLE = "「みりぽち待ってます」投票を呼びかけ";
 const BODY =
-  "みりぃがInstagram Storyで、リンクスタンプに「2日目ポチッとな〜」と書いて投票を呼びかけました。あわせて「毎日連続投票者の特典ちゃんもあるよっ」と添えています。リンク先と特典の内容はStoryの表示だけでは確認できないため、ここには書きません。くま耳とキラキラのフィルターをつけて、手を振ったりピースをしたりしている短い動画です。";
-const MESSAGE =
-  "（毎日連続投票者の特典ちゃんもあるよっ\u{1FA75}ボソッ）\n" +
-  "2日目ポチッとな〜\u{1F5F3}\u{FE0F}❣\u{FE0F}❣\u{FE0F}";
+  "9月8日、みりぃがInstagram Storyで、リンクスタンプに「みりぽち待ってます」と書いて投票を呼びかけました。リンク先はStoryの表示だけでは確認できないため、ここには書きません。くま耳とキラキラのフィルターをつけて、ヘッドホンを着けたままマイクの前に座っている短い動画です。";
+const MESSAGE = "みりぽち待ってます\u{1FA75}\u{1FA75}\u{1FA75}";
 
-const duringVote = Date.parse("2026-09-04T09:00:00+09:00");
+const duringVote = Date.parse("2026-09-08T15:00:00+09:00");
 const afterVote = Date.parse("2026-09-14T00:00:01+09:00");
 
 function item() {
@@ -95,18 +100,18 @@ async function changedText() {
     "scripts/fixtures/gallery-videos-before-b58.ts",
     "scripts/fixtures/news-before-b41.ts",
     "scripts/fixtures/news-before-b58.ts",
-    "scripts/instagram-story-20260904-vote-day2.test.mjs",
+    "scripts/instagram-story-20260908-miripochi-waiting.test.mjs",
     "src/data/galleryVideos.ts",
     "src/data/news.ts",
-    "src/data/webVoteDay2StoryVideo.json",
-    "src/data/webVoteDay2StoryVideo.ts",
+    "src/data/miripochiWaitingStoryVideo.json",
+    "src/data/miripochiWaitingStoryVideo.ts",
   ];
   const result = [];
 
   for (const file of files) {
     let text = await readFile(path.join(root, file), "utf8");
     if (file === "docs/MEDIA.md") {
-      const start = text.indexOf("## 素材台帳（batch b59");
+      const start = text.indexOf("## 素材台帳（batch b79");
       assert.notEqual(start, -1);
       const end = text.indexOf("\n## ", start + 4);
       text = text.slice(start, end === -1 ? undefined : end);
@@ -116,37 +121,31 @@ async function changedText() {
   return result;
 }
 
-describe("2026-09-04 Instagram Story 投票2日目 — Latest / NEWS", () => {
-  it("keeps exactly one record in date-sorted Latest after newer main NEWS", () => {
+describe("2026-09-08 Instagram Story 「みりぽち待ってます」 — Latest / NEWS", () => {
+  it("leads Latest ahead of the same-day stream-thanks Story", () => {
     const entry = item();
     const ordered = sortNewsByDateDesc(news);
 
     assert.ok(entry);
     assert.equal(news.filter(({ id }) => id === NEWS_ID).length, 1);
-    assert.equal(ordered[0]?.id, "2026-09-08-miripochi-waiting-vote-story");
+    assert.equal(news[0], entry);
+    assert.equal(ordered[0], entry);
     assert.equal(ordered[1]?.id, "2026-09-08-stream-thanks-morning-slot-story");
     assert.equal(ordered[2]?.id, "2026-09-07-campus-girls-finals-ex-vol1");
-    assert.equal(ordered[3]?.id, "2026-09-07-morning-thanks-vote-day5-story");
-    assert.equal(ordered[4]?.id, "2026-09-06-third-round-vote-day5-soon-story");
-    assert.equal(ordered[5]?.id, "2026-09-06-stream-thanks-next-slots");
-    assert.equal(ordered[6]?.id, "2026-09-06-campus-girls-prelim-final-result");
-    assert.equal(ordered[7]?.id, "2026-09-06-night-slot-2230");
-    assert.equal(ordered[8]?.id, "2026-09-05-morning-stream-thanks");
-    assert.equal(ordered[9]?.id, "2026-09-05-tiktok-radio-portrait");
-    assert.equal(ordered[10], entry);
-    assert.equal(ordered[11]?.id, "2026-09-03-miss-circle-goals-support");
-    assert.equal(entry.date, "2026-09-04");
-    assert.equal(entry.sameDayOrder, 10);
+    assert.equal(entry.date, "2026-09-08");
+    assert.equal(entry.sameDayOrder, 20);
     assert.deepEqual(entry.activityIds, ["miss-circle"]);
     assert.equal(entry.title, TITLE);
     assert.equal(entry.body, BODY);
-    assert.equal(entry.message.label, "みりぃのStory");
-    assert.equal(entry.message.text, MESSAGE);
+    assert.equal(entry.message?.label, "みりぃのStory");
+    assert.equal(entry.message?.text, MESSAGE);
+    assert.equal(entry.additionalMedia, undefined);
+    assert.equal(entry.additionalSources, undefined);
     assert.deepEqual(verifyNews([entry]), []);
     assert.deepEqual(verifyNews(news), []);
   });
 
-  it("keeps Story attribution non-link and gates the WEB vote CTA to its window", () => {
+  it("keeps Story attribution non-link with the confirmed WEB vote CTA only", () => {
     const entry = item();
 
     assert.equal(entry.source, undefined);
@@ -154,53 +153,57 @@ describe("2026-09-04 Instagram Story 投票2日目 — Latest / NEWS", () => {
     assert.equal(entry.url, undefined);
     assert.equal(entry.relatedUrl, instagramProfile);
     assert.equal(entry.ctaLabel, "Instagramプロフィールを見る");
-    assert.deepEqual(entry.additionalCtas, [
-      { label: "WEB投票する", url: missCircleWebVoteLink.url },
-    ]);
-    assert.equal(
-      JSON.stringify(entry).includes(campusGirlsPatonVoteLink.url),
-      false,
-    );
-    assert.equal(missCircleThirdRoundWebVote.ctaLinkId, missCircleWebVoteLink.id);
-
+    assert.deepEqual(entry.additionalCtas, [voteCta]);
+    const serialized = JSON.stringify(entry);
+    assert.equal(serialized.includes(campusGirlsPatonVoteLink.url), false);
+    assert.equal(serialized.includes("showroom-live.com"), false);
     assert.deepEqual(resolveNewsLinks(entry, duringVote), {
       relatedUrl: instagramProfile,
       cta: { label: "Instagramプロフィールを見る", url: instagramProfile },
-      additionalCtas: [{ label: "WEB投票する", url: missCircleWebVoteLink.url }],
+      additionalCtas: [voteCta],
     });
+    // WEB投票 SupportEvent の期間終了後は投票CTAだけが自動で消える。
     assert.deepEqual(resolveNewsLinks(entry, afterVote), {
       relatedUrl: instagramProfile,
       cta: { label: "Instagramプロフィールを見る", url: instagramProfile },
     });
   });
 
-  it("shares one manifest object with Gallery, the Activity, and Portal Feed", () => {
+  it("shares one manifest object with Gallery, MISS CIRCLE, and Portal Feed", () => {
     const entry = item();
 
-    assert.equal(entry.media, webVoteDay2StoryVideo);
-    assert.equal(entry.additionalMedia, undefined);
+    assert.equal(entry.media, miripochiWaitingStoryVideo);
+    assert.equal(galleryVideos[0], miripochiWaitingStoryVideo);
+    assert.equal(galleryVideos[1], streamThanksMorningSlotStoryVideo);
     assert.deepEqual(
       galleryVideos.filter(({ id }) => id === MEDIA_ID),
-      [webVoteDay2StoryVideo],
+      [miripochiWaitingStoryVideo],
     );
     assert.equal(
       visibleGalleryVideos().find(({ id }) => id === MEDIA_ID),
-      webVoteDay2StoryVideo,
+      miripochiWaitingStoryVideo,
     );
-    assert.equal(webVoteDay2StoryVideo.kind, "video");
-    assert.equal(webVoteDay2StoryVideo.provenance, "owner-provided");
-    assert.equal(webVoteDay2StoryVideo.sourceLabel, "Instagram Story");
-    assert.equal(webVoteDay2StoryVideo.sourceDate, "2026-09-04");
-    assert.equal("sourceUrl" in webVoteDay2StoryVideo, false);
-    assert.equal(webVoteDay2StoryVideo.published, true);
-    assert.equal(webVoteDay2StoryVideo.width, 720);
-    assert.equal(webVoteDay2StoryVideo.height, 1280);
-    assert.equal(webVoteDay2StoryVideo.src, `/media/gallery/${PUBLIC_VIDEO}`);
-    assert.equal(webVoteDay2StoryVideo.poster, `/media/gallery/${PUBLIC_POSTER}`);
+    assert.equal(miripochiWaitingStoryVideo.kind, "video");
+    assert.equal(miripochiWaitingStoryVideo.provenance, "owner-provided");
+    assert.equal(miripochiWaitingStoryVideo.sourceLabel, "Instagram Story");
+    assert.equal(miripochiWaitingStoryVideo.sourceDate, "2026-09-08");
+    assert.equal("sourceUrl" in miripochiWaitingStoryVideo, false);
+    assert.equal(miripochiWaitingStoryVideo.published, true);
+    assert.equal(miripochiWaitingStoryVideo.width, 720);
+    assert.equal(miripochiWaitingStoryVideo.height, 1280);
+    assert.equal(miripochiWaitingStoryVideo.src, `/media/gallery/${PUBLIC_VIDEO}`);
+    assert.equal(miripochiWaitingStoryVideo.poster, `/media/gallery/${PUBLIC_POSTER}`);
 
-    // 9/6〜9/7 の b65 Story 2本（batch b65）が先に並ぶ。
-    assert.equal(selectActivityNews("miss-circle", news, news.length)[3]?.id, NEWS_ID);
-    assert.equal(selectActivityMedia("miss-circle")[3], webVoteDay2StoryVideo);
+    const entries = selectGalleryEntries().filter(({ key }) => key === MEDIA_ID);
+    assert.equal(entries.length, 1);
+    assert.equal(entries[0].kind, "video");
+    assert.equal(entries[0].item.video.controls, true);
+    assert.equal(entries[0].item.video.playsInline, true);
+    assert.equal(entries[0].item.video.preload, "none");
+
+    assert.equal(selectActivityNews("miss-circle", news, news.length)[0]?.id, NEWS_ID);
+    assert.equal(selectActivityMedia("miss-circle")[0], miripochiWaitingStoryVideo);
+    // 場所・番組・配信との関係は未確認のため、RADIO / LIVE STREAM には関連付けない。
     for (const activityId of ["live-stream", "campus-girls", "radio"]) {
       assert.equal(
         selectActivityNews(activityId, news, news.length).some(
@@ -213,34 +216,42 @@ describe("2026-09-04 Instagram Story 投票2日目 — Latest / NEWS", () => {
         false,
       );
     }
+    assert.equal(selectActivityMedia("live-stream")[0], streamThanksMorningSlotStoryVideo);
 
     const feed = createPortalFeed({
-      now: new Date("2026-09-04T12:00:00+09:00"),
-      newsItems: [item()],
+      now: new Date("2026-09-08T15:00:00+09:00"),
+      newsItems: news,
       storyItems: [],
       eventItems: [],
     });
+    assertPortalNewsFollowsSort(feed, news);
     const feedItem = findFeedItem(feed, portalNewsId(NEWS_ID));
     assert.equal(feedItem.sourceUrl, undefined);
+    assert.equal(feedItem.title, TITLE);
     assert.ok(feedItem.image?.endsWith(PUBLIC_POSTER));
   });
 
-  it("does not restate the vote window or invent the sticker target and bonus", () => {
+  it("does not invent a time of day, a link target, a place, or a vote-day count", () => {
     const entry = item();
     const copy = `${entry.title}\n${entry.body}\n${entry.message.text}`;
 
-    assert.doesNotMatch(copy, /9月13日|9\/13|23:59|12:00/);
-    assert.doesNotMatch(copy, /1日1回/);
-    assert.doesNotMatch(copy, /liff\.line\.me|misscircle\.jp|instagram\.com/);
-    assert.doesNotMatch(copy, /特典は|特典の内容は[^SなをここS]*[0-9]/);
-    assert.match(entry.body, /確認できないため、ここには書きません/);
+    assert.doesNotMatch(copy, /未明|朝|昼|夕方|夜|\d+時|\d{1,2}:\d{2}/);
+    assert.doesNotMatch(copy, /ラジオ|スタジオ|収録|配信中|番組/);
+    assert.doesNotMatch(copy, /\d+日目/);
+    assert.doesNotMatch(copy, /liff\.line\.me|misscircle\.jp|instagram\.com|showroom-live\.com/);
+    assert.match(entry.body, /リンク先はStoryの表示だけでは確認できないため、ここには書きません/);
+    // 9/8 の枠は既存データのまま。Story から転記しない。
+    assert.deepEqual(
+      streamSchedule.filter((slot) => slot.date === "2026-09-08"),
+      [{ date: "2026-09-08", time: "07:00", endTime: "08:00" }],
+    );
   });
 });
 
-describe("2026-09-04 Instagram Story 投票2日目 — published media", () => {
+describe("2026-09-08 Instagram Story 「みりぽち待ってます」 — published media", () => {
   it("publishes exactly one shared MP4 and one real-frame poster", async () => {
     const assets = (await readdir(galleryDirectory))
-      .filter((file) => file.includes("mily-b59-"))
+      .filter((file) => file.includes("mily-b79-"))
       .sort();
     assert.deepEqual(assets, [PUBLIC_POSTER, PUBLIC_VIDEO].sort());
 
@@ -260,7 +271,7 @@ describe("2026-09-04 Instagram Story 投票2日目 — published media", () => {
     assert.equal(metadata.icc, undefined);
   });
 
-  it("keeps geometry and frames, drops the audio track, and uses faststart", async () => {
+  it("remuxes the 1fps H.264 stream unchanged, video-only, with faststart", async () => {
     const mp4 = path.join(galleryDirectory, PUBLIC_VIDEO);
     const info = await probe(mp4);
     const video = info.streams.find((stream) => stream.codec_type === "video");
@@ -268,24 +279,24 @@ describe("2026-09-04 Instagram Story 投票2日目 — published media", () => {
 
     assert.ok(video);
     assert.equal(video.codec_name, "h264");
-    assert.equal(video.profile, "Constrained Baseline");
+    assert.equal(video.profile, "High");
     assert.equal(video.pix_fmt, "yuv420p");
     assert.equal(video.width, 720);
     assert.equal(video.height, 1280);
-    assert.equal(video.avg_frame_rate, "30/1");
-    assert.equal(video.nb_frames, "269");
-    assert.equal(Number(video.has_b_frames), 0);
-    assert.ok(Math.abs(Number(info.format.duration) - 8.967) < 0.001);
+    assert.equal(video.avg_frame_rate, "1/1");
+    assert.equal(video.nb_frames, "20");
+    assert.equal(Number(info.format.duration), 20);
     assert.equal(audio, undefined);
     assert.equal(info.format.nb_streams, 1);
     assert.equal(await isFaststart(mp4), true);
     assert.deepEqual(info.chapters, []);
     assert.equal(video.tags?.creation_time, undefined);
     assert.equal(info.format.tags?.creation_time, undefined);
+    assert.equal(JSON.stringify(info).includes("Core Media"), false);
   });
 });
 
-describe("2026-09-04 Instagram Story 投票2日目 — privacy and scope", () => {
+describe("2026-09-08 Instagram Story 「みりぽち待ってます」 — privacy and scope", () => {
   it("does not create articles, milestones, events, schedules, or photo records", () => {
     const ids = new Set([NEWS_ID, MEDIA_ID]);
 
@@ -295,11 +306,10 @@ describe("2026-09-04 Instagram Story 投票2日目 — privacy and scope", () =>
     );
     assert.equal(highlights.some((entry) => ids.has(entry.id)), false);
     assert.equal(events.some((entry) => ids.has(entry.id)), false);
-    assert.equal(streamSchedule.some((entry) => ids.has(entry.id)), false);
     assert.equal(media.some((entry) => ids.has(entry.id)), false);
-    // 9/4 の配信枠は本人配布タイムテーブル由来の既存データ。このStoryは枠を足さない。
+    assert.equal(existsSync(path.join(root, "stories", NEWS_ID)), false);
     assert.equal(
-      streamSchedule.some((entry) => JSON.stringify(entry).includes("b59")),
+      streamSchedule.some((entry) => JSON.stringify(entry).includes("b79")),
       false,
     );
   });
@@ -307,10 +317,11 @@ describe("2026-09-04 Instagram Story 投票2日目 — privacy and scope", () =>
   it("keeps the original and handoff identifiers out of tracked text", async () => {
     const forbidden = [
       /(?:^|\/)upload\//i,
+      /uploads\//i,
       /drive\.google\.com/i,
       /[0-9A-F]{8}(?:-[0-9A-F]{4}){3}-[0-9A-F]{12}\.mp4/i,
-      new RegExp(["016f", "6de0"].join(""), "i"),
-      new RegExp(["9F6B", "37DA"].join(""), "i"),
+      /[0-9a-f]{8}-[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}\.mp4/i,
+      /\/root\/|\/mnt\/|\/tmp\//,
     ];
 
     for (const { file, text } of await changedText()) {
@@ -330,27 +341,25 @@ describe("2026-09-04 Instagram Story 投票2日目 — privacy and scope", () =>
   it("documents the batch ledger and the operational notes", async () => {
     const docs = await readFile(path.join(root, "docs/MEDIA.md"), "utf8");
     const ops = await readFile(path.join(root, "docs/CONTENT-OPS.md"), "utf8");
-    const start = ops.indexOf("### 2026-09-04 Instagram Story 投票2日目の呼びかけ（batch b59）");
-    const end = ops.indexOf("### 2026-09-05 SHOWROOM 三次3日目の朝配信メモ");
+    const start = ops.indexOf("### 2026-09-08 Instagram Story 「みりぽち待ってます」（batch b79）");
     assert.notEqual(start, -1);
-    assert.notEqual(end, -1);
-    const section = ops.slice(start, end);
+    const section = ops.slice(start, ops.indexOf("\n## ", start));
 
-    assert.match(docs, /batch b59/);
+    assert.match(docs, /batch b79/);
     assert.match(docs, /video-only/);
     assert.match(docs, /720×1280/);
+    assert.match(docs, /-c:v copy/);
     assert.match(docs, new RegExp(PUBLIC_VIDEO.replace(/\./g, "\\.")));
     assert.match(docs, new RegExp(PUBLIC_SHA256));
     assert.match(docs, new RegExp(POSTER_SHA256));
-    assert.match(docs, /8\.5秒地点の実フレーム/);
-    // source date はオーナーの明示確認による投稿日。画面の「2日目」からの逆算ではない。
-    assert.match(docs, /オーナーが明示確認した投稿日/);
-    assert.match(section, /オーナーが「9\/4の投稿を直後に受け取った」と/);
+    assert.match(docs, /4\.0秒地点の実フレーム/);
+    assert.match(docs, /音声の扱い — 削除した/);
     assert.match(ops, /85件/);
     assert.match(ops, /独立動画34本/);
     assert.match(section, /video-only/);
-    assert.match(section, /特典の内容・条件・付与方法は補わない/);
-    assert.match(section, /sameDayOrder: 10/);
+    assert.match(section, /sameDayOrder: 20/);
+    assert.match(section, /2026-09-13 23:59 JST|期間終了後は自動で消える/);
+    assert.match(section, /RADIO \/\s*LIVE STREAM Activity には関連付けず/);
     assert.doesNotMatch(docs, /drive\.google\.com/);
     assert.doesNotMatch(section, /drive\.google\.com/);
   });

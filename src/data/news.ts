@@ -98,6 +98,7 @@ import { webVoteDay2StoryVideo } from "./webVoteDay2StoryVideo.ts";
 import { voteDayFiveSoonStoryVideo } from "./voteDayFiveSoonStoryVideo.ts";
 import { morningThanksVoteStoryVideo } from "./morningThanksVoteStoryVideo.ts";
 import { streamThanksMorningSlotStoryVideo } from "./streamThanksMorningSlotStoryVideo.ts";
+import { miripochiWaitingStoryVideo } from "./miripochiWaitingStoryVideo.ts";
 import {
   PATON_VOTE_HOW_TO_CTA_LABEL,
   PATON_VOTE_HOW_TO_CTA_URL,
@@ -204,6 +205,29 @@ export function newsDisplayMedia(item: NewsItem): NewsMedia[] {
 }
 
 export const news: NewsItem[] = [
+  {
+    id: "2026-09-08-miripochi-waiting-vote-story",
+    date: "2026-09-08",
+    sameDayOrder: 20,
+    activityIds: ["miss-circle"],
+    title: "「みりぽち待ってます」投票を呼びかけ",
+    body:
+      "9月8日、みりぃがInstagram Storyで、リンクスタンプに「みりぽち待ってます」と書いて投票を呼びかけました。リンク先はStoryの表示だけでは確認できないため、ここには書きません。くま耳とキラキラのフィルターをつけて、ヘッドホンを着けたままマイクの前に座っている短い動画です。",
+    sourceLabel: miripochiWaitingStoryVideo.sourceLabel,
+    relatedUrl: "https://www.instagram.com/mily_chan36",
+    ctaLabel: "Instagramプロフィールを見る",
+    additionalCtas: [
+      {
+        label: missCircleWebVoteLink.label,
+        url: missCircleWebVoteLink.url,
+      },
+    ],
+    media: miripochiWaitingStoryVideo,
+    message: {
+      label: "みりぃのStory",
+      text: "みりぽち待ってます\u{1FA75}\u{1FA75}\u{1FA75}",
+    },
+  },
   {
     id: "2026-09-08-stream-thanks-morning-slot-story",
     date: "2026-09-08",

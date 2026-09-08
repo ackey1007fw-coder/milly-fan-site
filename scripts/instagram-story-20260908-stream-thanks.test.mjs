@@ -126,16 +126,18 @@ async function changedText() {
 }
 
 describe("2026-09-08 Instagram Story 配信お礼・翌朝枠 — Latest / NEWS", () => {
-  it("leads Latest as the only 9/8 record", () => {
+  it("follows the same-day みりぽち Story as the second 9/8 record", () => {
     const entry = item();
     const ordered = sortNewsByDateDesc(news);
 
     assert.ok(entry);
     assert.equal(news.filter(({ id }) => id === NEWS_ID).length, 1);
-    assert.equal(news[0], entry);
-    assert.equal(ordered[0], entry);
-    assert.equal(ordered[1]?.id, "2026-09-07-campus-girls-finals-ex-vol1");
-    assert.equal(ordered[2]?.id, "2026-09-07-morning-thanks-vote-day5-story");
+    assert.equal(news[0]?.id, "2026-09-08-miripochi-waiting-vote-story");
+    assert.equal(news[1], entry);
+    assert.equal(ordered[0]?.id, "2026-09-08-miripochi-waiting-vote-story");
+    assert.equal(ordered[1], entry);
+    assert.equal(ordered[2]?.id, "2026-09-07-campus-girls-finals-ex-vol1");
+    assert.equal(ordered[3]?.id, "2026-09-07-morning-thanks-vote-day5-story");
     assert.equal(entry.date, "2026-09-08");
     assert.equal(entry.sameDayOrder, 10);
     assert.deepEqual(entry.activityIds, ["live-stream"]);
@@ -172,7 +174,8 @@ describe("2026-09-08 Instagram Story 配信お礼・翌朝枠 — Latest / NEWS"
     const entry = item();
 
     assert.equal(entry.media, streamThanksMorningSlotStoryVideo);
-    assert.equal(galleryVideos[0], streamThanksMorningSlotStoryVideo);
+    assert.equal(galleryVideos[0]?.id, "mily-b79-01-miripochi-waiting-story");
+    assert.equal(galleryVideos[1], streamThanksMorningSlotStoryVideo);
     assert.deepEqual(
       galleryVideos.filter(({ id }) => id === MEDIA_ID),
       [streamThanksMorningSlotStoryVideo],
@@ -352,8 +355,8 @@ describe("2026-09-08 Instagram Story 配信お礼・翌朝枠 — privacy and sc
     assert.match(docs, new RegExp(POSTER_SHA256));
     assert.match(docs, /4\.0秒地点の実フレーム/);
     assert.match(docs, /再投稿表示/);
-    assert.match(ops, /84件/);
-    assert.match(ops, /独立動画33本/);
+    assert.match(ops, /85件/);
+    assert.match(ops, /独立動画34本/);
     assert.match(section, /video-only/);
     assert.match(section, /sameDayOrder: 10/);
     assert.match(section, /streamSchedule \/ events へ転記しない/);

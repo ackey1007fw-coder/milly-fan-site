@@ -3512,3 +3512,79 @@ ffmpeg -i public/media/gallery/mily-b66-01-stream-thanks-morning-slot-story.mp4 
   Latest / NEWS / Gallery / LIVE STREAM Activityで共有し、公開MP4 1本・poster 1枚だけを参照する。
 - 追加CTAは既存のSHOWROOMルームのみ。「明日の朝枠は7:30〜8:20」は本文引用に留め、
   streamSchedule へ転記しない。
+
+## 素材台帳（batch b79 / 受領日・source date 2026-09-08）
+
+オーナーがチャットで直接提供した本人Instagram Story動画1本。owner-provided。
+SNSから再取得していない。mainでbatch b67〜b78が配信スクショ等で先に使用されているため、b79として採番した。
+
+HOME Latest / `/news/` と Gallery が、公開MP4・poster・manifest objectを共有する。
+MISS CIRCLE Activityの関連NEWS・関連メディアにも出す。恒久的なStory permalinkはないため、
+表示は非リンクの `Instagram Story` labelとする。`/stories/`、highlights、events、
+streamSchedule、`media.ts` には追加しない。
+
+### 掲載承認
+
+- approval date: `2026-09-08`（JST）
+- オーナー本人が本タスクで添付したb79-01について、サイトへの掲載を明示依頼した。
+- source date `2026-09-08` は、元動画のcontainer creation_time（2026-09-08 14:20 JST。
+  ファイルメタデータであり投稿時刻の確定値ではない）と、オーナーがその直後（約2分後）に
+  提供したことによる。投稿時刻・時間帯はNEWS本文に書かない。
+- 画面の文言はリンクスタンプ「みりぽち待ってます🩵🩵🩵」だけ。三次審査WEB投票期間中の
+  呼びかけとして扱い、CTAは確認済みのWEB投票リンクのみ。リンクスタンプの遷移先は未確認。
+- 承認対象面はHOME Latest / `/news/`、Galleryの動画アーカイブ、MISS CIRCLE Activity。
+  `/stories/`への複製は含まない。
+
+| ID | 公開ファイル | 内容 | 掲載・承認 |
+| --- | --- | --- | --- |
+| b79-01 | `gallery/mily-b79-01-miripochi-waiting-story.mp4` | くま耳とキラキラのフェイスフィルター、ヘッドホンを着けてマイクの前に座り、視線を少し上へ向けている縦型動画。茶色の半袖トップス。画面にリンクスタンプ「みりぽち待ってます🩵🩵🩵」。720×1280 / 20.000秒 / 1fps / 20フレーム / video-only | ✅ 2026-09-08 明示依頼。Latest / NEWS + Gallery + MISS CIRCLE Activity |
+| b79-01 poster | `gallery/mily-b79-01-miripochi-waiting-story-poster.jpg` | 公開MP4の4.0秒地点の実フレーム。720×1280 | ✅ Latest / NEWS + Gallery |
+
+### 元素材と安全確認
+
+- provenance: `owner-provided`。Instagram Storyの恒久permalinkはなく、`sourceUrl`は持たない。
+- 元動画はgitignoredの `media/original/mily-b79-01-miripochi-waiting-story.mp4` に
+  無改変で保持し、受け渡し時のファイル名・URL・IDはtracked / public filesへ残さない。
+- 元動画は H.264 High / level 3.1 / 720×1280 / 1fps / 20フレーム / 20.000000秒 / yuv420p /
+  `has_b_frames` 2、音声は HE-AAC / 44.1kHz / stereo。
+  746,318 bytes / sha256 `1a7dca8ee40f5c79ff26e9b6ccd4218415d33d6349a8485e7616e9710b0286d9`
+- 画面には本人と、白い壁・窓・ブラインド・マイク・ヘッドホンだけが写り、第三者・住所・
+  連絡先の写り込みはない。場所を特定できる表示は確認していない。場所・番組・配信との
+  関係は未確認のため、台帳・NEWSでは断定しない。
+- 公開派生はcrop・scale・短縮・テロップ変更・AI加工なし。顔補正・生成塗り足しもない。
+
+### 音声の扱い — 削除した
+
+元素材にはHE-AAC音声が20秒間連続して入っている（実測 mean_volume 約 −17 dB / max −4.2 dB）。
+再配信権と内容・由来・権利者を確認できないため、公開派生は video-only（無音）にした。
+既存 b23 / b59 / b65 と同じ判断。元素材そのものから音声は削除していない。
+
+### 公開MP4
+
+- 既存の公開映像ストリームを `-c:v copy` で remux し、`-an` で音声だけを外した（b65と同じ方式）。
+  画素数・fps・フレーム数を変える再エンコードはしていない。
+- H.264 High / 720×1280 / 1fps / 20フレーム / 20.000000秒 / yuv420p / 音声ストリームなし /
+  `+faststart`（`moov` offset 36 < `mdat` offset 1101）/ metadata除去（`creation_time`・
+  `Core Media` handler なし）/ chapterなし。
+  585,726 bytes / sha256 `819779689509ee2e32d2ef5500ba4c285cf46c745d81b8d622c16181ac653d62`
+- posterは公開MP4の4.0秒地点の実フレーム（`-q:v 4`）。EXIF / IPTC / XMP / ICCなし。
+  68,651 bytes / sha256 `43346f678515886202b3610966cd5921d5d45d4dcb906f0dce3c62cde314b7f5`
+
+エンコードコマンド（再現用。ffmpeg は `ffmpeg-static` 7.0.2）:
+
+```
+ffmpeg -i media/original/mily-b79-01-miripochi-waiting-story.mp4 \
+  -map 0:v:0 -c:v copy -an \
+  -map_metadata -1 -map_metadata:s:v -1 -map_chapters -1 \
+  -movflags +faststart \
+  public/media/gallery/mily-b79-01-miripochi-waiting-story.mp4
+ffmpeg -i public/media/gallery/mily-b79-01-miripochi-waiting-story.mp4 -ss 4.0 -frames:v 1 -q:v 4 \
+  -map_metadata -1 public/media/gallery/mily-b79-01-miripochi-waiting-story-poster.jpg
+```
+
+### 共有範囲
+
+- `src/data/miripochiWaitingStoryVideo.json` の1オブジェクトを
+  Latest / NEWS / Gallery / MISS CIRCLE Activityで共有し、公開MP4 1本・poster 1枚だけを参照する。
+- 追加CTAは確認済みの三次審査WEB投票リンクのみ。SupportEvent の期間（2026-09-13 23:59 JST）
+  終了後は自動で非表示になる。リンクスタンプの遷移先は未確認のため、新しいURLは作らない。

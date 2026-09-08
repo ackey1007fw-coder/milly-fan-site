@@ -92,13 +92,14 @@ describe("2026-09-06 CAMPUS GIRLS 予選final 結果報告 — Latest entry", ()
       news.filter((candidate) => (candidate.source ?? "").includes(TWEET_ID)).length,
       1,
     );
-    assert.equal(ordered[0]?.id, "2026-09-08-stream-thanks-morning-slot-story");
-    assert.equal(ordered[1]?.id, "2026-09-07-campus-girls-finals-ex-vol1");
-    assert.equal(ordered[2]?.id, "2026-09-07-morning-thanks-vote-day5-story");
-    assert.equal(ordered[3]?.id, "2026-09-06-third-round-vote-day5-soon-story");
-    assert.equal(ordered[4]?.id, NEXT_SLOTS_ID);
-    assert.equal(ordered[5], entry);
-    assert.equal(ordered[6]?.id, NIGHT_SLOT_ID);
+    assert.equal(ordered[0]?.id, "2026-09-08-miripochi-waiting-vote-story");
+    assert.equal(ordered[1]?.id, "2026-09-08-stream-thanks-morning-slot-story");
+    assert.equal(ordered[2]?.id, "2026-09-07-campus-girls-finals-ex-vol1");
+    assert.equal(ordered[3]?.id, "2026-09-07-morning-thanks-vote-day5-story");
+    assert.equal(ordered[4]?.id, "2026-09-06-third-round-vote-day5-soon-story");
+    assert.equal(ordered[5]?.id, NEXT_SLOTS_ID);
+    assert.equal(ordered[6], entry);
+    assert.equal(ordered[7]?.id, NIGHT_SLOT_ID);
     assert.equal(entry.date, "2026-09-06");
     assert.equal(entry.sameDayOrder, 30);
     assert.deepEqual(entry.activityIds, ["campus-girls"]);
