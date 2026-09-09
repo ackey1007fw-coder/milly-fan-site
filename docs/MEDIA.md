@@ -3521,3 +3521,30 @@ ffmpeg -i public/media/gallery/mily-b66-01-stream-thanks-morning-slot-story.mp4 
 - 天宮あみさん公式ENTRY: `https://2026.frecam.jp/entry/837`。公開Xは `https://x.com/amis2_mh`。
 - X上で当該投稿画像にはAI生成メディア表示がある。みりぃの顔へのAI生成・加工を排除できないため、画像は公開assetとして採用しない。
 - HOMEカードは人物写真を使わないCSS装飾のみ。X画像CDNのhotlink、自己ホスト派生、AI生成・顔補正・生成塗り足しはいずれも行わない。
+## 素材台帳（batch b92 / 受領日 2026-09-09 / source date 未確認）
+
+- オーナーがチャットで直接提供し、`https://mily-fan-site.vercel.app` への掲載を明示依頼したInstagram Story動画1本。provenance: `owner-provided`。
+- approval date: `2026-09-09`（JST）。SNSから再取得していない。mainではb91まで使用済みのためb92として採番。
+- 投稿日は依頼文では確認できない。container `creation_time` や画面の「あと3日」から逆算せず、`sourceDate: null` とする。
+- 日付必須のHOME Latest / `/news/` には追加せず、Galleryの動画アーカイブだけに掲載する。日付が一次確認できた場合は同じ公開MP4・posterを再利用してNEWSへ配線できる。
+- 画面には「朝枠バタバタしちゃってすみませんでした」「アバ権獲得まで残り13万793pt」「【SHOWROOM審査】12日（土）21:59まで」「夜枠は21:30〜23:00」などの案内と、下部に `mily_chan36` の再投稿表示がある。
+- 公開MP4: `gallery/mily-b92-01-showroom-avatar-rights-story.mp4`。512×910 / 19秒 / 1fps / 19フレーム / H.264 Constrained Baseline / yuv420p / video-only / faststart。
+- 公開MP4: 46,562 bytes / sha256 `6b895c06caf779f838cf0748901fa675344f1b98e654ea973e763805eba6a761`。
+- poster: `gallery/mily-b92-01-showroom-avatar-rights-story-poster.jpg`。公開MP4の8.0秒地点の実フレーム。512×910 / 70,445 bytes / sha256 `82df135bd4a115864b2b94101a1a894754e32f6be7e399f2fcaa9551bb896e84`。
+- 元動画は H.264 High / 512×910 / 30fps / 571フレーム / 映像19.033333秒。AAC HE-AAC 44.1kHz stereo音声も含む。
+- 音声の内容・再配信権を確認できないため、公開派生は `-an` でvideo-only。画面内容が実質静止のStoryのため1fpsへサンプリングし、文字・表示内容は保持した。crop・scale・短縮・AI加工なし。
+- metadata / chapterを除去し、`+faststart`。posterは実フレームのみで、AI生成・顔補正・生成塗り足しなし。
+- 確認した範囲で、第三者の表示名・コメント・通知・住所・連絡先など公開を避けるべき個人情報は見当たらない。
+- 元の受け渡しファイル名・アップロードID・ローカルパスはtracked / public filesへ残さない。
+
+再現コマンド:
+
+```bash
+ffmpeg -i media/original/mily-b92-01-showroom-avatar-rights-story.mp4 \
+  -map 0:v:0 -vf fps=1 -an -c:v libx264 -profile:v baseline -level 3.0 -pix_fmt yuv420p \
+  -crf 32 -preset medium -movflags +faststart -map_metadata -1 -map_chapters -1 \
+  public/media/gallery/mily-b92-01-showroom-avatar-rights-story.mp4
+ffmpeg -ss 8 -i public/media/gallery/mily-b92-01-showroom-avatar-rights-story.mp4 \
+  -frames:v 1 -q:v 2 -map_metadata -1 \
+  public/media/gallery/mily-b92-01-showroom-avatar-rights-story-poster.jpg
+```

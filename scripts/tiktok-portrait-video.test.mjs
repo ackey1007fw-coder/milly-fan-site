@@ -12,11 +12,12 @@ it("shares the owner-dated TikTok between Latest and Gallery", async () => {
   assert.equal(item.sourceDate, "2026-09-05");
   assert.equal(item.sourceUrl, "https://vt.tiktok.com/ZSqNgRAvx/");
   assert.deepEqual(visibleGalleryVideos().filter(({ id }) => id === item.id), [item]);
-  assert.equal(galleryVideos.length, previous.length + 6);
+  assert.equal(galleryVideos.length, previous.length + 7);
   assert.deepEqual(
     galleryVideos.filter(
       ({ id }) =>
         id !== item.id &&
+        id !== "mily-b92-01-showroom-avatar-rights-story" &&
         id !== "mily-b59-01-third-round-vote-day2-story" &&
         id !== "mily-b66-01-stream-thanks-morning-slot-story" &&
         id !== "mily-b65-02-morning-thanks-vote-day5-story" &&
