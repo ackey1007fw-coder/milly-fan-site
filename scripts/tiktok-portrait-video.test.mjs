@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import { it } from "node:test";
 import { galleryVideos, tiktokPortraitVideo, visibleGalleryVideos } from "../src/data/galleryVideos.ts";
 import { selectGalleryEntries } from "../src/lib/galleryItems.ts";
-import { news, sortNewsByDateDesc } from "../src/data/news.ts";
+import { news, sortNewsByDateDesc } from "./fixtures/news-before-20260909.ts";
 import { news as previousNews } from "./fixtures/news-before-b58.ts";
 import { galleryVideos as previous } from "./fixtures/gallery-videos-before-b58.ts";
 

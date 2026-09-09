@@ -206,6 +206,18 @@ export function newsDisplayMedia(item: NewsItem): NewsMedia[] {
 
 export const news: NewsItem[] = [
   {
+    id: "2026-09-09-morning-thanks-night-stream",
+    date: "2026-09-09",
+    activityIds: ["live-stream", "miss-circle"],
+    title: "朝枠ありがとう、次枠は21:30〜23:00",
+    body:
+      "9月9日、みりぃがXで朝枠へのお礼を伝え、次のSHOWROOM配信を21:30〜23:00と案内しました。MISS CIRCLE CONTEST 2026の3次審査期間中で、応援を呼びかけています。",
+    source: "https://x.com/Mily_chan36/status/2097492757690646747",
+    sourceLabel: "Xの投稿を見る",
+    url: "https://www.showroom-live.com/r/circle2026_0734",
+    ctaLabel: "SHOWROOMを見る",
+  },
+  {
     id: "2026-09-08-stream-thanks-morning-slot-story",
     date: "2026-09-08",
     sameDayOrder: 10,
