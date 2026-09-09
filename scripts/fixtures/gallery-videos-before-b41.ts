@@ -5,6 +5,7 @@ import {
 } from "../../src/data/galleryVideos.ts";
 
 const laterVideoIds = new Set([
+  "mily-b92-01-showroom-avatar-rights-story",
   "mily-b66-01-stream-thanks-morning-slot-story",
   "mixch-m-Tfb8i9dy",
   "mily-b65-02-morning-thanks-vote-day5-story",

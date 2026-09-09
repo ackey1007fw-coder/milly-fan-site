@@ -1,3 +1,4 @@
+import { showroomAvatarRightsStoryVideo, type ShowroomAvatarRightsStoryVideo } from "./showroomAvatarRightsStoryVideo.ts";
 import { tiktokPortraitVideo, type TikTokPortraitVideo } from "./tiktokPortraitVideo.ts";
 import {
   eventStory20260821,
@@ -54,11 +55,13 @@ export type SelfHostedGalleryVideo =
   | MorningShowroomRunwayVideo
   | TikTokRadioVideo
   | TikTokPortraitVideo
+  | ShowroomAvatarRightsStoryVideo
   | TikTokSayonaraIchigoVideo;
 
 export type GalleryVideoItem = SelfHostedGalleryVideo | MixchMovie;
 export {
   tiktokPortraitVideo,
+  showroomAvatarRightsStoryVideo,
   earthquakeSafetyStoryVideo,
   eventStory20260821,
   mixchExPeriodDay1Movie,
@@ -148,6 +151,8 @@ export const galleryVideos: GalleryVideoItem[] = [
   secondRoundStoryVideo,
   morningStoryVideo,
   tiktokSayonaraIchigoVideo,
+  // Undated owner-provided Story: keep it outside dated ordering until the source date is confirmed.
+  showroomAvatarRightsStoryVideo,
   mixchExPeriodDay1Movie,
   mixchFinalDayMovie,
   mixchExpressiveMovie,
