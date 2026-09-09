@@ -12,7 +12,7 @@ const DURATION_SECONDS = 72 * 60 + 48;
 
 it("places the September 7 night recording before that morning recording with valid source-relative timestamps", () => {
   assert.ok(streamRecaps.includes(recap));
-  assert.equal(streamRecaps[0], recap);
+  assert.equal(streamRecaps.filter((item) => item.date === recap.date)[0], recap);
   assert.ok(streamRecaps.indexOf(recap) < streamRecaps.indexOf(streamRecap20260907Asa));
   assert.equal(recap.date, streamRecap20260907Asa.date);
   for (const items of [recap.highlights, recap.timeline]) {
