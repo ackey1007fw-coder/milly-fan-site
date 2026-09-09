@@ -13,7 +13,7 @@ import {
   mixchConfidenceMessageMovie,
   visibleGalleryVideos,
 } from "../src/data/galleryVideos.ts";
-import { news, newsDisplayMedia, sortNewsByDateDesc } from "../src/data/news.ts";
+import { news, newsDisplayMedia, sortNewsByDateDesc } from "./fixtures/news-before-20260909.ts";
 import { createPortalFeed } from "../src/data/portalFeed.ts";
 import { streamSchedule } from "../src/data/streamSchedule.ts";
 import { selectActivityMedia } from "../src/lib/activityMedia.ts";

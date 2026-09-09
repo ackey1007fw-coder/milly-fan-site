@@ -18,7 +18,7 @@ import {
   campusGirlsPrelimFinalResultImage,
   campusGirlsPrelimFinalResultPhoto,
 } from "../src/data/campusGirlsPrelimFinalResultImage.ts";
-import { news, sortNewsByDateDesc } from "../src/data/news.ts";
+import { news, sortNewsByDateDesc } from "./fixtures/news-before-20260909.ts";
 import { createPortalFeed } from "../src/data/portalFeed.ts";
 import { stories } from "../src/data/stories.ts";
 import { streamSchedule } from "../src/data/streamSchedule.ts";
