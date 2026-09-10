@@ -14,6 +14,7 @@ export const streamRecap20260815Day: StreamRecap = {
     artist: "松田聖子",
     timestamp: "0:47:57",
     youtubeUrl: "https://www.youtube.com/watch?v=2LVVH_D-mR4",
+    karaoke: { youtubeUrl: "https://www.youtube.com/watch?v=QPZcivqqiXQ", channel: "カラオケ歌っちゃ王" },
   }],
   highlights: [],
   goals: [],

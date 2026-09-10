@@ -81,6 +81,7 @@ export const streamRecap20260821Day: StreamRecap = {
     artist: "Superfly",
     timestamp: "1:32:03",
     youtubeUrl: "https://www.youtube.com/watch?v=gU5oN0KVofU",
+    karaoke: { youtubeUrl: "https://www.youtube.com/watch?v=_8TmGHhPjAw", channel: "生音風カラオケ屋" },
   }],
   image: approvedStills[0],
   gallery: approvedStills,

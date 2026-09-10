@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { it } from "node:test";
 import { withoutApprovedSongLinks } from "./approved-song-links.mjs";
+import { buildStreamSongCatalog } from "../src/lib/streamSongCatalog.ts";
 import { streamRecaps, streamRecap20260905Day } from "../src/data/streamRecaps.ts";
 
 it("keeps song links on individual official YouTube videos with ordered recording positions", () => {
@@ -45,5 +46,26 @@ it("keeps reference karaoke separate from original recordings and requires an id
       assert.notEqual(song.karaoke.youtubeUrl, song.youtubeUrl);
       assert.equal(withoutApprovedSongLinks(song.karaoke.youtubeUrl), "[approved song link]");
     }
+  }
+});
+
+it("uses the same reference karaoke in every occurrence of a catalog song", () => {
+  const catalog = new Map(buildStreamSongCatalog(streamRecaps).map((song) => [song.key, song]));
+  for (const recap of streamRecaps) {
+    for (const song of recap.songs ?? []) {
+      const [{ key }] = buildStreamSongCatalog([{ ...recap, songs: [song] }]);
+      assert.deepEqual(song.karaoke, catalog.get(key).karaoke, `${recap.id}: ${song.title}`);
+    }
+  }
+});
+
+it("does not reuse a karaoke video for different catalog songs", () => {
+  const owners = new Map();
+  for (const song of buildStreamSongCatalog(streamRecaps)) {
+    if (!song.karaoke) continue;
+    const url = song.karaoke.youtubeUrl;
+    assert.match(url, /^https:\/\/www\.youtube\.com\/watch\?v=[A-Za-z0-9_-]{11}$/);
+    assert.ok(!owners.has(url), `${song.title}: karaoke URL already assigned to ${owners.get(url)}`);
+    owners.set(url, song.key);
   }
 });

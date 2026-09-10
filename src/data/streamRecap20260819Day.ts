@@ -14,6 +14,7 @@ export const streamRecap20260819Day: StreamRecap = {
     artist: "YOASOBI",
     timestamp: "1:36:25",
     youtubeUrl: "https://www.youtube.com/watch?v=ZRtdQ81jPUQ",
+    karaoke: { youtubeUrl: "https://www.youtube.com/watch?v=xzEW-A8mEsE", channel: "カラオケ歌っちゃ王" },
   }],
   highlights: [],
   goals: [],

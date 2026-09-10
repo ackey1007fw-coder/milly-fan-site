@@ -33,7 +33,8 @@ export const streamRecap20260829Day: StreamRecap = {
       "title": "とくべチュ、して",
       "artist": "＝LOVE",
       "timestamp": "0:54:50",
-      "youtubeUrl": "https://www.youtube.com/watch?v=F3P8vcZkIh4"
+      "youtubeUrl": "https://www.youtube.com/watch?v=F3P8vcZkIh4",
+      karaoke: { youtubeUrl: "https://www.youtube.com/watch?v=r6dpqf5CRjA", channel: "カラオケ歌っちゃ王" },
     }
   ],
   image: approvedStill,

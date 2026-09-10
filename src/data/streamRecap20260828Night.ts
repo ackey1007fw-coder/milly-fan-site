@@ -97,7 +97,8 @@ export const streamRecap20260828Night: StreamRecap = {
       "title": "ロコローション",
       "artist": "ORANGE RANGE",
       "timestamp": "0:08:42",
-      "youtubeUrl": "https://www.youtube.com/watch?v=3-kV0xU5aNc"
+      "youtubeUrl": "https://www.youtube.com/watch?v=3-kV0xU5aNc",
+      karaoke: { youtubeUrl: "https://www.youtube.com/watch?v=0E1LWO-2vsw", channel: "カラオケ歌っちゃ王" },
     }
   ],
   "highlights": [

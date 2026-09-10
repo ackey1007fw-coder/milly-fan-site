@@ -16,6 +16,7 @@ export const streamRecap20260818Night: StreamRecap = {
     timestamp: "0:38:07",
     youtubeUrl: "https://www.youtube.com/watch?v=nAjJluQCSGE",
     youtubeVersionNote: "原曲歌手も参加する「よしお兄さんとあそぼう!」の企画動画です。原盤音源とは異なります。",
+    karaoke: { youtubeUrl: "https://www.youtube.com/watch?v=8s8GcvwlhR8", channel: "カラオケ歌っちゃ王" },
   }],
   highlights: [],
   goals: [],
