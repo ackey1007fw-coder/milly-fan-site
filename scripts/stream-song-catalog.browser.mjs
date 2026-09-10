@@ -149,7 +149,10 @@ try {
         for (const song of catalog.filter((entry) => entry.youtubeVersionNote)) {
           const card = section.locator("li").filter({ has: page.getByRole("heading", { name: song.title, exact: true }) }).first();
           assert.ok((await card.innerText()).includes(song.youtubeVersionNote));
+          const songDetails = card.locator(":scope > details");
+          await songDetails.locator(":scope > summary").click();
           assert.equal(await card.getByRole("link", { name: `${song.title} — 公式歌唱動画をYouTubeで聴く（新しいタブ）`, exact: true }).getAttribute("href"), song.youtubeUrl);
+          await songDetails.locator(":scope > summary").click();
           const details = page.locator(`#recap-${song.performances[0].id}`);
           await details.locator(":scope > summary").click();
           assert.ok((await details.innerText()).includes(song.youtubeVersionNote));
