@@ -17,6 +17,7 @@ const base = "http://127.0.0.1:4173";
 const live = `${base}/activities/live/`;
 const catalog = buildStreamSongCatalog(streamRecaps);
 assert.ok(catalog.length > 0, "The approved song data must not be empty");
+const initialCount = Math.min(6, catalog.length);
 const probe = catalog.find((song) => song.title === "Mela!") ?? catalog[0];
 const targetHash = `#recap-${probe.performances[0].id}`;
 const report = {
@@ -71,6 +72,7 @@ try {
       await page.waitForFunction(({ expected }) => JSON.stringify([...document.querySelectorAll("#song-catalog h3")].map((node) => node.textContent)) === JSON.stringify(expected), { expected });
       assert.deepEqual(await titles(), expected);
     };
+    const recentInitialTitles = () => selectCatalogSongs(catalog).slice(0, initialCount).map((song) => song.title);
     const overflow = async () => assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1), "Horizontal page overflow");
     try {
       await page.goto(live, { waitUntil: "networkidle" });
@@ -93,10 +95,22 @@ try {
         assert.equal(new URL(page.url()).hash, "#song-catalog");
       });
       await check("initial count, latest order, responsive layout", async () => {
-        await expectTitles(selectCatalogSongs(catalog).map((song) => song.title));
-        assert.match(await section.getByRole("status").innerText(), new RegExp(`${catalog.length}曲中 ${catalog.length}曲`));
+        await expectTitles(recentInitialTitles());
+        assert.match(await section.getByRole("status").innerText(), new RegExp(`${catalog.length}曲中 ${initialCount}曲`));
         await overflow();
         await section.screenshot({ path: join(output, `${scenario.name}-catalog.png`) });
+      });
+      await check("song cards start compact and expand on demand", async () => {
+        const songDetails = section.locator("details");
+        assert.equal(await songDetails.count(), initialCount);
+        assert.ok(await songDetails.evaluateAll((nodes) => nodes.every((node) => node.open === false)), "Song cards must start collapsed");
+        const first = songDetails.first();
+        assert.match(await first.locator(":scope > summary").innerText(), /配信/);
+        await first.locator(":scope > summary").click();
+        assert.equal(await first.evaluate((node) => node.open), true);
+        await first.locator(":scope > summary").click();
+        assert.equal(await first.evaluate((node) => node.open), false);
+        await overflow();
       });
       await check("title / artist / full-width multi-term search", async () => {
         await search.fill("ｍＥＬＡ　緑黄");
@@ -104,15 +118,16 @@ try {
         await search.fill(probe.artist);
         await expectTitles(selectCatalogSongs(catalog, probe.artist).map((song) => song.title));
         await search.fill("");
+        await expectTitles(recentInitialTitles());
       });
       await check("artist filter and both ordering controls", async () => {
         await artist.selectOption(probe.artist);
         await expectTitles(selectCatalogSongs(catalog, "", probe.artist).map((song) => song.title));
         await artist.selectOption("");
         await order.selectOption("title");
-        await expectTitles(selectCatalogSongs(catalog, "", "", "title").map((song) => song.title));
+        await expectTitles(selectCatalogSongs(catalog, "", "", "title").slice(0, initialCount).map((song) => song.title));
         await order.selectOption("recent");
-        await expectTitles(selectCatalogSongs(catalog).map((song) => song.title));
+        await expectTitles(recentInitialTitles());
       });
       await check("zero results and clear restores search + artist", async () => {
         await artist.selectOption(probe.artist);
@@ -122,7 +137,18 @@ try {
         await section.getByRole("button", { name: "検索条件をクリア" }).click();
         assert.equal(await search.inputValue(), "");
         assert.equal(await artist.inputValue(), "");
+        await expectTitles(recentInitialTitles());
+      });
+      await check("show-all control reveals the complete catalog", async () => {
+        assert.ok(catalog.length > initialCount, "This regression test expects a catalog large enough to need progressive disclosure");
+        await section.getByRole("button", { name: `全${catalog.length}曲を見る ↓`, exact: true }).click();
         await expectTitles(selectCatalogSongs(catalog).map((song) => song.title));
+        assert.match(await section.getByRole("status").innerText(), new RegExp(`${catalog.length}曲中 ${catalog.length}曲`));
+        await section.getByRole("button", { name: `最近の${initialCount}曲だけに戻す ↑`, exact: true }).click();
+        await expectTitles(recentInitialTitles());
+        await section.getByRole("button", { name: `全${catalog.length}曲を見る ↓`, exact: true }).click();
+        await expectTitles(selectCatalogSongs(catalog).map((song) => song.title));
+        await overflow();
       });
       await check("original / karaoke links preserve approved URLs and safe new tabs", async () => {
         const links = await section.locator('a[target="_blank"]').evaluateAll((nodes) => nodes.map((node) => ({ href: node.getAttribute("href"), rel: node.rel, label: node.getAttribute("aria-label") })));
@@ -137,7 +163,10 @@ try {
         for (const song of catalog.filter((entry) => entry.youtubeVersionNote)) {
           const card = section.locator("li").filter({ has: page.getByRole("heading", { name: song.title, exact: true }) }).first();
           assert.ok((await card.innerText()).includes(song.youtubeVersionNote));
+          const songDetails = card.locator(":scope > details");
+          await songDetails.locator(":scope > summary").click();
           assert.equal(await card.getByRole("link", { name: `${song.title} — 公式歌唱動画をYouTubeで聴く（新しいタブ）`, exact: true }).getAttribute("href"), song.youtubeUrl);
+          await songDetails.locator(":scope > summary").click();
           const details = page.locator(`#recap-${song.performances[0].id}`);
           await details.locator(":scope > summary").click();
           assert.ok((await details.innerText()).includes(song.youtubeVersionNote));
@@ -166,6 +195,23 @@ try {
         await page.goto(`${live}${targetHash}`, { waitUntil: "networkidle" });
         await page.waitForFunction((hash) => document.querySelector(hash)?.open === true, targetHash);
         await overflow();
+      });
+      await check("latest recap opens with recording caveats, songs and historical next slot", async () => {
+        const latest = streamRecaps[0];
+        const hash = `#recap-${latest.id}`;
+        await page.goto(`${live}${hash}`, { waitUntil: "networkidle" });
+        await page.waitForFunction((hash) => document.querySelector(hash)?.open === true, hash);
+        const recap = page.locator(hash);
+        assert.ok((await recap.innerText()).includes(latest.summary));
+        assert.ok((await recap.innerText()).includes(latest.transcriptionNote));
+        for (const song of latest.songs ?? []) {
+          assert.ok((await recap.innerText()).includes(song.title));
+          assert.equal(await recap.locator(`a[href="${song.youtubeUrl}"]`).count(), 1);
+        }
+        await recap.locator("details > summary").click();
+        assert.ok((await recap.innerText()).includes(latest.nextNote));
+        await overflow();
+        await recap.screenshot({ path: join(output, `${scenario.name}-latest-recap.png`) });
       });
       await check("catalog stays exclusive to LIVE STREAM and no runtime errors", async () => {
         await page.goto(`${base}/activities/radio/`, { waitUntil: "networkidle" });
