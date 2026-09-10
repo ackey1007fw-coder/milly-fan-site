@@ -17,6 +17,7 @@ const base = "http://127.0.0.1:4173";
 const live = `${base}/activities/live/`;
 const catalog = buildStreamSongCatalog(streamRecaps);
 assert.ok(catalog.length > 0, "The approved song data must not be empty");
+const initialCount = Math.min(6, catalog.length);
 const probe = catalog.find((song) => song.title === "Mela!") ?? catalog[0];
 const targetHash = `#recap-${probe.performances[0].id}`;
 const report = {
@@ -71,6 +72,7 @@ try {
       await page.waitForFunction(({ expected }) => JSON.stringify([...document.querySelectorAll("#song-catalog h3")].map((node) => node.textContent)) === JSON.stringify(expected), { expected });
       assert.deepEqual(await titles(), expected);
     };
+    const recentInitialTitles = () => selectCatalogSongs(catalog).slice(0, initialCount).map((song) => song.title);
     const overflow = async () => assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1), "Horizontal page overflow");
     try {
       await page.goto(live, { waitUntil: "networkidle" });
@@ -93,14 +95,14 @@ try {
         assert.equal(new URL(page.url()).hash, "#song-catalog");
       });
       await check("initial count, latest order, responsive layout", async () => {
-        await expectTitles(selectCatalogSongs(catalog).map((song) => song.title));
-        assert.match(await section.getByRole("status").innerText(), new RegExp(`${catalog.length}曲中 ${catalog.length}曲`));
+        await expectTitles(recentInitialTitles());
+        assert.match(await section.getByRole("status").innerText(), new RegExp(`${catalog.length}曲中 ${initialCount}曲`));
         await overflow();
         await section.screenshot({ path: join(output, `${scenario.name}-catalog.png`) });
       });
       await check("song cards start compact and expand on demand", async () => {
         const songDetails = section.locator("details");
-        assert.equal(await songDetails.count(), catalog.length);
+        assert.equal(await songDetails.count(), initialCount);
         assert.ok(await songDetails.evaluateAll((nodes) => nodes.every((node) => node.open === false)), "Song cards must start collapsed");
         const first = songDetails.first();
         assert.match(await first.locator(":scope > summary").innerText(), /配信/);
@@ -116,15 +118,16 @@ try {
         await search.fill(probe.artist);
         await expectTitles(selectCatalogSongs(catalog, probe.artist).map((song) => song.title));
         await search.fill("");
+        await expectTitles(recentInitialTitles());
       });
       await check("artist filter and both ordering controls", async () => {
         await artist.selectOption(probe.artist);
         await expectTitles(selectCatalogSongs(catalog, "", probe.artist).map((song) => song.title));
         await artist.selectOption("");
         await order.selectOption("title");
-        await expectTitles(selectCatalogSongs(catalog, "", "", "title").map((song) => song.title));
+        await expectTitles(selectCatalogSongs(catalog, "", "", "title").slice(0, initialCount).map((song) => song.title));
         await order.selectOption("recent");
-        await expectTitles(selectCatalogSongs(catalog).map((song) => song.title));
+        await expectTitles(recentInitialTitles());
       });
       await check("zero results and clear restores search + artist", async () => {
         await artist.selectOption(probe.artist);
@@ -134,7 +137,18 @@ try {
         await section.getByRole("button", { name: "検索条件をクリア" }).click();
         assert.equal(await search.inputValue(), "");
         assert.equal(await artist.inputValue(), "");
+        await expectTitles(recentInitialTitles());
+      });
+      await check("show-all control reveals the complete catalog", async () => {
+        assert.ok(catalog.length > initialCount, "This regression test expects a catalog large enough to need progressive disclosure");
+        await section.getByRole("button", { name: `全${catalog.length}曲を見る ↓`, exact: true }).click();
         await expectTitles(selectCatalogSongs(catalog).map((song) => song.title));
+        assert.match(await section.getByRole("status").innerText(), new RegExp(`${catalog.length}曲中 ${catalog.length}曲`));
+        await section.getByRole("button", { name: `最近の${initialCount}曲だけに戻す ↑`, exact: true }).click();
+        await expectTitles(recentInitialTitles());
+        await section.getByRole("button", { name: `全${catalog.length}曲を見る ↓`, exact: true }).click();
+        await expectTitles(selectCatalogSongs(catalog).map((song) => song.title));
+        await overflow();
       });
       await check("original / karaoke links preserve approved URLs and safe new tabs", async () => {
         const links = await section.locator('a[target="_blank"]').evaluateAll((nodes) => nodes.map((node) => ({ href: node.getAttribute("href"), rel: node.rel, label: node.getAttribute("aria-label") })));
