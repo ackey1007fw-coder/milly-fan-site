@@ -196,6 +196,23 @@ try {
         await page.waitForFunction((hash) => document.querySelector(hash)?.open === true, targetHash);
         await overflow();
       });
+      await check("latest recap opens with recording caveats, songs and historical next slot", async () => {
+        const latest = streamRecaps[0];
+        const hash = `#recap-${latest.id}`;
+        await page.goto(`${live}${hash}`, { waitUntil: "networkidle" });
+        await page.waitForFunction((hash) => document.querySelector(hash)?.open === true, hash);
+        const recap = page.locator(hash);
+        assert.ok((await recap.innerText()).includes(latest.summary));
+        assert.ok((await recap.innerText()).includes(latest.transcriptionNote));
+        for (const song of latest.songs ?? []) {
+          assert.ok((await recap.innerText()).includes(song.title));
+          assert.equal(await recap.locator(`a[href="${song.youtubeUrl}"]`).count(), 1);
+        }
+        await recap.locator("details > summary").click();
+        assert.ok((await recap.innerText()).includes(latest.nextNote));
+        await overflow();
+        await recap.screenshot({ path: join(output, `${scenario.name}-latest-recap.png`) });
+      });
       await check("catalog stays exclusive to LIVE STREAM and no runtime errors", async () => {
         await page.goto(`${base}/activities/radio/`, { waitUntil: "networkidle" });
         assert.equal(await page.locator("#song-catalog").count(), 0);
