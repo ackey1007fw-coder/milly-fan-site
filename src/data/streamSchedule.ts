@@ -49,7 +49,7 @@ export const streamSchedule: StreamSlot[] = [
   },
   { date: "2026-09-09", time: "10:00", endTime: "11:00" },
   { date: "2026-09-09", time: "14:40", endTime: "15:20" },
-  { date: "2026-09-09", time: "21:30", endTime: "21:50" },
+  { date: "2026-09-09", time: "21:30", endTime: "23:00" },
   { date: "2026-09-11", time: "10:00", endTime: "10:30" },
   { date: "2026-09-11", time: "14:50", endTime: "15:20" },
   { date: "2026-09-11", time: "21:00", endTime: "22:00" },
