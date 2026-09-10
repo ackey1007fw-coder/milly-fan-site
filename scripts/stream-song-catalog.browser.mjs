@@ -98,6 +98,18 @@ try {
         await overflow();
         await section.screenshot({ path: join(output, `${scenario.name}-catalog.png`) });
       });
+      await check("song cards start compact and expand on demand", async () => {
+        const songDetails = section.locator("details");
+        assert.equal(await songDetails.count(), catalog.length);
+        assert.ok(await songDetails.evaluateAll((nodes) => nodes.every((node) => node.open === false)), "Song cards must start collapsed");
+        const first = songDetails.first();
+        assert.match(await first.locator(":scope > summary").innerText(), /配信/);
+        await first.locator(":scope > summary").click();
+        assert.equal(await first.evaluate((node) => node.open), true);
+        await first.locator(":scope > summary").click();
+        assert.equal(await first.evaluate((node) => node.open), false);
+        await overflow();
+      });
       await check("title / artist / full-width multi-term search", async () => {
         await search.fill("ｍＥＬＡ　緑黄");
         await expectTitles(["Mela!"]);
