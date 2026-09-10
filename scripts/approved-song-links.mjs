@@ -1,6 +1,28 @@
 // Owner-requested song links, verified against artist/label or accompaniment creator channels.
 // Removing only these exact URLs lets existing private-archive checks keep running.
 const approved = new Set([
+  // 2026-09-10: とくべチュ、して / ＝LOVE — カラオケ歌っちゃ王; individual title: ガイドなし; creator channel matched. See CONTENT-OPS audit.
+  "https://www.youtube.com/watch?v=r6dpqf5CRjA",
+  // 2026-09-10: ロコローション / ORANGE RANGE — カラオケ歌っちゃ王; individual title: ガイドなし; creator channel matched. See CONTENT-OPS audit.
+  "https://www.youtube.com/watch?v=0E1LWO-2vsw",
+  // 2026-09-10: 完璧主義で☆ / FRUITS ZIPPER — FRUITS ZIPPER; official off vocal / Instrumental; uploader and description matched. See CONTENT-OPS audit.
+  "https://www.youtube.com/watch?v=kmFey5nPm6U",
+  // 2026-09-10: 好きすぎて滅！ / M!LK — カラオケ歌っちゃ王; individual title: ガイドなし; creator channel matched. See CONTENT-OPS audit.
+  "https://www.youtube.com/watch?v=DUWVVQQmFe4",
+  // 2026-09-10: ロマンスの神様 / 広瀬香美 — カラオケ歌っちゃ王; individual title: ガイドなし; creator channel matched. See CONTENT-OPS audit.
+  "https://www.youtube.com/watch?v=8WREmxKaJ0M",
+  // 2026-09-10: 元彼女のみなさまへ / コレサワ — カラオケ歌っちゃ王; individual title: ガイドなし; creator channel matched. See CONTENT-OPS audit.
+  "https://www.youtube.com/watch?v=qEyEBb96Zn8",
+  // 2026-09-10: アイドル / YOASOBI — カラオケ歌っちゃ王; individual title: ガイドなし; creator channel matched. See CONTENT-OPS audit.
+  "https://www.youtube.com/watch?v=xzEW-A8mEsE",
+  // 2026-09-10: ぼよよん行進曲 / 今井ゆうぞう・はいだしょうこ — カラオケ歌っちゃ王; individual title: ガイドなし; creator channel matched. See CONTENT-OPS audit.
+  "https://www.youtube.com/watch?v=8s8GcvwlhR8",
+  // 2026-09-10: SWEET MEMORIES / 松田聖子 — カラオケ歌っちゃ王; individual title: ガイドなし; creator channel matched. See CONTENT-OPS audit.
+  "https://www.youtube.com/watch?v=QPZcivqqiXQ",
+  // 2026-09-10: 可愛くてごめん / HoneyWorks — HoneyWorks 2nd Channel; official off vocal / Instrumental; uploader and description matched. See CONTENT-OPS audit.
+  "https://www.youtube.com/watch?v=HqmTVF8eCmM",
+  // 2026-09-10: かわいいだけじゃだめですか？ / CUTIE STREET — CUTIE STREET; official off vocal / Instrumental; uploader and description matched. See CONTENT-OPS audit.
+  "https://www.youtube.com/watch?v=YYGsvfQcDIg",
   "https://www.youtube.com/watch?v=fyrMcSH9ax0",
   "https://www.youtube.com/watch?v=3-kV0xU5aNc",
   "https://www.youtube.com/watch?v=kzZ6KXDM1RI",

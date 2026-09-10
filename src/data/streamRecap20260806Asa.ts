@@ -14,6 +14,7 @@ export const streamRecap20260806Asa: StreamRecap = {
     artist: "CUTIE STREET",
     timestamp: "2:22:56",
     youtubeUrl: "https://www.youtube.com/watch?v=d0rOHgzCe6s",
+    karaoke: { youtubeUrl: "https://www.youtube.com/watch?v=YYGsvfQcDIg", channel: "CUTIE STREET" },
   }],
   highlights: [],
   goals: [],

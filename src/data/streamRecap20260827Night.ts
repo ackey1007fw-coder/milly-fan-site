@@ -98,7 +98,8 @@ export const streamRecap20260827Night: StreamRecap = {
       "artist": "FRUITS ZIPPER",
       "timestamp": "1:39:56",
       "youtubeUrl": "https://www.youtube.com/watch?v=fyrMcSH9ax0",
-      "youtubeVersionNote": "Dance Practice版（FRUITS ZIPPER投稿）"
+      "youtubeVersionNote": "Dance Practice版（FRUITS ZIPPER投稿）",
+      karaoke: { youtubeUrl: "https://www.youtube.com/watch?v=kmFey5nPm6U", channel: "FRUITS ZIPPER" },
     }
   ],
   "highlights": [

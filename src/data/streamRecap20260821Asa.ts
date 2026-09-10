@@ -14,6 +14,7 @@ export const streamRecap20260821Asa: StreamRecap = {
     artist: "コレサワ",
     timestamp: "1:47:20",
     youtubeUrl: "https://www.youtube.com/watch?v=UykGAa6AfbA",
+    karaoke: { youtubeUrl: "https://www.youtube.com/watch?v=qEyEBb96Zn8", channel: "カラオケ歌っちゃ王" },
   }],
   highlights: [],
   goals: [],

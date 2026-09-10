@@ -71,7 +71,8 @@ export const streamRecap20260825Asa: StreamRecap = {
       "title": "ロマンスの神様",
       "artist": "広瀬香美",
       "timestamp": "0:39:54",
-      "youtubeUrl": "https://www.youtube.com/watch?v=l8-RA3B0YRc"
+      "youtubeUrl": "https://www.youtube.com/watch?v=l8-RA3B0YRc",
+      karaoke: { youtubeUrl: "https://www.youtube.com/watch?v=8WREmxKaJ0M", channel: "カラオケ歌っちゃ王" },
     }
   ],
   "highlights": [
