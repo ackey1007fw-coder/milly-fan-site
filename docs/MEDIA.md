@@ -3581,3 +3581,14 @@ Latest / NEWSのみ。公開CDNのhotlink、iframe、Gallery追加は行わな�
 - 第三者、視聴者名・アイコン、コメント欄、住所・連絡先など公開を避ける情報の写り込みなし。
 - 9/9のcaptionは録画開始記録と既存記事の開始表示を混同しないため、未照合の時刻を付けず場面説明だけにした。
 - b61の撤回済み画像など、過去に非掲載化した素材は再利用していない。
+
+## 素材台帳（batch b98 / source date 2026-09-11 / 承認日 2026-09-12）
+
+9月11日22:32頃開始のSHOWROOM夜配信録画から選んだ実フレーム8枚。オーナーが配信終了直後に、当該配信レポートとスクショのサイト実装を明示依頼したため、LIVE STREAM掲載用として承認済みの範囲で使用する。番号衝突を避けるためb98を採番した。
+
+- 公開ファイル: `live/mily-b98-01-opening-smile.jpg` 〜 `live/mily-b98-08-soft-smile.jpg`。全8枚640×360 JPEG。
+- 代表: `mily-b98-06-bright-smile.jpg`。保存ZIP: `live/mily-b98-night-stills.zip`。
+- provenance: owner-provided recording / owner-approved recap stills。公開再生permalinkなし。録画原本・受け渡しURL / ID / ローカルパスは公開しない。
+- 録画全体を25点で概観し、10候補を実寸確認して8枚を選定。本人以外の人物、コメント欄、視聴者名・アイコン、住所・連絡先など公開を避ける情報の写り込みなし。
+- 元の640×360・16:9を保持。crop・scaleなし。通常のJPEG圧縮のみで、EXIF / GPS / IPTC / XMPを持たない。顔のAI生成・補正・置換・生成塗り足しなし。
+- LIVE STREAM専用。NEWS / Gallery / `media.ts` / `galleryVideos.ts` へ複製しない。全文文字起こし・録音・録画も公開しない。
