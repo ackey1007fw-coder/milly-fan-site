@@ -17,7 +17,6 @@ import {
 } from "../data/galleryVideos.ts";
 import { isMixchMovie, type MixchMovie } from "../data/mixchMovies.ts";
 import { media, visibleMedia, type MediaItem } from "../data/media.ts";
-import { nightFanroomSelfiePhoto } from "../data/nightFanroomSelfie.ts";
 
 export type GalleryEntry =
   | { kind: "media"; key: string; item: MediaItem }
@@ -110,7 +109,6 @@ export function selectGalleryEntries(): GalleryEntry[] {
       key: item.key,
       item,
     })),
-    { kind: "media" as const, key: nightFanroomSelfiePhoto.id, item: nightFanroomSelfiePhoto },
     ...mixch.map((item) => ({
       kind: "mixch" as const,
       key: item.id,

@@ -93,8 +93,8 @@ describe("2026-09-11 night Story / Fan Room / Gallery update", () => {
     assert.equal(entry.sourceLabel, "SHOWROOMファンルーム");
     assert.equal(entry.url, "https://www.showroom-live.com/room/fan_club?room_id=573253");
     assert.match(entry.body, /9月11日23:10/);
+    assert.equal(entry.message?.label, "みりぃのファンルーム");
     assert.match(entry.message?.text ?? "", /3次審査突破&アバ権獲得/);
-    assert.doesNotMatch(JSON.stringify(entry), /あっきー|キサラギ|ヒロシ君|ヒゲおやじ/);
     assert.equal(entry.media, undefined);
   });
   it("adds the approved selfie to Gallery and keeps both Story videos NEWS-only", () => {

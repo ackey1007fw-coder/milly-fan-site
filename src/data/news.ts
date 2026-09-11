@@ -214,7 +214,7 @@ export const news: NewsItem[] = [
     sameDayOrder: 50,
     title: "「今日のみりぽち完了していますか!?」夜の投票呼びかけ",
     body:
-      "9月11日夜、みりぃがInstagram Storyで「今日のみりぽち完了していますか!?」と投票を呼びかけました。リンクスタンプの遷移先は素材だけでは確認できないため本文では断定せず、下のWEB投票ボタンはサイトで別途確認済みの投票先です。",
+      "9月11日夜、みりぃがInstagram Storyで「今日のみりぽち完了していますか!?」と投票を呼びかけました。リンクスタンプの遷移先は素材だけでは確認できないため、本文では断定していません。投票期間中のWEB投票先は、サイトで別途確認済みの情報を使用しています。",
     sourceLabel: miripochiStoryVideo.sourceLabel,
     relatedUrl: "https://www.instagram.com/mily_chan36",
     ctaLabel: "Instagramプロフィールを見る",
