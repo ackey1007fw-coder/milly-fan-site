@@ -26,9 +26,9 @@ export const missCircleWebVoteLink: SiteLink = {
 
 export const missCircleShowroomEventLink: SiteLink = {
   id: "miss-circle-2026-3rd-showroom-event",
-  label: "SHOWROOMイベント",
+  label: "CanCamモデル発掘オーディション",
   url: "https://www.showroom-live.com/event/circle2026_3rd",
-  note: "MISS CIRCLE CONTEST 2026 三次審査のSHOWROOM審査。",
+  note: "MISS CIRCLE CONTEST 2026 三次審査のCanCamモデル発掘オーディション。",
 };
 
 export const seasideCircleMessageFormLink: SiteLink = {
