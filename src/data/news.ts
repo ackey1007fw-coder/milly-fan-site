@@ -100,6 +100,8 @@ import { webVoteDay2StoryVideo } from "./webVoteDay2StoryVideo.ts";
 import { voteDayFiveSoonStoryVideo } from "./voteDayFiveSoonStoryVideo.ts";
 import { morningThanksVoteStoryVideo } from "./morningThanksVoteStoryVideo.ts";
 import { streamThanksMorningSlotStoryVideo } from "./streamThanksMorningSlotStoryVideo.ts";
+import { finalDayNightStoryVideo } from "./finalDayNightStoryVideo.ts";
+import { miripochiStoryVideo } from "./miripochiStoryVideo.ts";
 import {
   PATON_VOTE_HOW_TO_CTA_LABEL,
   PATON_VOTE_HOW_TO_CTA_URL,
@@ -206,6 +208,85 @@ export function newsDisplayMedia(item: NewsItem): NewsMedia[] {
 }
 
 export const news: NewsItem[] = [
+  {
+    id: "2026-09-11-miripochi-story",
+    date: "2026-09-11",
+    sameDayOrder: 50,
+    title: "「今日のみりぽち完了していますか!?」夜の投票呼びかけ",
+    body:
+      "9月11日夜、みりぃがInstagram Storyで「今日のみりぽち完了していますか!?」と投票を呼びかけました。リンクスタンプの遷移先は素材だけでは確認できないため本文では断定せず、下のWEB投票ボタンはサイトで別途確認済みの投票先です。",
+    sourceLabel: miripochiStoryVideo.sourceLabel,
+    relatedUrl: "https://www.instagram.com/mily_chan36",
+    ctaLabel: "Instagramプロフィールを見る",
+    additionalCtas: [
+      {
+        label: missCircleWebVoteLink.label,
+        url: missCircleWebVoteLink.url,
+      },
+    ],
+    media: miripochiStoryVideo,
+    message: {
+      label: "みりぃのStory",
+      text: "今日のみりぽち完了していますか!? 🗳️✨",
+    },
+  },
+  {
+    id: "2026-09-11-night-stream-thanks-final-day-story",
+    date: "2026-09-11",
+    sameDayOrder: 40,
+    title: "夜配信ありがとう、9/12は配信審査の最終日へ",
+    body:
+      "9月11日夜、みりぃがInstagram Storyで夜配信への感謝を伝え、翌9月12日の配信を8:00〜8:40、20:40〜21:59（その後も配信）と案内しました。Story内の「8/12」は本人が直後に「8月じゃなくて9月じゃーん！！！間違えすみません🙏」と訂正。公開動画の表示はそのまま残し、サイト本文では9/12の予定として整理しています。",
+    sourceLabel: finalDayNightStoryVideo.sourceLabel,
+    relatedUrl: "https://www.instagram.com/mily_chan36",
+    ctaLabel: "Instagramプロフィールを見る",
+    additionalCtas: [
+      {
+        label: "SHOWROOM",
+        url: "https://www.showroom-live.com/r/circle2026_0734",
+      },
+    ],
+    media: finalDayNightStoryVideo,
+    message: {
+      label: "みりぃのStory",
+      text:
+        "夜配信盛り上げてくれてありがとうございました🥹🙌🏻🩵\n" +
+        "たくさんの配信者さんも来てくれて楽しかったね♪\n\n" +
+        "皆さんと最後まで駆け抜けたいからこそ、\n" +
+        "改めてちゃんと自分の管理もしていきます。\n" +
+        "これからも頑張らせてください🙏",
+    },
+  },
+  {
+    id: "2026-09-11-night-fanroom-final-day",
+    date: "2026-09-11",
+    sameDayOrder: 30,
+    title: "夜配信ありがとう、最終日へ「駆け抜けるぞー🔥🔥🔥」",
+    body:
+      "9月11日23:10、SHOWROOMファンルームで夜配信への感謝を伝え、翌9月12日の最初の枠を8:00〜8:40、ガチイベ最終枠を20:40〜21:59と案内しました。「その後も配信します」とし、3次審査突破とアバター権獲得へ向けて最後まで駆け抜ける思いを届けています。",
+    sourceLabel: "SHOWROOMファンルーム",
+    url: "https://www.showroom-live.com/room/fan_club?room_id=573253",
+    ctaLabel: "元のファンルームを見る",
+    additionalCtas: [
+      {
+        label: "ENTRY 734",
+        url: "https://2026.misscircle.jp/entry/734",
+      },
+      {
+        label: "SHOWROOM",
+        url: "https://www.showroom-live.com/r/circle2026_0734",
+      },
+    ],
+    message: {
+      label: "みりぃのファンルーム",
+      text:
+        "皆様、夜配信来てくれてありがとう〜😳💖\n" +
+        "また切り替えて頑張らせてください。\n\n" +
+        "明日の最初の枠は8:00〜8:40‼️\n" +
+        "そして、夜はガチイベ最終枠。20:40〜21:59‼️（その後も配信します🙂‍↕️）\n\n" +
+        "最終日。3次審査突破&アバ権獲得に向けて駆け抜けるぞー🔥🔥🔥",
+    },
+  },
   {
     id: "2026-09-11-morning-fanroom-voice",
     date: "2026-09-11",
