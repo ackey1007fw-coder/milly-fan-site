@@ -3,5 +3,7 @@ import { news as currentNews } from "../../src/data/news.ts";
 
 /** Historical NEWS snapshot before the 2026-09-09 night-stream X announcement. */
 export const news = currentNews.filter(
-  ({ id }) => id !== "2026-09-09-morning-thanks-night-stream",
+  ({ id }) =>
+    id !== "2026-09-11-morning-fanroom-voice" &&
+    id !== "2026-09-09-morning-thanks-night-stream",
 );
