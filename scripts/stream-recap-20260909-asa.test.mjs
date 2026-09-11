@@ -17,13 +17,13 @@ test("September 9 morning recap is registered once with the verified recording s
   assert.match(recap.transcriptionNote, /録画の長さ/);
 });
 
-test("September 9 evening guidance stays historical, without guessed songs or unapproved media", () => {
+test("September 9 evening guidance stays historical with the approved still set", () => {
   assert.match(recap.nextNote, /^配信時点では/);
   assert.match(recap.nextNote, /21時半/);
   assert.match(recap.nextNote, /後ろ倒し/);
   assert.match(recap.nextNote, /現在の配信予定を示すものではありません/);
   assert.equal(recap.songs, undefined);
-  assert.equal(recap.image, undefined);
-  assert.equal(recap.gallery, undefined);
-  assert.equal(recap.galleryZip, undefined);
+  assert.equal(recap.gallery.length, 8);
+  assert.equal(recap.image, recap.gallery[3]);
+  assert.equal(recap.galleryZip.label, "8枚まとめて保存");
 });

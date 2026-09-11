@@ -1,5 +1,16 @@
-import type { StreamRecap } from "./streamRecaps.ts";
+import type { StreamRecap, StreamRecapImage } from "./streamRecaps.ts";
 import { AUTO_TRANSCRIPT_MATERIAL_NOTE, buildTranscriptionNote, RANKING_NOTE_WITHOUT_RANGE } from "./streamRecapRules.ts";
+
+const approvedStills: StreamRecapImage[] = [
+  { src: "/media/live/mily-b95-01-cheek-smile.jpg", width: 640, height: 360, alt: "9月10日の朝配信、黒いトップス姿で頬に指を添えて笑うみりぃ", caption: "頬に指を添えて笑顔", downloadName: "みりぃ_20260910朝_01.jpg" },
+  { src: "/media/live/mily-b95-02-gentle-talk.jpg", width: 640, height: 360, alt: "9月10日の朝配信、頬に手を添えて話すみりぃ", caption: "頬に手を添えて", downloadName: "みりぃ_20260910朝_02.jpg" },
+  { src: "/media/live/mily-b95-03-bright-smile.jpg", width: 640, height: 360, alt: "9月10日の朝配信、正面を向いて笑顔を見せるみりぃ", caption: "正面の笑顔", downloadName: "みりぃ_20260910朝_03.jpg" },
+  { src: "/media/live/mily-b95-04-three-fingers.jpg", width: 640, height: 360, alt: "9月10日の朝配信、指を三本立ててポーズをするみりぃ", caption: "指を三本立てて", downloadName: "みりぃ_20260910朝_04.jpg" },
+  { src: "/media/live/mily-b95-05-wave-smile.jpg", width: 640, height: 360, alt: "9月10日の朝配信、笑顔で手を振るみりぃ", caption: "笑顔で手を振って", downloadName: "みりぃ_20260910朝_05.jpg" },
+  { src: "/media/live/mily-b95-06-double-point.jpg", width: 640, height: 360, alt: "9月10日の朝配信、両手の人差し指を立てるみりぃ", caption: "両手の人差し指を立てて", downloadName: "みりぃ_20260910朝_06.jpg" },
+  { src: "/media/live/mily-b95-07-hand-curve.jpg", width: 640, height: 360, alt: "9月10日の朝配信、頬の横で手を丸く添えるみりぃ", caption: "頬の横で手を丸く", downloadName: "みりぃ_20260910朝_07.jpg" },
+  { src: "/media/live/mily-b95-08-hair-smile.jpg", width: 640, height: 360, alt: "9月10日の朝配信、髪に手を添えながら笑うみりぃ", caption: "髪に手を添えて笑顔", downloadName: "みりぃ_20260910朝_08.jpg" },
+];
 
 export const streamRecap20260910Asa: StreamRecap = {
   id: "2026-09-10-asa-showroom",
@@ -9,6 +20,9 @@ export const streamRecap20260910Asa: StreamRecap = {
   broadcastLabel: "7:09頃〜 約60分",
   platformLabel: "SHOWROOM",
   summary: "朝から歌を届け、ラジオ制作や日常の話題で交流しました。三次審査への応援を呼びかけながら、コメントを通じて気持ちを伝え合い、支え合っていきたいという思いを話しました。",
+  image: approvedStills[4],
+  gallery: approvedStills,
+  galleryZip: { src: "/media/live/mily-b95-morning-stills.zip", filename: "みりぃ_20260910朝_スクショ8枚.zip", label: "8枚まとめて保存" },
   songs: [
     { title: "ケセラセラ", artist: "Mrs. GREEN APPLE", timestamp: "0:08:02", youtubeUrl: "https://www.youtube.com/watch?v=Jy-QS27q7lA" },
     { title: "かわいいだけじゃだめですか？", artist: "CUTIE STREET", timestamp: "0:20:15", youtubeUrl: "https://www.youtube.com/watch?v=jZqTz1G8G04" },
@@ -77,7 +91,7 @@ export const streamRecap20260910Asa: StreamRecap = {
   verifiedAt: "2026-09-10",
   transcriptionNote: buildTranscriptionNote({
     material: AUTO_TRANSCRIPT_MATERIAL_NOTE,
-    stills: "静止画は掲載していません。",
-    extra: "開始表示は録画開始07:09:16を丸めた目安で、実際の配信開始とは区別しています。約60分は録画約59分30秒を丸めた長さです。7時頃の配信検知記録との差から、冒頭約9分が含まれない可能性があります。未収録部分は推測していません。各時刻は録画先頭からの目安です。完了済みの自動文字起こし全814区間を読み、曖昧な7区間だけ局所再認識し、実フレーム4場面を照合しました。歌唱時刻には数秒程度の認識揺れがあります。短い口ずさみは曲名を確定せず、歌リストに含めていません。ランキングは数字に認識揺れがあるため、読み上げの事実だけを記録しています。",
+    stills: "静止画は録画の実フレーム8枚を掲載しています。",
+    extra: "開始表示は録画開始07:09:16を丸めた目安で、実際の配信開始とは区別しています。約60分は録画約59分30秒を丸めた長さです。7時頃の配信検知記録との差から、冒頭約9分が含まれない可能性があります。未収録部分は推測していません。各時刻は録画先頭からの目安です。完了済みの自動文字起こし全814区間を読み、曖昧な7区間だけ局所再認識し、本文作成時は実フレーム4場面を照合し、掲載用スクショは別途録画全体を概観して選定しました。歌唱時刻には数秒程度の認識揺れがあります。短い口ずさみは曲名を確定せず、歌リストに含めていません。ランキングは数字に認識揺れがあるため、読み上げの事実だけを記録しています。",
   }),
 };

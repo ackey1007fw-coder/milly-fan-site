@@ -3569,3 +3569,15 @@ Latest / NEWSのみ。公開CDNのhotlink、iframe、Gallery追加は行わな�
 `creation_time`と出典メタデータは除去。`moov`を`mdat`より前へ配置。音声の切り取り・補正・生成なし。
 本文はローカルASR確認の範囲を要約。全文やスクリーンショットは公開しない。
 詳細は `docs/UPDATE-20260911-FANROOM-VOICE.md`。
+
+## 素材台帳（batch b94 / b95 / 承認日 2026-09-11）
+
+9月9日朝・9月10日朝のSHOWROOM配信メモ専用スクリーンショット。オーナーがチャット上で提示された16枚すべてをLIVE STREAM掲載用として承認。
+
+- b94: 2026-09-09朝。8枚。代表は `mily-b94-04-blue-flower.jpg`。保存ZIP `mily-b94-morning-stills.zip`。
+- b95: 2026-09-10朝。8枚。代表は `mily-b95-05-wave-smile.jpg`。保存ZIP `mily-b95-morning-stills.zip`。
+- provenance: owner-provided recording / owner-approved still selection。LIVE STREAM専用で、NEWS / Gallery / `media.ts` / `galleryVideos.ts` へ複製しない。
+- 全16枚は録画の実フレームから作成した640×360 JPEG。crop・scale・顔補正・AI生成・生成塗り足しなし。公開ファイルにEXIF / GPS / IPTC / XMPなし。
+- 第三者、視聴者名・アイコン、コメント欄、住所・連絡先など公開を避ける情報の写り込みなし。
+- 9/9のcaptionは録画開始記録と既存記事の開始表示を混同しないため、未照合の時刻を付けず場面説明だけにした。
+- b61の撤回済み画像など、過去に非掲載化した素材は再利用していない。

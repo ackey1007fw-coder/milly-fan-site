@@ -1,5 +1,16 @@
-import type { StreamRecap } from "./streamRecaps.ts";
+import type { StreamRecap, StreamRecapImage } from "./streamRecaps.ts";
 import { AUTO_TRANSCRIPT_MATERIAL_NOTE, buildTranscriptionNote, RANKING_NOTE } from "./streamRecapRules.ts";
+
+const approvedStills: StreamRecapImage[] = [
+  { src: "/media/live/mily-b94-01-morning-smile.jpg", width: 640, height: 360, alt: "9月9日の朝配信、グレーのトップス姿のみりぃ。朝の笑顔", caption: "朝の笑顔", downloadName: "みりぃ_20260909朝_01.jpg" },
+  { src: "/media/live/mily-b94-02-centered-smile.jpg", width: 640, height: 360, alt: "9月9日の朝配信、グレーのトップス姿のみりぃ。正面を向いて笑顔", caption: "正面を向いて笑顔", downloadName: "みりぃ_20260909朝_02.jpg" },
+  { src: "/media/live/mily-b94-03-peace-sign.jpg", width: 640, height: 360, alt: "9月9日の朝配信、グレーのトップス姿のみりぃ。ピースサイン", caption: "ピースサイン", downloadName: "みりぃ_20260909朝_03.jpg" },
+  { src: "/media/live/mily-b94-04-blue-flower.jpg", width: 640, height: 360, alt: "9月9日の朝配信、青い花の飾りを手に持つみりぃ", caption: "青い花の飾りを紹介", downloadName: "みりぃ_20260909朝_04.jpg" },
+  { src: "/media/live/mily-b94-05-cheerful-talk.jpg", width: 640, height: 360, alt: "9月9日の朝配信、カメラに向かって笑顔で話すみりぃ", caption: "笑顔でおしゃべり", downloadName: "みりぃ_20260909朝_05.jpg" },
+  { src: "/media/live/mily-b94-06-open-hand.jpg", width: 640, height: 360, alt: "9月9日の朝配信、手のひらを見せるみりぃ", caption: "手のひらを見せて", downloadName: "みりぃ_20260909朝_06.jpg" },
+  { src: "/media/live/mily-b94-07-closing-smile.jpg", width: 640, height: 360, alt: "9月9日の朝配信、配信終盤に笑顔を見せるみりぃ", caption: "配信終盤の笑顔", downloadName: "みりぃ_20260909朝_07.jpg" },
+  { src: "/media/live/mily-b94-08-sleeve-pose.jpg", width: 640, height: 360, alt: "9月9日の朝配信、袖を寄せてポーズをするみりぃ", caption: "袖を寄せてポーズ", downloadName: "みりぃ_20260909朝_08.jpg" },
+];
 
 export const streamRecap20260909Asa: StreamRecap = {
   id: "2026-09-09-asa-showroom",
@@ -9,6 +20,9 @@ export const streamRecap20260909Asa: StreamRecap = {
   broadcastLabel: "7:43頃〜 約22分",
   platformLabel: "SHOWROOM",
   summary: "朝から訪れた人へ感謝を伝え、前夜の楽しかった配信を振り返りました。WEB投票を呼びかけ、好きな青色や大切に飾っている花も紹介。最後は夜枠の案内と、一日の応援で締めくくりました。",
+  image: approvedStills[3],
+  gallery: approvedStills,
+  galleryZip: { src: "/media/live/mily-b94-morning-stills.zip", filename: "みりぃ_20260909朝_スクショ8枚.zip", label: "8枚まとめて保存" },
   highlights: [
     {
       timestamp: "0:00:16",
@@ -69,7 +83,7 @@ export const streamRecap20260909Asa: StreamRecap = {
   verifiedAt: "2026-09-09",
   transcriptionNote: buildTranscriptionNote({
     material: AUTO_TRANSCRIPT_MATERIAL_NOTE,
-    stills: "静止画は掲載していません。",
+    stills: "静止画は録画の実フレーム8枚を掲載しています。",
     extra: "開始表示は録画開始記録を丸めた目安で、実際の配信開始時刻とは区別しています。約22分は確認できた録画の長さで、各時刻は録画先頭からの目安です。自動文字起こし全編と主要区間の再認識結果、映像の実フレームを照合しました。曲名を確定できない短いフレーズは歌リストに含めていません。",
   }),
 };
