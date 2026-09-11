@@ -44,13 +44,22 @@ type ShareTopic = {
   activityId?: SupportEvent["activityId"];
   priority: number;
   text: string;
-  campaignHashtag?: string;
+  campaignHashtags?: readonly string[];
+};
+
+type XSafeShareSelection = {
+  topics: ShareTopic[];
+  compact: boolean;
 };
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 const UPCOMING_CONTEST_DAYS = 7;
-const MAX_SHARE_TOPICS = 3;
+const MAX_SHARE_TOPICS = 2;
 const PERSON_HASHTAG = "#三橋莉子";
+const X_MAX_WEIGHTED_LENGTH = 280;
+const X_URL_WEIGHT_WITH_SEPARATOR = 24;
+const SHARE_INTRO = "みりぃ（三橋莉子 / Mily）さんを応援しています🍅✨";
+const SHARE_FOOTER = "最新の活動・応援情報はこちら👇";
 
 function safeRadioPhase(now: number): SchedulePhase {
   try {
@@ -66,6 +75,7 @@ function radioShareTopic(phase: SchedulePhase): ShareTopic | null {
       id: "radio-upcoming",
       priority: 400,
       text: `今日${radioProgram.scheduledStart}〜は「${radioProgram.programName}」📻`,
+      campaignHashtags: radioProgram.shareHashtags,
     };
   }
   if (phase === "window") {
@@ -73,6 +83,7 @@ function radioShareTopic(phase: SchedulePhase): ShareTopic | null {
       id: "radio-window",
       priority: 400,
       text: `ただいま「${radioProgram.programName}」の放送時間です📻`,
+      campaignHashtags: radioProgram.shareHashtags,
     };
   }
   return null;
@@ -101,7 +112,7 @@ function supportEventShareTopics(now: number): ShareTopic[] {
         priority: 200 + (event.priority ?? 0),
         text: `${share}${end ? `（${end}まで）` : ""}`,
         ...(event.shareHashtag
-          ? { campaignHashtag: event.shareHashtag }
+          ? { campaignHashtags: [event.shareHashtag] }
           : {}),
       };
     });
@@ -122,7 +133,7 @@ function contestPhaseShareTopic(now: number): ShareTopic | null {
       priority: 180,
       text: `${contest.contestName}の${phaseLabel}を応援してください🔥（${formatShortTokyoDate(phase.end)}まで）`,
       ...(contest.shareHashtag
-        ? { campaignHashtag: contest.shareHashtag }
+        ? { campaignHashtags: [contest.shareHashtag] }
         : {}),
     };
   }
@@ -133,12 +144,83 @@ function contestPhaseShareTopic(now: number): ShareTopic | null {
       priority: 160,
       text: `${formatShortTokyoDate(phase.start)}から${contest.contestName}の${phaseLabel}が始まります🔥`,
       ...(contest.shareHashtag
-        ? { campaignHashtag: contest.shareHashtag }
+        ? { campaignHashtags: [contest.shareHashtag] }
         : {}),
     };
   }
 
   return null;
+}
+
+function hashtagLineForTopics(topics: readonly ShareTopic[]): string {
+  const campaignHashtags =
+    topics.find((topic) => topic.campaignHashtags?.length)?.campaignHashtags ?? [];
+  return [PERSON_HASHTAG, ...campaignHashtags].join(" ");
+}
+
+function formatSiteShareText(
+  topics: readonly ShareTopic[],
+  compact = false,
+): string {
+  const hashtagLine = hashtagLineForTopics(topics);
+  if (topics.length === 0) return [site.description, hashtagLine].join("\n");
+
+  return [
+    ...(compact ? [] : [SHARE_INTRO]),
+    ...topics.map(({ text }) => text),
+    SHARE_FOOTER,
+    hashtagLine,
+  ].join("\n");
+}
+
+function isSingleWeightCodePoint(codePoint: number): boolean {
+  return (
+    codePoint <= 0x10ff ||
+    (codePoint >= 0x2000 && codePoint <= 0x200d) ||
+    (codePoint >= 0x2010 && codePoint <= 0x201f) ||
+    (codePoint >= 0x2032 && codePoint <= 0x2037)
+  );
+}
+
+/** X/twitter-text v3 の文字重みを安全側に見積もる。 */
+function xWeightedTextLengthUpperBound(text: string): number {
+  let weightedLength = 0;
+  for (const character of text) {
+    const codePoint = character.codePointAt(0);
+    if (codePoint === undefined) continue;
+    weightedLength += isSingleWeightCodePoint(codePoint) ? 1 : 2;
+  }
+  return weightedLength;
+}
+
+function isWithinXLimit(topics: readonly ShareTopic[], compact: boolean): boolean {
+  return (
+    xWeightedTextLengthUpperBound(formatSiteShareText(topics, compact)) +
+      X_URL_WEIGHT_WITH_SEPARATOR <=
+    X_MAX_WEIGHTED_LENGTH
+  );
+}
+
+function selectXSafeTopics(topics: ShareTopic[]): XSafeShareSelection {
+  let selected = topics.slice(0, MAX_SHARE_TOPICS);
+  if (isWithinXLimit(selected, false)) {
+    return { topics: selected, compact: false };
+  }
+  if (isWithinXLimit(selected, true)) {
+    return { topics: selected, compact: true };
+  }
+
+  while (selected.length > 1) {
+    selected = selected.slice(0, -1);
+    if (isWithinXLimit(selected, false)) {
+      return { topics: selected, compact: false };
+    }
+    if (isWithinXLimit(selected, true)) {
+      return { topics: selected, compact: true };
+    }
+  }
+
+  return { topics: selected, compact: true };
 }
 
 export function siteShareText(context: SiteShareContext = {}): string {
@@ -149,30 +231,16 @@ export function siteShareText(context: SiteShareContext = {}): string {
   const hasContestSpecificSupport = supportTopics.some(
     (topic) => topic.activityId === "miss-circle",
   );
-  const topics = [
+  const candidates = [
     radioShareTopic(context.radioPhase ?? safeRadioPhase(now)),
     ...supportTopics,
     hasContestSpecificSupport ? null : contestPhaseShareTopic(now),
   ]
     .filter((topic): topic is ShareTopic => topic !== null)
-    .sort((a, b) => b.priority - a.priority)
-    .slice(0, MAX_SHARE_TOPICS);
+    .sort((a, b) => b.priority - a.priority);
+  const selection = selectXSafeTopics(candidates);
 
-  const campaignHashtag = topics.find(
-    (topic) => topic.campaignHashtag !== undefined,
-  )?.campaignHashtag;
-  const hashtagLine = [PERSON_HASHTAG, campaignHashtag]
-    .filter((hashtag): hashtag is string => hashtag !== undefined)
-    .join(" ");
-
-  if (topics.length === 0) return [site.description, hashtagLine].join("\n");
-
-  return [
-    "みりぃ（三橋莉子 / Mily）さんを応援しています🍅✨",
-    ...topics.map(({ text }) => text),
-    "最新の活動・応援情報はこちら👇",
-    hashtagLine,
-  ].join("\n");
+  return formatSiteShareText(selection.topics, selection.compact);
 }
 
 /**
