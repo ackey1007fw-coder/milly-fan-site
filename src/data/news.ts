@@ -75,6 +75,7 @@ import {
   birthdayIndoorSelfieImage,
 } from "./birthdayIndoorSelfie.ts";
 import { girlAwardEventVoice } from "./girlAwardEventVoice.ts";
+import { morningFanroomVoice } from "./morningFanroomVoice.ts";
 import {
   OHAYO_WHITE_POLO_X_URL,
   ohayoWhitePoloPeaceImage,
@@ -205,6 +206,17 @@ export function newsDisplayMedia(item: NewsItem): NewsMedia[] {
 }
 
 export const news: NewsItem[] = [
+  {
+    id: "2026-09-11-morning-fanroom-voice",
+    date: "2026-09-11",
+    activityIds: ["live-stream"],
+    title: "朝の音声メッセージ、応援への感謝",
+    body: "9月11日06:41、SHOWROOMファンルームに音声メッセージを投稿。朝の配信へのお礼と、これからも頑張りたいという思いを伝えています。",
+    sourceLabel: "SHOWROOMファンルーム",
+    url: "https://www.showroom-live.com/room/fan_club?room_id=573253",
+    ctaLabel: "元のファンルームを見る",
+    media: morningFanroomVoice,
+  },
   {
     id: "2026-09-09-morning-thanks-night-stream",
     date: "2026-09-09",

@@ -3548,3 +3548,24 @@ ffmpeg -ss 8 -i public/media/gallery/mily-b92-01-showroom-avatar-rights-story.mp
   -frames:v 1 -q:v 2 -map_metadata -1 \
   public/media/gallery/mily-b92-01-showroom-avatar-rights-story-poster.jpg
 ```
+
+## 素材台帳（batch b93 / source date 2026-09-11）
+
+オーナーがサイト内再生を依頼した、9月11日06:41のSHOWROOMファンルーム本人公開音声。
+公開プロフィールの画像・ボイス一覧で投稿ID `88898855` と日時を照合した。
+Latest / NEWSのみ。公開CDNのhotlink、iframe、Gallery追加は行わない。
+
+| 項目 | 確認値 |
+| --- | --- |
+| 公開ファイル | `news/mily-b93-01-fanroom-morning-voice.m4a` |
+| provenance | owner-requested |
+| sourcePublishedAt | 2026-09-11T06:41:34+09:00 |
+| 原本 | 198,311 bytes / M4A container / AAC-LC / 12kHz / mono |
+| 原本SHA256 | `0b7783f3c67410dfa3f508e971708c7727806c828e146808ae036709f3ed9239` |
+| 公開派生 | 181,947 bytes / M4A / AAC-LC / 12kHz / mono / 約70.827秒 |
+| 公開SHA256 | `53b2508fb6bdde59be4319fd97bc4f6b5e5b06e2d3ba0b829bfd03ed5cf08b83` |
+
+原本は非公開領域に無改変で保管。公開派生はstream copyで、AACパケット830個のハッシュが原本と一致。
+`creation_time`と出典メタデータは除去。`moov`を`mdat`より前へ配置。音声の切り取り・補正・生成なし。
+本文はローカルASR確認の範囲を要約。全文やスクリーンショットは公開しない。
+詳細は `docs/UPDATE-20260911-FANROOM-VOICE.md`。
