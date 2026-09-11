@@ -58,6 +58,23 @@ jobs:
           PR_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: node --disable-warning=ExperimentalWarning --experimental-strip-types scripts/stream-song-catalog.browser.mjs
 
+      - name: WebMCP browser checks
+        timeout-minutes: 5
+        env:
+          PLAYWRIGHT_MODULE_ROOT: ${{ runner.temp }}/mily-browser-tools/node_modules
+          WEBMCP_ARTIFACT_DIR: ${{ runner.temp }}/webmcp-browser
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: node --disable-warning=ExperimentalWarning --experimental-strip-types scripts/webmcp.browser.mjs
+
+      - name: Upload WebMCP browser evidence
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: webmcp-browser-${{ github.run_id }}
+          path: ${{ runner.temp }}/webmcp-browser/
+          if-no-files-found: ignore
+          retention-days: 7
+
       - name: Upload song catalog browser evidence
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
