@@ -122,7 +122,7 @@ describe("X haul unused candidates — keep birthday and skip published dupes", 
       true,
     );
     assert.equal(news.length, 49);
-    assert.equal(media.filter((entry) => entry.kind === "photo").length, 33);
+    assert.equal(media.filter((entry) => entry.kind === "photo").length, 34);
     assert.deepEqual(verifyNews(news), []);
     assert.deepEqual(verifyMedia(media), []);
     assert.equal(featuredPhoto(media)?.id, "mily-b01-03");
