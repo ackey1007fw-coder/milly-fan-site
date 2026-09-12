@@ -81,6 +81,10 @@ import {
   ohayoWhitePoloPeaceImage,
 } from "./ohayoWhitePoloPeace.ts";
 import { pandaPastPicImage } from "./pandaPastPic.ts";
+import {
+  OHAYO_PANDA_SELFIE_X_URL,
+  ohayoPandaSelfieImage,
+} from "./ohayoPandaSelfie.ts";
 import { eveningRadioShowroomImage } from "./eveningRadioShowroom.ts";
 import { campusGirlsFinalStageFlyerImage } from "./campusGirlsFinalStageFlyer.ts";
 import {
@@ -208,6 +212,30 @@ export function newsDisplayMedia(item: NewsItem): NewsMedia[] {
 }
 
 export const news: NewsItem[] = [
+  {
+    id: "2026-09-12-ohayo-panda-selfie",
+    date: "2026-09-12",
+    title: "3次SHOWROOM審査最終日、20:40〜21:59へ",
+    body:
+      "9月12日朝、みりぃがXで朝枠への感謝と、3次SHOWROOM審査最終日の20:40〜21:59配信を案内しました。投稿時点でアバター権獲得まで残り36,599ptと伝え、投票報告も呼びかけています。添付セルフィーには「おはよう♡」の文字が入っています。",
+    source: OHAYO_PANDA_SELFIE_X_URL,
+    sourceLabel: "元のX投稿を見る",
+    additionalCtas: [
+      {
+        label: "SHOWROOM",
+        url: "https://www.showroom-live.com/r/circle2026_0734",
+      },
+      {
+        label: missCircleWebVoteLink.label,
+        url: missCircleWebVoteLink.url,
+      },
+    ],
+    media: ohayoPandaSelfieImage,
+    message: {
+      label: "画像内テキスト",
+      text: "おはよう♡",
+    },
+  },
   {
     id: "2026-09-11-miripochi-story",
     date: "2026-09-11",
