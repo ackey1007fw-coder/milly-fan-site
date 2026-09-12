@@ -1,3 +1,4 @@
+import { morningFanroomSelfieImage } from "./morningFanroomSelfie.ts";
 import { tiktokPortraitVideo } from "./tiktokPortraitVideo.ts";
 /**
  * Latest updates. Keep this empty rather than filling unverified items.
@@ -212,6 +213,21 @@ export function newsDisplayMedia(item: NewsItem): NewsMedia[] {
 }
 
 export const news: NewsItem[] = [
+  {
+    id: "2026-09-13-morning-fanroom-radio-vote",
+    date: "2026-09-13",
+    title: "朝配信ありがとう。ラジオへ出発、WEB投票最終日のごあいさつ",
+    body:
+      "9月13日朝、みりぃがSHOWROOMファンルームで朝配信に来てくれた皆さんへ感謝を伝え、「ラジオ行ってきまーす‼️」と出発のごあいさつ。同じ6:43の投稿には、青いパーカー姿でピースをするセルフィーも添えられました。\n\nあわせて、この日がWEB投票最終日であることを案内し、MISS CIRCLE CONTEST 2026のENTRY 734へのリンクを届けています。",
+    sourceLabel: "SHOWROOMファンルーム",
+    url: "https://www.showroom-live.com/room/fan_club?room_id=573253",
+    ctaLabel: "元のファンルームを見る",
+    additionalCtas: [
+      { label: "ENTRY 734", url: "https://2026.misscircle.jp/entry/734" },
+      { label: missCircleWebVoteLink.label, url: missCircleWebVoteLink.url },
+    ],
+    media: morningFanroomSelfieImage,
+  },
   {
     id: "2026-09-12-ohayo-panda-selfie",
     date: "2026-09-12",
