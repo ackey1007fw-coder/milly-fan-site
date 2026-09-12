@@ -3606,3 +3606,14 @@ Latest / NEWSのみ。公開CDNのhotlink、iframe、Gallery追加は行わな�
 - 録画全体を25点で概観し、10候補を実寸確認して8枚を選定。本人以外の人物、コメント欄、視聴者名・アイコン、住所・連絡先など公開を避ける情報の写り込みなし。
 - 元の640×360・16:9を保持。crop・scaleなし。通常のJPEG圧縮のみで、EXIF / GPS / IPTC / XMPを持たない。顔のAI生成・補正・置換・生成塗り足しなし。
 - LIVE STREAM専用。NEWS / Gallery / `media.ts` / `galleryVideos.ts` へ複製しない。全文文字起こし・録音・録画も公開しない。
+
+## 素材台帳（batch b99 / source date・承認日 2026-09-12）
+
+9月12日08:00頃開始のSHOWROOM朝配信録画から選んだ実フレーム8枚。オーナーが配信終了直後に当該配信の内容整理とサイト実装を依頼した範囲で、LIVE STREAM掲載用として使用する。mainでb98まで使用済みのためb99を採番した。
+
+- 公開ファイル: `live/mily-b99-01-board-smile.jpg` 〜 `live/mily-b99-08-gentle-smile.jpg`。全8枚640×360 JPEG。
+- 代表: `mily-b99-04-bright-smile.jpg`。保存ZIP: `live/mily-b99-morning-stills.zip`。
+- provenance: owner-provided recording / owner-approved recap stills。公開再生permalinkなし。録画原本・非公開URL / ID / ローカルパスは公開しない。
+- 録画全体を約80秒間隔で概観し、11候補を実寸確認して8枚を選定。本人以外の人物、視聴者名・アイコン、コメント欄、住所・連絡先など公開を避ける情報の写り込みなし。
+- 元の640×360・16:9を保持。crop・scaleなし。ffmpegで録画の実フレームをJPEG化し、顔のAI生成・補正・置換・生成塗り足しなし。
+- LIVE STREAM専用。NEWS / Gallery / `media.ts` / `galleryVideos.ts` へ複製しない。録音・録画・全文文字起こしも公開しない。
