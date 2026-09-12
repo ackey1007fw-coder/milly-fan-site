@@ -1410,9 +1410,9 @@ PR 本文に、一次ソース URL と「推測していないこと」を書く
 - NEWS ID: `2026-09-12-avatar-achievement-story`。source dateはオーナーが2026-09-12と明示確認。container日時から推定していない。
 - 本人の3次審査完走への感謝・初のアバ権達成・43日間の初期アバター・投票は13日までの案内を要約。審査通過・順位・アバター配布開始・撮影会日程は追加しない。
 - Latest / NEWS内の動画カード。b103公開MP4とposterを再利用。Instagram Storyの非リンク出典表示、プロフィールは関連リンク。リンクスタンプの遷移先は推測しない。
+- 同日の本人X 2件は別NEWSにせず、同じカードの additionalSources に統合する。labelは「みりぃのX」。完走・アバ権 `https://x.com/Mily_chan36/status/2098778956535407065`、WEB投票は9/13まで `https://x.com/Mily_chan36/status/2098779286245454075`。本文は「Xでも完走・アバ権とWEB投票期限（9/13まで）を案内した」の1文だけ。規則・FAQ・「史上初」の検証は書かない。SNSスクレイプなし。新しい画像なし。代表メディアはStory動画のまま。
 - WEB投票CTAは既存missCircleWebVoteLinkを使用し、既存SupportEvent終了境界で非表示。Latest / NEWS専用のためactivityIdsは設定しない（Activitiesの関連動画へ自動展開させない）。時刻未確認のためsameDayOrderは追加しない。
 - Gallery / Stories / highlights / events / streamSchedule / profile非追加。公開動画は無音。
-- 別Draft #246は本人Xを扱う別依頼。未マージ内容を取り込まず、変更・Ready化・mergeしない。
 
 ## 2026-09-13 朝のファンルームとセルフィー
 
