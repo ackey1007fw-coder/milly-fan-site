@@ -1,8 +1,8 @@
 import type { StreamRecap, StreamRecapSong } from "../data/streamRecaps.ts";
 
 export type SongRecap = Pick<StreamRecap, "id" | "date" | "dateLabel" | "theme" | "broadcastLabel" | "songs">;
-export type SongPerformance = Omit<SongRecap, "songs"> & { timestamp: string };
-export type CatalogSong = Omit<StreamRecapSong, "timestamp"> & {
+export type SongPerformance = Omit<SongRecap, "songs"> & { timestamp: string; clip?: StreamRecapSong["clip"] };
+export type CatalogSong = Omit<StreamRecapSong, "timestamp" | "clip"> & {
   key: string;
   performances: SongPerformance[];
 };
@@ -53,6 +53,7 @@ export function buildStreamSongCatalog(recaps: readonly SongRecap[]): CatalogSon
         theme: recap.theme,
         broadcastLabel: recap.broadcastLabel,
         timestamp: song.timestamp,
+        ...(song.clip ? { clip: { ...song.clip } } : {}),
       });
     }
   }

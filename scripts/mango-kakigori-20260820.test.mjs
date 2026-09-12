@@ -237,7 +237,7 @@ describe("2026-08-20 mango kakigori Instagram post — Gallery", () => {
   it("adds only the expected 30 Gallery derivatives and one NEWS image", async () => {
     const files = (await readdir(path.join(root, "public"), { recursive: true }))
       .map((file) => String(file).replaceAll("\\", "/"))
-      .filter((file) => file.includes("mily-b10"));
+      .filter((file) => /(?:^|\/)mily-b10-/.test(file));
 
     assert.equal(files.length, 31);
     assert.equal(files.filter((file) => file.startsWith("media/gallery/")).length, 30);

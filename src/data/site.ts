@@ -59,6 +59,10 @@ export function galleryUrl(): string {
   return `${siteOrigin()}/gallery/`;
 }
 
+export function songClipsUrl(): string {
+  return `${siteOrigin()}/activities/live/clips/`;
+}
+
 export function ogImageUrl(): string {
   const imagePath = site.ogImagePath.startsWith("/")
     ? site.ogImagePath
@@ -118,6 +122,11 @@ ${activities
 `,
   )
   .join("")}  <url>
+    <loc>${songClipsUrl()}</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>${storyUrl("2026-08-25-motivation")}</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

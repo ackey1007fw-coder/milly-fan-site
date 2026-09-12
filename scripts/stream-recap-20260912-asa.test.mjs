@@ -19,7 +19,7 @@ test("September 12 morning is the newest recap", () => {
 });
 
 test("September 12 morning records the three verified songs", () => {
-  assert.deepEqual(recap.songs, [
+  assert.deepEqual(recap.songs.map(({ clip: _clip, ...song }) => song), [
     { title: "拝啓、少年よ", artist: "Hump Back", timestamp: "0:15:38", youtubeUrl: "https://www.youtube.com/watch?v=d6i4AtCxrDo" },
     { title: "好きすぎて滅！", artist: "M!LK", timestamp: "0:23:13", youtubeUrl: "https://www.youtube.com/watch?v=ZVUxJsPfoX8" },
     { title: "Lovers", artist: "sumika", timestamp: "0:33:21", youtubeUrl: "https://www.youtube.com/watch?v=FFITBgsyVr4" },
