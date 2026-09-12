@@ -1,3 +1,4 @@
+import { avatarAchievementStoryVideo } from "./avatarAchievementStoryVideo.ts";
 import { tiktokPortraitVideo } from "./tiktokPortraitVideo.ts";
 /**
  * Latest updates. Keep this empty rather than filling unverified items.
@@ -212,6 +213,22 @@ export function newsDisplayMedia(item: NewsItem): NewsMedia[] {
 }
 
 export const news: NewsItem[] = [
+  {
+    id: "2026-09-12-avatar-achievement-story",
+    date: "2026-09-12",
+    activityIds: ["live-stream", "miss-circle"],
+    title: "初めてのアバ権達成！3次審査を走り切った感謝を届けて",
+    body:
+      "みりぃがInstagram Storyで、3次審査を無事に走り切ったことを報告。「いつも応援ありがとうございます」と、応援してくれた皆さんへの感謝を伝えました。\n\n" +
+      "さらに、目標に掲げていた「アバ権」を初めて達成したことも報告。43日間、初期アバターで配信してきたみりぃは、「やーっと自分のアバター‼️」と喜びをつづり、「楽しみにしててねっ♪」「撮影会来てくれるかな？！」と呼びかけています。動画では、投票は13日までと案内しています。",
+    sourceLabel: "Instagram Story",
+    url: "https://www.instagram.com/mily_chan36",
+    ctaLabel: "Instagramプロフィールを見る",
+    additionalCtas: [
+      { label: missCircleWebVoteLink.label, url: missCircleWebVoteLink.url },
+    ],
+    media: avatarAchievementStoryVideo,
+  },
   {
     id: "2026-09-12-ohayo-panda-selfie",
     date: "2026-09-12",

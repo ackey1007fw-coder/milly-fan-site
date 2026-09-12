@@ -3655,7 +3655,7 @@ Latest / NEWSのみ。公開CDNのhotlink、iframe、Gallery追加は行わな�
 - 「明日も」は既存配信メモの歌唱開始表示と今回使用した録画の切出し位置が一致しないため、既存 `timestamp` を書き換えず、`clip.sourceTimestamp` に実際の切出し位置を独立して記録する。
 - LIVE SONG CLIPS専用。NEWS / Gallery / Stories / `media.ts` / `galleryVideos.ts` へ複製しない。録画全編・全文文字起こしは公開しない。楽曲・伴奏等の権利は各権利者に帰属する。
 
-## 素材台帳（batch b103 / 元投稿日確認待ち）
+## 素材台帳（batch b103 / source date 2026-09-12）
 
 オーナーが直接提供し、動画と記事のサイト掲載を依頼したInstagram Story動画。最新mainとOpen PRを確認し、b103を採番。
 
@@ -3664,4 +3664,4 @@ Latest / NEWSのみ。公開CDNのhotlink、iframe、Gallery追加は行わな�
 - 静止画中心のStoryを1fpsへサンプリング（20秒・画角保持）、音源の再掲載権未確認のためvideo-only、metadata / chapter除去、faststart化。crop・scale・短縮・顔補正・AI生成なし。元素材内のフェイスフィルターはそのまま。
 - posterは10秒地点の実フレーム。確認範囲で第三者・コメント・通知・住所・連絡先などの写り込みなし。
 - 原本はgitignored領域へ無改変コピーし、公開repoへ受け渡し名・ID・私的URLを残さない。
-- sourceDate / sourceUrlはnull、publishedはfalse。投稿日確認後にLatest / NEWSへ配線する。記事案は `docs/AVATAR-ACHIEVEMENT-STORY-DRAFT.md`。
+- オーナーが元投稿日を2026-09-12と明示確認。sourceDateは2026-09-12、sourceUrlはnull、publishedはtrue。Latest / NEWSへ配線し、Gallery / Storiesには追加しない。
