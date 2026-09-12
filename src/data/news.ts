@@ -1,3 +1,5 @@
+import { avatarAchievementStoryVideo } from "./avatarAchievementStoryVideo.ts";
+import { morningFanroomSelfieImage } from "./morningFanroomSelfie.ts";
 import { tiktokPortraitVideo } from "./tiktokPortraitVideo.ts";
 /**
  * Latest updates. Keep this empty rather than filling unverified items.
@@ -223,12 +225,42 @@ export const news: NewsItem[] = [
     sourceLabel: "Instagram Story（番組告知の再共有）",
     media: {
       kind: "video",
-      src: "/media/news/mily-b103-01-seaside-circle-solo-theme.mp4",
-      poster: "/media/news/mily-b103-01-seaside-circle-solo-theme-poster.jpg",
+      src: "/media/news/mily-b111-01-seaside-circle-solo-theme.mp4",
+      poster: "/media/news/mily-b111-01-seaside-circle-solo-theme-poster.jpg",
       width: 512,
       height: 910,
       alt: "9月13日（日）10:00〜13:00の湘南シーサイドサークル生放送とテーマ「一人〇〇」、師匠・Mily・もこを案内する縦長動画",
     },
+  },
+  {
+    id: "2026-09-13-morning-fanroom-radio-vote",
+    date: "2026-09-13",
+    title: "朝配信ありがとう。ラジオへ出発、WEB投票最終日のごあいさつ",
+    body:
+      "9月13日朝、みりぃがSHOWROOMファンルームで朝配信に来てくれた皆さんへ感謝を伝え、「ラジオ行ってきまーす‼️」と出発のごあいさつ。同じ6:43の投稿には、青いパーカー姿でピースをするセルフィーも添えられました。\n\nあわせて、この日がWEB投票最終日であることを案内し、MISS CIRCLE CONTEST 2026のENTRY 734へのリンクを届けています。",
+    sourceLabel: "SHOWROOMファンルーム",
+    url: "https://www.showroom-live.com/room/fan_club?room_id=573253",
+    ctaLabel: "元のファンルームを見る",
+    additionalCtas: [
+      { label: "ENTRY 734", url: "https://2026.misscircle.jp/entry/734" },
+      { label: missCircleWebVoteLink.label, url: missCircleWebVoteLink.url },
+    ],
+    media: morningFanroomSelfieImage,
+  },
+  {
+    id: "2026-09-12-avatar-achievement-story",
+    date: "2026-09-12",
+    title: "初めてのアバ権達成！3次審査を走り切った感謝を届けて",
+    body:
+      "みりぃがInstagram Storyで、3次審査を無事に走り切ったことを報告。「いつも応援ありがとうございます」と、応援してくれた皆さんへの感謝を伝えました。\n\n" +
+      "さらに、目標に掲げていた「アバ権」を初めて達成したことも報告。43日間、初期アバターで配信してきたみりぃは、「やーっと自分のアバター‼️」と喜びをつづり、「楽しみにしててねっ♪」「撮影会来てくれるかな？！」と呼びかけています。動画では、投票は13日までと案内しています。",
+    sourceLabel: "Instagram Story",
+    url: "https://www.instagram.com/mily_chan36",
+    ctaLabel: "Instagramプロフィールを見る",
+    additionalCtas: [
+      { label: missCircleWebVoteLink.label, url: missCircleWebVoteLink.url },
+    ],
+    media: avatarAchievementStoryVideo,
   },
   {
     id: "2026-09-12-ohayo-panda-selfie",

@@ -19,7 +19,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 export const SOURCE_DIR = path.join(root, "media/original");
 export const OUTPUT_DIR = path.join(root, "public/media/gallery");
 export const DERIVATIVE_WIDTHS = [480, 960, 1600];
-export const NAME_RE = /^mily-b\d{2}-\d{2}(-[a-z0-9]+)+\.(jpg|jpeg)$/;
+export const NAME_RE = /^mily-b\d{2,}-\d{2}(-[a-z0-9]+)+\.(jpg|jpeg)$/;
 
 export function invalidSourceNames(sources) {
   return sources.filter((name) => !NAME_RE.test(name));

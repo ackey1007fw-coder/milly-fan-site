@@ -3655,13 +3655,33 @@ Latest / NEWSのみ。公開CDNのhotlink、iframe、Gallery追加は行わな�
 - 「明日も」は既存配信メモの歌唱開始表示と今回使用した録画の切出し位置が一致しないため、既存 `timestamp` を書き換えず、`clip.sourceTimestamp` に実際の切出し位置を独立して記録する。
 - LIVE SONG CLIPS専用。NEWS / Gallery / Stories / `media.ts` / `galleryVideos.ts` へ複製しない。録画全編・全文文字起こしは公開しない。楽曲・伴奏等の権利は各権利者に帰属する。
 
+## 素材台帳（batch b103 / source date 2026-09-12）
 
-## 素材台帳（batch b103 / Story投稿日未確認）
+オーナーが直接提供し、動画と記事のサイト掲載を依頼したInstagram Story動画。最新mainとOpen PRを確認し、b103を採番。
+
+- 20秒 / 512×910 / H.264。画面の3次審査への感謝・初のアバ権達成・43日間の初期アバター・13日までの投票案内を確認。
+- 公開用派生: `gallery/mily-b103-01-avatar-achievement-story-web.mp4`、poster: 同名の `-poster.jpg`。
+- 静止画中心のStoryを1fpsへサンプリング（20秒・画角保持）、音源の再掲載権未確認のためvideo-only、metadata / chapter除去、faststart化。crop・scale・短縮・顔補正・AI生成なし。元素材内のフェイスフィルターはそのまま。
+- posterは10秒地点の実フレーム。確認範囲で第三者・コメント・通知・住所・連絡先などの写り込みなし。
+- 原本はgitignored領域へ無改変コピーし、公開repoへ受け渡し名・ID・私的URLを残さない。
+- オーナーが元投稿日を2026-09-12と明示確認。sourceDateは2026-09-12、sourceUrlはnull、publishedはtrue。Latest / NEWSへ配線し、Gallery / Storiesには追加しない。
+
+## 素材台帳（batch b110 / 受領日 2026-09-13）
+
+- b110-01: 青いパーカーでピースをする本人セルフィー。オーナー提供。Gallery・NEWSへの掲載を本依頼で明示承認。
+- 公開ファンルームの写真投稿時刻は2026-09-13 06:43:58 JST。個別permalink・撮影者は未確認のためnull。
+- 元1206×2119の縦構図を保持。media:buildで480 / 960 / 1600のJPEG・WebP派生を生成。最大幅は拡大せず1206px。NEWSとGalleryは同じ派生を共有。
+- 本人以外の人物・第三者コメント・私的情報なし。顔加工・AI生成・トリミングなし。原本は無改変・gitignore領域。
+- もう1枚の提供スクリーンショットは本文・投稿との対応の確認用。同じ自撮りの縮小版を重複公開せず、NEWS本文として要約。
+- batchが100を超えた現状に対応して、media:buildのbatch桁数検査を2桁以上へ拡張。連番2桁・slug・拡張子制限、既存派生の上書き禁止は維持。
+
+
+## 素材台帳（batch b111 / Story投稿日未確認）
 
 - オーナーが動画と適合記事のサイト掲載を明示依頼。HOME Latest / NEWSの番組告知として掲載。
 - owner-provided。番組アカウントseasidecircleの告知と、mily_chan36の再共有表記を確認。写る3人は番組告知の出演者写真で、私的な第三者・DM・通知・端末情報は含まれない。
 - 放送案内は9月13日（日）10:00–13:00、テーマ「一人〇〇」。Story投稿日・恒久permalink・撮影者は未確認。
-- 元動画はgitignored media/originalへ無改変コピー。公開派生はpublic/media/news/mily-b103-01-seaside-circle-solo-theme.mp4。512×910、19.033秒、元から音声なし。
+- 元動画はgitignored media/originalへ無改変コピー。公開派生はpublic/media/news/mily-b111-01-seaside-circle-solo-theme.mp4。512×910、19.033秒、元から音声なし。
 - H.264 Baseline / yuv420p / faststart、メタデータ除去。拡縮・crop・顔加工・AI生成なし。
 - posterは公開派生の5秒実フレーム。0/5/10/15秒の候補は同一告知の構成で、5秒を採用。
 - 番組告知としてNEWSに掲載し、Galleryには展開しない。公開動画とposterは各1ファイル。

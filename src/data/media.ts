@@ -1,3 +1,4 @@
+import { morningFanroomSelfiePhoto } from "./morningFanroomSelfie.ts";
 /**
  * Photo / video manifest.
  *
@@ -363,6 +364,7 @@ export const media: MediaItem[] = [
     published: true,
   },
   nightFanroomSelfiePhoto,
+  morningFanroomSelfiePhoto,
 ];
 
 export function srcSetFor(item: MediaItem, format: "jpg" | "webp"): string {
