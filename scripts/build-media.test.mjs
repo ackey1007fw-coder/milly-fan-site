@@ -29,6 +29,8 @@ describe("media:build pipeline", () => {
     assert.equal(NAME_RE.test("mily-b02-01-confirmed-slug.jpg"), true);
     assert.equal(invalidSourceNames(["mily-b02-01-confirmed-slug.jpg"]).length, 0);
 
+    assert.equal(NAME_RE.test("mily-b110-01-confirmed-slug.jpg"), true);
+
     const bad = invalidSourceNames([
       "birthday.jpg",
       "mily-b2-1-short.jpg",

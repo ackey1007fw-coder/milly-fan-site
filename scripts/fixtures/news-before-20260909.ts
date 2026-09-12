@@ -5,6 +5,7 @@ import { news as currentNews } from "../../src/data/news.ts";
 export const news = currentNews.filter(
   ({ id }) =>
     id !== "2026-09-12-avatar-achievement-story" &&
+    id !== "2026-09-13-morning-fanroom-radio-vote" &&
     id !== "2026-09-12-ohayo-panda-selfie" &&
     id !== "2026-09-11-miripochi-story" &&
     id !== "2026-09-11-night-stream-thanks-final-day-story" &&
