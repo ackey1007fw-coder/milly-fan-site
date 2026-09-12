@@ -1410,6 +1410,6 @@ PR 本文に、一次ソース URL と「推測していないこと」を書く
 - NEWS ID: `2026-09-12-avatar-achievement-story`。source dateはオーナーが2026-09-12と明示確認。container日時から推定していない。
 - 本人の3次審査完走への感謝・初のアバ権達成・43日間の初期アバター・投票は13日までの案内を要約。審査通過・順位・アバター配布開始・撮影会日程は追加しない。
 - Latest / NEWS内の動画カード。b103公開MP4とposterを再利用。Instagram Storyの非リンク出典表示、プロフィールは関連リンク。リンクスタンプの遷移先は推測しない。
-- WEB投票CTAは既存missCircleWebVoteLinkを使用し、既存SupportEvent終了境界で非表示。activityIds: live-stream / miss-circle。時刻未確認のためsameDayOrderは追加しない。
+- WEB投票CTAは既存missCircleWebVoteLinkを使用し、既存SupportEvent終了境界で非表示。Latest / NEWS専用のためactivityIdsは設定しない（Activitiesの関連動画へ自動展開させない）。時刻未確認のためsameDayOrderは追加しない。
 - Gallery / Stories / highlights / events / streamSchedule / profile非追加。公開動画は無音。
 - 別Draft #246は本人Xを扱う別依頼。未マージ内容を取り込まず、変更・Ready化・mergeしない。

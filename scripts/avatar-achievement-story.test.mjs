@@ -11,6 +11,7 @@ test('avatar Story keeps its confirmed date and reuses the approved video', () =
   assert.equal(items[0].date, '2026-09-12');
   assert.equal(items[0].media, avatarAchievementStoryVideo);
   assert.equal(items[0].source, undefined);
+  assert.equal(items[0].activityIds, undefined);
   assert.equal(avatarAchievementStoryVideo.sourceDate, items[0].date);
   assert.equal(avatarAchievementStoryVideo.published, true);
 });

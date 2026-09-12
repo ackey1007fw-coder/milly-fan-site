@@ -216,7 +216,6 @@ export const news: NewsItem[] = [
   {
     id: "2026-09-12-avatar-achievement-story",
     date: "2026-09-12",
-    activityIds: ["live-stream", "miss-circle"],
     title: "初めてのアバ権達成！3次審査を走り切った感謝を届けて",
     body:
       "みりぃがInstagram Storyで、3次審査を無事に走り切ったことを報告。「いつも応援ありがとうございます」と、応援してくれた皆さんへの感謝を伝えました。\n\n" +
