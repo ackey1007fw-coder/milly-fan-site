@@ -24,8 +24,24 @@ export const streamRecap20260910Asa: StreamRecap = {
   gallery: approvedStills,
   galleryZip: { src: "/media/live/mily-b95-morning-stills.zip", filename: "みりぃ_20260910朝_スクショ8枚.zip", label: "8枚まとめて保存" },
   songs: [
-    { title: "ケセラセラ", artist: "Mrs. GREEN APPLE", timestamp: "0:08:02", youtubeUrl: "https://www.youtube.com/watch?v=Jy-QS27q7lA" },
-    { title: "かわいいだけじゃだめですか？", artist: "CUTIE STREET", timestamp: "0:20:15", youtubeUrl: "https://www.youtube.com/watch?v=jZqTz1G8G04" },
+    {
+      title: "ケセラセラ", artist: "Mrs. GREEN APPLE", timestamp: "0:08:02",
+      youtubeUrl: "https://www.youtube.com/watch?v=Jy-QS27q7lA",
+      clip: {
+        src: "/media/live-clips/mily-b102-02-keserasera.mp4",
+        poster: "/media/live-clips/mily-b102-02-keserasera-poster.jpg",
+        width: 640, height: 360, durationSeconds: 24, sourceTimestamp: "0:08:02",
+      },
+    },
+    {
+      title: "かわいいだけじゃだめですか？", artist: "CUTIE STREET", timestamp: "0:20:15",
+      youtubeUrl: "https://www.youtube.com/watch?v=jZqTz1G8G04",
+      clip: {
+        src: "/media/live-clips/mily-b102-03-kawaiidakeja-dame-desuka.mp4",
+        poster: "/media/live-clips/mily-b102-03-kawaiidakeja-dame-desuka-poster.jpg",
+        width: 640, height: 360, durationSeconds: 24, sourceTimestamp: "0:20:15",
+      },
+    },
   ],
   highlights: [
     {
