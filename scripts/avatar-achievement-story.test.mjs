@@ -12,6 +12,17 @@ test('avatar Story keeps its confirmed date and reuses the approved video', () =
   assert.equal(items[0].media, avatarAchievementStoryVideo);
   assert.equal(items[0].source, undefined);
   assert.equal(items[0].activityIds, undefined);
+  assert.deepEqual(items[0].additionalSources, [
+    {
+      label: 'みりぃのX',
+      url: 'https://x.com/Mily_chan36/status/2098778956535407065',
+    },
+    {
+      label: 'みりぃのX',
+      url: 'https://x.com/Mily_chan36/status/2098779286245454075',
+    },
+  ]);
+  assert.match(items[0].body, /Xでも、完走・アバ権とWEB投票期限（9\/13まで）を案内しています。/);
   assert.equal(avatarAchievementStoryVideo.sourceDate, items[0].date);
   assert.equal(avatarAchievementStoryVideo.published, true);
 });
