@@ -213,6 +213,24 @@ export function newsDisplayMedia(item: NewsItem): NewsMedia[] {
 
 export const news: NewsItem[] = [
   {
+    id: "2026-09-13-seaside-circle-solo-theme",
+    // 放送日の告知記事。Instagram Storyの投稿日を示す値ではない。
+    date: "2026-09-13",
+    activityIds: ["radio"],
+    title: "9/13の湘南シーサイドサークル、テーマは「一人〇〇」",
+    body:
+      "9月13日（日）10:00〜13:00、FM85.6MHz「湘南シーサイドサークル」の生放送が案内されています。今回のテーマは「一人〇〇」。みりぃがシェアした番組告知には、師匠・Mily・もこの名前と、メッセージフォームの案内が掲載されています。一人で楽しむことや、挑戦してみたいこと。テーマをきっかけに、自分ならどんな話を送るか考えながら楽しみたい放送です。こちらの動画で番組案内をご覧いただけます。",
+    sourceLabel: "Instagram Story（番組告知の再共有）",
+    media: {
+      kind: "video",
+      src: "/media/news/mily-b103-01-seaside-circle-solo-theme.mp4",
+      poster: "/media/news/mily-b103-01-seaside-circle-solo-theme-poster.jpg",
+      width: 512,
+      height: 910,
+      alt: "9月13日（日）10:00〜13:00の湘南シーサイドサークル生放送とテーマ「一人〇〇」、師匠・Mily・もこを案内する縦長動画",
+    },
+  },
+  {
     id: "2026-09-12-ohayo-panda-selfie",
     date: "2026-09-12",
     title: "3次SHOWROOM審査最終日、20:40〜21:59へ",
