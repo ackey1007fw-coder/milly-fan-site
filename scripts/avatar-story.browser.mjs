@@ -40,7 +40,7 @@ try {
     assert.deepEqual(errors, []);
     await card.screenshot({ path: join(output, `${name}.png`) });
     await page.goto('http://127.0.0.1:4175/', { waitUntil: 'domcontentloaded' });
-    await page.getByText('初めてのアバ権達成！3次審査を走り切った感謝を届けて', { exact: true }).waitFor();
+    await page.locator('#latest').getByText('初めてのアバ権達成！3次審査を走り切った感謝を届けて', { exact: true }).waitFor();
     results.push({ name, state, errors, status: 'passed' });
     await page.close();
   }
