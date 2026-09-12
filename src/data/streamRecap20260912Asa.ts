@@ -28,9 +28,18 @@ export const streamRecap20260912Asa: StreamRecap = {
   gallery: approvedStills,
   galleryZip: { src: "/media/live/mily-b99-morning-stills.zip", filename: "みりぃ_20260912朝_スクショ8枚.zip", label: "8枚まとめて保存" },
   songs: [
-    { title: "拝啓、少年よ", artist: "Hump Back", timestamp: "0:15:38", youtubeUrl: "https://www.youtube.com/watch?v=d6i4AtCxrDo" },
-    { title: "好きすぎて滅！", artist: "M!LK", timestamp: "0:23:13", youtubeUrl: "https://www.youtube.com/watch?v=ZVUxJsPfoX8" },
-    { title: "Lovers", artist: "sumika", timestamp: "0:33:21", youtubeUrl: "https://www.youtube.com/watch?v=FFITBgsyVr4" },
+    {
+      title: "拝啓、少年よ", artist: "Hump Back", timestamp: "0:15:38", youtubeUrl: "https://www.youtube.com/watch?v=d6i4AtCxrDo",
+      clip: { src: "/media/live-clips/mily-b100-01-haikei-shounenyo.mp4", poster: "/media/live-clips/mily-b100-01-haikei-shounenyo-poster.jpg", width: 640, height: 360, durationSeconds: 24, sourceTimestamp: "0:17:35" },
+    },
+    {
+      title: "好きすぎて滅！", artist: "M!LK", timestamp: "0:23:13", youtubeUrl: "https://www.youtube.com/watch?v=ZVUxJsPfoX8",
+      clip: { src: "/media/live-clips/mily-b100-02-sukisugite-metsu.mp4", poster: "/media/live-clips/mily-b100-02-sukisugite-metsu-poster.jpg", width: 640, height: 360, durationSeconds: 24, sourceTimestamp: "0:23:55" },
+    },
+    {
+      title: "Lovers", artist: "sumika", timestamp: "0:33:21", youtubeUrl: "https://www.youtube.com/watch?v=FFITBgsyVr4",
+      clip: { src: "/media/live-clips/mily-b100-03-lovers.mp4", poster: "/media/live-clips/mily-b100-03-lovers-poster.jpg", width: 640, height: 360, durationSeconds: 24, sourceTimestamp: "0:35:38" },
+    },
   ],
   highlights: [
     {

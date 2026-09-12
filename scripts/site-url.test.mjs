@@ -15,6 +15,7 @@ import {
   newsUrl,
   storiesIndexUrl,
   galleryUrl,
+  songClipsUrl,
 } from "../src/data/site.ts";
 import { activities } from "../src/data/activities.ts";
 import { verifySiteUrlConsistency } from "./check-site-url.mjs";
@@ -30,6 +31,7 @@ describe("site.siteUrl metadata source of truth", () => {
     assert.equal(newsUrl(), `${origin}/news/`);
     assert.equal(storiesIndexUrl(), `${origin}/stories/`);
     assert.equal(galleryUrl(), `${origin}/gallery/`);
+    assert.equal(songClipsUrl(), `${origin}/activities/live/clips/`);
     for (const activity of activities) {
       assert.equal(activityUrl(activity.route), `${origin}${activity.route}`);
     }
@@ -46,6 +48,7 @@ describe("site.siteUrl metadata source of truth", () => {
     assert.match(sitemapXml(), new RegExp(`<loc>${newsUrl()}</loc>`));
     assert.match(sitemapXml(), new RegExp(`<loc>${storiesIndexUrl()}</loc>`));
     assert.match(sitemapXml(), new RegExp(`<loc>${galleryUrl()}</loc>`));
+    assert.match(sitemapXml(), new RegExp(`<loc>${songClipsUrl()}</loc>`));
     for (const activity of activities) {
       assert.match(
         sitemapXml(),

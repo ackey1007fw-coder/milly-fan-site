@@ -100,6 +100,17 @@ export type StreamRecapGalleryZip = {
   label: string;
 };
 
+export type StreamRecapSongClip = {
+  /** LIVE SONG CLIPS 用の短い歌唱抜粋。録画原本全編ではない。 */
+  src: string;
+  poster: string;
+  width: number;
+  height: number;
+  durationSeconds: number;
+  /** 録画先頭からのクリップ開始位置の目安。 */
+  sourceTimestamp: string;
+};
+
 export type StreamRecapSong = {
   title: string;
   artist: string;
@@ -111,6 +122,8 @@ export type StreamRecapSong = {
   youtubeVersionNote?: string;
   /** 練習用の参考伴奏。配信での使用音源とは限らない。 */
   karaoke?: { youtubeUrl: string; channel: string };
+  /** オーナー確認済み録画から作った短い歌唱クリップ。 */
+  clip?: StreamRecapSongClip;
 };
 
 export type StreamRecap = {

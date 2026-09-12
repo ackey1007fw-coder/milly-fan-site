@@ -3617,3 +3617,14 @@ Latest / NEWSのみ。公開CDNのhotlink、iframe、Gallery追加は行わな�
 - 録画全体を約80秒間隔で概観し、11候補を実寸確認して8枚を選定。本人以外の人物、視聴者名・アイコン、コメント欄、住所・連絡先など公開を避ける情報の写り込みなし。
 - 元の640×360・16:9を保持。crop・scaleなし。ffmpegで録画の実フレームをJPEG化し、顔のAI生成・補正・置換・生成塗り足しなし。
 - LIVE STREAM専用。NEWS / Gallery / `media.ts` / `galleryVideos.ts` へ複製しない。録音・録画・全文文字起こしも公開しない。
+
+## 素材台帳（batch b100 / source date 2026-09-12 / 承認日 2026-09-12）
+
+9月12日朝のSHOWROOM配信録画から作成した短い歌唱クリップ3本。オーナーが当該配信映像のサイト掲載を明示指定し、掲載許可を確認済みとして扱う。許可確認に使った私的なやり取り自体は公開repoへ持ち込まない。
+
+- `live-clips/mily-b100-01-haikei-shounenyo.mp4`: Hump Back「拝啓、少年よ」。録画内17:35頃から24秒。
+- `live-clips/mily-b100-02-sukisugite-metsu.mp4`: M!LK「好きすぎて滅！」。録画内23:55頃から24秒。
+- `live-clips/mily-b100-03-lovers.mp4`: sumika「Lovers」。録画内35:38頃から24秒。
+- 各MP4は640×360 / H.264 Main / yuv420p / AAC-LC / faststart。原録画の画角を保持し、crop・scale・顔補正・AI生成・生成塗り足し・歌詞テロップは行わない。
+- 各posterは公開MP4の実フレーム。LIVE SONG CLIPS専用で、NEWS / Gallery / Stories / `media.ts` / `galleryVideos.ts` へ複製しない。
+- 録画原本、受け渡しURL / ID、全文文字起こし、視聴者名は公開しない。楽曲・伴奏等の権利は各権利者に帰属し、サイトでは短い配信記録抜粋として扱う。

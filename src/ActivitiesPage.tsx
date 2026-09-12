@@ -4,7 +4,7 @@ import { ExternalLink } from "./components/ExternalLink";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { NewsImage } from "./components/NewsImage";
-import { StreamSongCatalog, StreamSongCatalogEntry } from "./components/StreamSongCatalog";
+import { StreamSongCatalog, StreamSongCatalogEntry, StreamSongClipsEntry } from "./components/StreamSongCatalog";
 import {
   activities,
   type Activity,
@@ -263,7 +263,10 @@ function ActivityHero({ activity }: { activity: Activity }) {
         <p className="mt-5 max-w-2xl text-base leading-8 text-ink-muted sm:text-lg">
           {activity.summary}
         </p>
-        {activity.id === "live-stream" ? <StreamSongCatalogEntry /> : null}
+        {activity.id === "live-stream" ? <>
+          <StreamSongCatalogEntry />
+          <StreamSongClipsEntry />
+        </> : null}
       </div>
     </header>
   );

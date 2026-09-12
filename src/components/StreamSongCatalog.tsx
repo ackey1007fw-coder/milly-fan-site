@@ -1,12 +1,28 @@
 import { useState } from "react";
 import { streamRecaps } from "../data/streamRecaps";
 import { buildStreamSongCatalog, catalogArtists, catalogBroadcastCount, selectCatalogSongs, type SongOrder } from "../lib/streamSongCatalog";
+import { catalogSongClipCount, songClipPerformanceAnchor } from "../lib/streamSongClips";
 
 const catalog = buildStreamSongCatalog(streamRecaps);
 const artists = catalogArtists(catalog);
+const clipCount = catalogSongClipCount(catalog);
 const INITIAL_SONG_COUNT = 6;
 const inputClass = "min-h-11 w-full min-w-0 rounded-xl border border-sage/30 bg-paper px-3 py-2 text-sm text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-sage";
 const linkClass = "inline-flex min-h-11 items-center text-sm font-semibold text-sage-deep underline underline-offset-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage";
+
+export function StreamSongClipsEntry() {
+  if (clipCount === 0) return null;
+  return (
+    <a href="/activities/live/clips/" className="mt-4 flex min-w-0 items-center gap-4 rounded-3xl border-2 border-apricot/45 bg-apricot/10 p-5 shadow-card transition-colors hover:bg-apricot/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-apricot sm:p-6">
+      <span aria-hidden="true" className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-apricot text-2xl text-white">▶</span>
+      <span className="min-w-0 flex-1">
+        <span className="block text-xl font-bold text-ink sm:text-2xl">LIVE SONG CLIPS</span>
+        <span className="mt-1 block text-sm leading-6 text-ink-muted">みりぃの歌唱シーンを短い動画で。現在{clipCount}本</span>
+        <span className="mt-3 inline-flex min-h-11 items-center rounded-full bg-apricot px-5 py-2 text-sm font-bold text-white">歌唱クリップを見る →</span>
+      </span>
+    </a>
+  );
+}
 
 export function StreamSongCatalogEntry() {
   if (catalog.length === 0) return null;
@@ -126,6 +142,9 @@ export function StreamSongCatalog() {
                                   {performance.dateLabel} {performance.theme}
                                 </a>
                                 <p>{performance.broadcastLabel} · 歌唱は録画内 {performance.timestamp}頃〜</p>
+                                {performance.clip ? (
+                                  <a href={`/activities/live/clips/#${songClipPerformanceAnchor(performance as typeof performance & { clip: NonNullable<typeof performance.clip> })}`} className={linkClass}>歌唱クリップを見る ▶</a>
+                                ) : null}
                               </li>
                             ))}
                           </ul>
