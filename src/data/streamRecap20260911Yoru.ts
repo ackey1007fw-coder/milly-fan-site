@@ -24,7 +24,17 @@ export const streamRecap20260911Yoru: StreamRecap = {
   gallery: approvedStills,
   galleryZip: { src: "/media/live/mily-b98-night-stills.zip", filename: "みりぃ_20260911夜_スクショ8枚.zip", label: "8枚まとめて保存" },
   songs: [
-    { title: "明日も", artist: "SHISHAMO", timestamp: "0:26:19", youtubeUrl: "https://www.youtube.com/watch?v=zhCtzmDWsN0" },
+    {
+      title: "明日も",
+      artist: "SHISHAMO",
+      timestamp: "0:26:19",
+      youtubeUrl: "https://www.youtube.com/watch?v=zhCtzmDWsN0",
+      clip: {
+        src: "/media/live-clips/mily-b102-01-ashitamo.mp4",
+        poster: "/media/live-clips/mily-b102-01-ashitamo-poster.jpg",
+        width: 640, height: 360, durationSeconds: 24, sourceTimestamp: "0:27:26",
+      },
+    },
   ],
   highlights: [
     {

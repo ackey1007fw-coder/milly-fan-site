@@ -3641,3 +3641,16 @@ Latest / NEWSのみ。公開CDNのhotlink、iframe、Gallery追加は行わな�
 - crop・顔補正・AI生成・生成塗り足しなし。通常の再エンコードのみで、公開派生にEXIF / GPS / IPTC / XMP / ICCを持ち込まない。
 - 本人以外の人物、表示名・コメント・住所・連絡先など公開を避ける第三者情報は写っていない。
 - Latest / NEWS専用。通常SNS投稿写真のためGalleryへ自動昇格しない。Xへの導線は確認済みpermalinkのみ。
+
+## 素材台帳（batch b102 / source date 2026-09-10〜11 / 承認日 2026-09-12）
+
+オーナー提供のSHOWROOM録画から作成した追加歌唱クリップ3本。2026-09-12にオーナーが歌唱シーンのファンサイト・SNS展開を明示依頼した範囲で、LIVE SONG CLIPSへ追加する。許可確認に使った私的なやり取り、録画原本、非公開URL / ID / ローカルパスは公開repoへ持ち込まない。b100初回、b101本人X投稿の次の未使用番号としてb102を採番。
+
+- `live-clips/mily-b102-01-ashitamo.mp4`: SHISHAMO「明日も」。公開クリップは24秒 / 640×360 / H.264 Main / AAC-LC / faststart。2,203,239 bytes / sha256 `2923058705ef169bd8416cad869c5d9b0bd68abf7ddf800cff3423e51dc59252`。
+- `live-clips/mily-b102-02-keserasera.mp4`: Mrs. GREEN APPLE「ケセラセラ」。公開クリップは24秒 / 640×360 / H.264 Main / AAC-LC / faststart。1,997,967 bytes / sha256 `781a1d510f87618e085f278ae089b6dff51a7e88ddef6749f352df961b966363`。
+- `live-clips/mily-b102-03-kawaiidakeja-dame-desuka.mp4`: CUTIE STREET「かわいいだけじゃだめですか？」。公開クリップは24秒 / 640×360 / H.264 Main / AAC-LC / faststart。2,178,472 bytes / sha256 `86ae2007af9d53639d53ee14d9d6f2df0a3afda16b3f09a9f33731fbdae5d804`。
+- 各posterは公開MP4の12秒地点の実フレーム。順に13,000 / 13,311 / 13,599 bytes、sha256は `2cdbca50f167860f0bf8efbe46e88701fc41562b23c2e2ecdbe1b83f56a0308f` / `3e0617cc8b9d4fe71f45ecbde11fb80878afa775a109249aad83218d0e6fdd5d` / `82f7b4a0d889c9703d9510c2208586c0c2e23f8666c6453ace4ea8648d5715d1`。
+- 原録画の画角を保持し、crop・scale・顔補正・AI生成・生成塗り足し・歌詞テロップは行わない。公開派生ではsource metadata / chapterを除去する。
+- 実フレーム確認の範囲で、本人以外の人物、コメント欄、視聴者名・アイコン、住所・連絡先など公開を避ける情報の写り込みなし。
+- 「明日も」は既存配信メモの歌唱開始表示と今回使用した録画の切出し位置が一致しないため、既存 `timestamp` を書き換えず、`clip.sourceTimestamp` に実際の切出し位置を独立して記録する。
+- LIVE SONG CLIPS専用。NEWS / Gallery / Stories / `media.ts` / `galleryVideos.ts` へ複製しない。録画全編・全文文字起こしは公開しない。楽曲・伴奏等の権利は各権利者に帰属する。
