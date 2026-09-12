@@ -23,7 +23,7 @@ try {
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
     await page.goto('http://127.0.0.1:4175/news/', { waitUntil: 'networkidle' });
-    const card = page.locator('article').filter({ hasText: '初めてのアバ権達成！' });
+    const card = page.locator('li').filter({ hasText: '初めてのアバ権達成！' });
     await card.waitFor();
     await card.scrollIntoViewIfNeeded();
     const video = card.locator('video');
