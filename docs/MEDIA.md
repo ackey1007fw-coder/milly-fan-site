@@ -3674,3 +3674,15 @@ Latest / NEWSのみ。公開CDNのhotlink、iframe、Gallery追加は行わな�
 - 本人以外の人物・第三者コメント・私的情報なし。顔加工・AI生成・トリミングなし。原本は無改変・gitignore領域。
 - もう1枚の提供スクリーンショットは本文・投稿との対応の確認用。同じ自撮りの縮小版を重複公開せず、NEWS本文として要約。
 - batchが100を超えた現状に対応して、media:buildのbatch桁数検査を2桁以上へ拡張。連番2桁・slug・拡張子制限、既存派生の上書き禁止は維持。
+
+
+## 素材台帳（batch b111 / source date・承認日 2026-09-13）
+
+9月13日06:00頃開始のSHOWROOM朝配信録画から選んだ実フレーム8枚。オーナーが配信終了直後に当該配信レポートとスクショのサイト掲載を明示依頼したため、LIVE STREAM掲載用として使用する。最新mainでb110まで使用済みで、Open PRと並行中の9月12日夜配信作業にもb111の予約・使用がないことを確認して採番した。
+
+- 公開ファイル: `live/mily-b111-01-makeup-start.jpg`、`mily-b111-02-makeup-talk.jpg`、`mily-b111-03-eye-tool-smile.jpg`、`mily-b111-04-eye-makeup.jpg`、`mily-b111-05-makeup-finished-smile.jpg`、`mily-b111-06-bright-close-smile.jpg`、`mily-b111-07-ready-for-radio.jpg`、`mily-b111-08-double-peace.jpg`。全8枚640×360 JPEG。
+- 代表: `mily-b111-07-ready-for-radio.jpg`。保存ZIP: `live/mily-b111-morning-stills.zip`。
+- provenance: owner-provided recording / owner-approved recap stills。公開再生permalinkなし。録画原本・受け渡しURL / ID / ローカルパスは公開しない。
+- 録画全体を約1分間隔で概観し、メイク開始からラジオへ向かう支度が整うまでの流れが伝わる8枚を選定。本人以外の人物、視聴者名・アイコン、コメント欄、住所・連絡先など公開を避ける情報の写り込みなし。
+- 元の640×360・16:9を保持。crop・scaleなし。ffmpegで録画の実フレームをJPEG化し、source metadataを引き継がない。顔のAI生成・補正・置換・生成塗り足しなし。
+- LIVE STREAM専用。NEWS / Gallery / `media.ts` / `galleryVideos.ts` へ複製しない。録音・録画・全文文字起こしも公開しない。

@@ -223,7 +223,7 @@ describe("配信メモの統一ルール", () => {
         }
 
         for (const image of [recap.image, ...stills].filter(Boolean)) {
-          assert.match(image.src, /^\/media\/live\/mily-b\d{2}-\d{2}-[a-z0-9-]+\.(jpg|png)$/);
+          assert.match(image.src, /^\/media\/live\/mily-b\d{2,}-\d{2}-[a-z0-9-]+\.(jpg|png)$/);
           const file = path.join(root, "public", image.src.slice(1));
           assert.equal(existsSync(file), true);
           // 宣言した寸法は実ファイルと一致させる。ずれるとレイアウトが跳ねる。
