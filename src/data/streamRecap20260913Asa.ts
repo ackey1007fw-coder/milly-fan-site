@@ -6,14 +6,14 @@ import {
 } from "./streamRecapRules.ts";
 
 const approvedStills: StreamRecapImage[] = [
-  { src: "/media/live/mily-b111-01-makeup-start.jpg", width: 640, height: 360, alt: "9月13日の朝配信、メイクを始めながら笑顔でカメラを見るみりぃ", caption: "メイク配信の始まりに笑顔", downloadName: "みりぃ_20260913朝_01.jpg" },
-  { src: "/media/live/mily-b111-02-makeup-talk.jpg", width: 640, height: 360, alt: "9月13日の朝配信、メイクを進めながらカメラへ話しかけるみりぃ", caption: "朝のトークをしながら", downloadName: "みりぃ_20260913朝_02.jpg" },
-  { src: "/media/live/mily-b111-03-eye-tool-smile.jpg", width: 640, height: 360, alt: "9月13日の朝配信、目元のメイク道具を手に笑うみりぃ", caption: "目元メイクの途中でにっこり", downloadName: "みりぃ_20260913朝_03.jpg" },
-  { src: "/media/live/mily-b111-04-eye-makeup.jpg", width: 640, height: 360, alt: "9月13日の朝配信、鏡を見ながら目元を丁寧にメイクするみりぃ", caption: "鏡を見ながら目元を仕上げて", downloadName: "みりぃ_20260913朝_04.jpg" },
-  { src: "/media/live/mily-b111-05-makeup-finished-smile.jpg", width: 640, height: 360, alt: "9月13日の朝配信、メイクが進み笑顔で両手を振るみりぃ", caption: "笑顔で手を振って", downloadName: "みりぃ_20260913朝_05.jpg" },
-  { src: "/media/live/mily-b111-06-bright-close-smile.jpg", width: 640, height: 360, alt: "9月13日の朝配信、髪も整えてカメラの近くで明るく笑うみりぃ", caption: "支度が進んで明るい笑顔", downloadName: "みりぃ_20260913朝_06.jpg" },
-  { src: "/media/live/mily-b111-07-ready-for-radio.jpg", width: 640, height: 360, alt: "9月13日の朝配信、ラジオへ向かう支度を整えて笑顔を見せるみりぃ", caption: "ラジオへ向かう準備が整って", downloadName: "みりぃ_20260913朝_07.jpg" },
-  { src: "/media/live/mily-b111-08-double-peace.jpg", width: 640, height: 360, alt: "9月13日の朝配信、仕上がった姿で両手のピースを見せるみりぃ", caption: "最後は両手でピース", downloadName: "みりぃ_20260913朝_08.jpg" },
+  { src: "/media/live/mily-b112-01-makeup-start.jpg", width: 640, height: 360, alt: "9月13日の朝配信、メイクを始めながら笑顔でカメラを見るみりぃ", caption: "メイク配信の始まりに笑顔", downloadName: "みりぃ_20260913朝_01.jpg" },
+  { src: "/media/live/mily-b112-02-makeup-talk.jpg", width: 640, height: 360, alt: "9月13日の朝配信、メイクを進めながらカメラへ話しかけるみりぃ", caption: "朝のトークをしながら", downloadName: "みりぃ_20260913朝_02.jpg" },
+  { src: "/media/live/mily-b112-03-eye-tool-smile.jpg", width: 640, height: 360, alt: "9月13日の朝配信、目元のメイク道具を手に笑うみりぃ", caption: "目元メイクの途中でにっこり", downloadName: "みりぃ_20260913朝_03.jpg" },
+  { src: "/media/live/mily-b112-04-eye-makeup.jpg", width: 640, height: 360, alt: "9月13日の朝配信、鏡を見ながら目元を丁寧にメイクするみりぃ", caption: "鏡を見ながら目元を仕上げて", downloadName: "みりぃ_20260913朝_04.jpg" },
+  { src: "/media/live/mily-b112-05-makeup-finished-smile.jpg", width: 640, height: 360, alt: "9月13日の朝配信、メイクが進み笑顔で両手を振るみりぃ", caption: "笑顔で手を振って", downloadName: "みりぃ_20260913朝_05.jpg" },
+  { src: "/media/live/mily-b112-06-bright-close-smile.jpg", width: 640, height: 360, alt: "9月13日の朝配信、髪も整えてカメラの近くで明るく笑うみりぃ", caption: "支度が進んで明るい笑顔", downloadName: "みりぃ_20260913朝_06.jpg" },
+  { src: "/media/live/mily-b112-07-ready-for-radio.jpg", width: 640, height: 360, alt: "9月13日の朝配信、ラジオへ向かう支度を整えて笑顔を見せるみりぃ", caption: "ラジオへ向かう準備が整って", downloadName: "みりぃ_20260913朝_07.jpg" },
+  { src: "/media/live/mily-b112-08-double-peace.jpg", width: 640, height: 360, alt: "9月13日の朝配信、仕上がった姿で両手のピースを見せるみりぃ", caption: "最後は両手でピース", downloadName: "みりぃ_20260913朝_08.jpg" },
 ];
 
 export const streamRecap20260913Asa: StreamRecap = {
@@ -26,7 +26,7 @@ export const streamRecap20260913Asa: StreamRecap = {
   summary: "ラジオ本番へ向かう前、メイクをしながら朝のトーク。三次審査のWEB投票最終日を案内し、アバター権への祝福にはみんなのおかげと感謝。最後はランキングを読み上げ、元気にラジオへ向かいました。",
   image: approvedStills[6],
   gallery: approvedStills,
-  galleryZip: { src: "/media/live/mily-b111-morning-stills.zip", filename: "みりぃ_20260913朝_スクショ8枚.zip", label: "8枚まとめて保存" },
+  galleryZip: { src: "/media/live/mily-b112-morning-stills.zip", filename: "みりぃ_20260913朝_スクショ8枚.zip", label: "8枚まとめて保存" },
   highlights: [
     {
       timestamp: "0:00:19",

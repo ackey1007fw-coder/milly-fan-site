@@ -36,7 +36,7 @@ test("September 13 morning ships eight real-frame stills", async () => {
   assert.equal(recap.galleryZip.label, "8枚まとめて保存");
   assert.equal(new Set(recap.gallery.map(({ src }) => src)).size, 8);
   for (const still of recap.gallery) {
-    assert.match(still.src, /\/mily-b111-/);
+    assert.match(still.src, /\/mily-b112-/);
     const file = new URL(`../public${still.src}`, import.meta.url);
     const meta = await sharp(await readFile(file)).metadata();
     assert.equal(meta.width, 640);
