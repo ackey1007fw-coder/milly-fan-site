@@ -3628,3 +3628,16 @@ Latest / NEWSのみ。公開CDNのhotlink、iframe、Gallery追加は行わな�
 - 各MP4は640×360 / H.264 Main / yuv420p / AAC-LC / faststart。原録画の画角を保持し、crop・scale・顔補正・AI生成・生成塗り足し・歌詞テロップは行わない。
 - 各posterは公開MP4の実フレーム。LIVE SONG CLIPS専用で、NEWS / Gallery / Stories / `media.ts` / `galleryVideos.ts` へ複製しない。
 - 録画原本、受け渡しURL / ID、全文文字起こし、視聴者名は公開しない。楽曲・伴奏等の権利は各権利者に帰属し、サイトでは短い配信記録抜粋として扱う。
+
+
+## 素材台帳（batch b101 / source date・承認日 2026-09-12）
+
+9月12日の本人X投稿。mainでbatch b100がLIVE SONG CLIPSに使用済みのため、次の未使用番号b101を採番する。オーナーが公開X URLと画像を同時に提示し、サイト掲載を明示依頼した。
+
+- b101-01: `mily-b101-01-ohayo-panda-selfie`。受領画像は1152×2048 JPEG / 183,092 bytes / sha256 `2325317d8a6adafe7956e55885cf78c2ad1fa02fe1f40fae194f505de9791368`。公開Xの同一メディアとサイズ・SHA-256一致を確認。
+- sourceUrl: `https://x.com/Mily_chan36/status/2098566313593680195`、sourceDate: `2026-09-12`。
+- Xで、朝枠への感謝、3次SHOWROOM審査最終日、20:40〜21:59の配信、投稿時点でアバター権まで残り36,599pt、投票報告の呼びかけを確認。画像内の文字は「おはよう♡」。
+- 公開派生は `news/mily-b101-01-ohayo-panda-selfie.jpg`。1152×2048を維持し、外部画像CDNへhotlinkしない。
+- crop・顔補正・AI生成・生成塗り足しなし。通常の再エンコードのみで、公開派生にEXIF / GPS / IPTC / XMP / ICCを持ち込まない。
+- 本人以外の人物、表示名・コメント・住所・連絡先など公開を避ける第三者情報は写っていない。
+- Latest / NEWS専用。通常SNS投稿写真のためGalleryへ自動昇格しない。Xへの導線は確認済みpermalinkのみ。
